@@ -1,10 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\",
+  "WorkspaceRootPath": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FD726EF7-E37B-446C-A5EA-8D3B6A6C902A}|M3_RRO_JSC.csproj|c:\\users\\rondray\\onedrive - divtec\\documents\\github\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{FD726EF7-E37B-446C-A5EA-8D3B6A6C902A}|M3_RRO_JSC.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\juju_\\source\\repos\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\acceuil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:acceuil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\juju_\\source\\repos\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\gestion_lot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:gestion_lot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\juju_\\source\\repos\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\gestion_recette.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:gestion_recette.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,13 +43,37 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.cs [Conception]",
-              "DocumentMoniker": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\Form1.cs [Conception]",
-              "RelativeToolTip": "Form1.cs [Conception]",
+              "Title": "Acceuil.cs [Conception]",
+              "DocumentMoniker": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\Acceuil.cs",
+              "RelativeDocumentMoniker": "Acceuil.cs",
+              "ToolTip": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\Acceuil.cs [Conception]",
+              "RelativeToolTip": "Acceuil.cs [Conception]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-04T11:34:10.78Z",
+              "WhenOpened": "2026-05-05T13:12:01.762Z",
+              "EditorCaption": " [Conception]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Gestion_lot.cs [Conception]",
+              "DocumentMoniker": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\Gestion_lot.cs",
+              "RelativeDocumentMoniker": "Gestion_lot.cs",
+              "ToolTip": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\Gestion_lot.cs [Conception]",
+              "RelativeToolTip": "Gestion_lot.cs [Conception]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T13:05:16.584Z",
+              "EditorCaption": " [Conception]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Gestion_Recette.cs [Conception]",
+              "DocumentMoniker": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\Gestion_Recette.cs",
+              "RelativeDocumentMoniker": "Gestion_Recette.cs",
+              "ToolTip": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\Gestion_Recette.cs [Conception]",
+              "RelativeToolTip": "Gestion_Recette.cs [Conception]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T12:09:57.899Z",
               "EditorCaption": " [Conception]"
             }
           ]
