@@ -1,6 +1,6 @@
 ﻿namespace M3_RRO_JSC
 {
-    partial class Acceuil
+    partial class FrmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -33,23 +33,25 @@
             btnAccueil = new Button();
             btnTracabilite = new Button();
             pnlLotProduction = new Panel();
+            grdLotEnProd = new DataGridView();
             lblLotProduction = new Label();
             btnParametre = new Button();
             pnlEtatMachine = new Panel();
+            lblEtatMachine = new Label();
+            lblMachineNumero = new Label();
+            lblEtatText = new Label();
             lblMachineText = new Label();
             pnlAccueil = new Panel();
             lblAccueil = new Label();
             pnlEtatConnectionDb = new Panel();
-            lblEtatConnectionText = new Label();
-            lblNomDbText = new Label();
-            lblUtilisateurText = new Label();
-            lblEtatConnection = new Label();
-            lblNomDb = new Label();
             lblUtilisateur = new Label();
-            lblEtatText = new Label();
-            lblMachineNumero = new Label();
-            lblEtatMachine = new Label();
+            lblNomDb = new Label();
+            lblEtatConnection = new Label();
+            lblUtilisateurText = new Label();
+            lblNomDbText = new Label();
+            lblEtatConnectionText = new Label();
             pnlLotProduction.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)grdLotEnProd).BeginInit();
             pnlEtatMachine.SuspendLayout();
             pnlAccueil.SuspendLayout();
             pnlEtatConnectionDb.SuspendLayout();
@@ -65,7 +67,6 @@
             btnGestionRecette.TabIndex = 3;
             btnGestionRecette.Text = "Gestion des recettes";
             btnGestionRecette.UseVisualStyleBackColor = false;
-            btnGestionRecette.Click += button3_Click;
             // 
             // btnGestionLot
             // 
@@ -103,11 +104,21 @@
             // pnlLotProduction
             // 
             pnlLotProduction.BackColor = SystemColors.ActiveCaption;
+            pnlLotProduction.Controls.Add(grdLotEnProd);
             pnlLotProduction.Controls.Add(lblLotProduction);
             pnlLotProduction.Location = new Point(186, 88);
             pnlLotProduction.Name = "pnlLotProduction";
             pnlLotProduction.Size = new Size(333, 677);
             pnlLotProduction.TabIndex = 1;
+            // 
+            // grdLotEnProd
+            // 
+            grdLotEnProd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grdLotEnProd.Location = new Point(18, 71);
+            grdLotEnProd.Name = "grdLotEnProd";
+            grdLotEnProd.RowHeadersWidth = 51;
+            grdLotEnProd.Size = new Size(301, 300);
+            grdLotEnProd.TabIndex = 1;
             // 
             // lblLotProduction
             // 
@@ -141,6 +152,34 @@
             pnlEtatMachine.Name = "pnlEtatMachine";
             pnlEtatMachine.Size = new Size(794, 330);
             pnlEtatMachine.TabIndex = 6;
+            // 
+            // lblEtatMachine
+            // 
+            lblEtatMachine.AutoSize = true;
+            lblEtatMachine.Location = new Point(489, 78);
+            lblEtatMachine.Name = "lblEtatMachine";
+            lblEtatMachine.Size = new Size(35, 20);
+            lblEtatMachine.TabIndex = 3;
+            lblEtatMachine.Text = "etat";
+            // 
+            // lblMachineNumero
+            // 
+            lblMachineNumero.AutoSize = true;
+            lblMachineNumero.Location = new Point(478, 27);
+            lblMachineNumero.Name = "lblMachineNumero";
+            lblMachineNumero.Size = new Size(65, 20);
+            lblMachineNumero.TabIndex = 2;
+            lblMachineNumero.Text = "Machine";
+            // 
+            // lblEtatText
+            // 
+            lblEtatText.AutoSize = true;
+            lblEtatText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblEtatText.Location = new Point(406, 71);
+            lblEtatText.Name = "lblEtatText";
+            lblEtatText.Size = new Size(63, 28);
+            lblEtatText.TabIndex = 1;
+            lblEtatText.Text = "Etat : ";
             // 
             // lblMachineText
             // 
@@ -186,35 +225,23 @@
             pnlEtatConnectionDb.Size = new Size(794, 338);
             pnlEtatConnectionDb.TabIndex = 7;
             // 
-            // lblEtatConnectionText
+            // lblUtilisateur
             // 
-            lblEtatConnectionText.AutoSize = true;
-            lblEtatConnectionText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEtatConnectionText.Location = new Point(208, 16);
-            lblEtatConnectionText.Name = "lblEtatConnectionText";
-            lblEtatConnectionText.Size = new Size(387, 28);
-            lblEtatConnectionText.TabIndex = 1;
-            lblEtatConnectionText.Text = "Etat de la connexion à la base de donnée";
+            lblUtilisateur.AutoSize = true;
+            lblUtilisateur.Location = new Point(531, 219);
+            lblUtilisateur.Name = "lblUtilisateur";
+            lblUtilisateur.Size = new Size(76, 20);
+            lblUtilisateur.TabIndex = 6;
+            lblUtilisateur.Text = "Utilisateur";
             // 
-            // lblNomDbText
+            // lblNomDb
             // 
-            lblNomDbText.AutoSize = true;
-            lblNomDbText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNomDbText.Location = new Point(208, 145);
-            lblNomDbText.Name = "lblNomDbText";
-            lblNomDbText.Size = new Size(271, 28);
-            lblNomDbText.TabIndex = 2;
-            lblNomDbText.Text = "Nom de la Base de donnée :";
-            // 
-            // lblUtilisateurText
-            // 
-            lblUtilisateurText.AutoSize = true;
-            lblUtilisateurText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblUtilisateurText.Location = new Point(364, 211);
-            lblUtilisateurText.Name = "lblUtilisateurText";
-            lblUtilisateurText.Size = new Size(115, 28);
-            lblUtilisateurText.TabIndex = 3;
-            lblUtilisateurText.Text = "Utilisateur :";
+            lblNomDb.AutoSize = true;
+            lblNomDb.Location = new Point(531, 152);
+            lblNomDb.Name = "lblNomDb";
+            lblNomDb.Size = new Size(42, 20);
+            lblNomDb.TabIndex = 5;
+            lblNomDb.Text = "Nom";
             // 
             // lblEtatConnection
             // 
@@ -227,53 +254,37 @@
             lblEtatConnection.TabIndex = 4;
             lblEtatConnection.Text = "Connecté ";
             // 
-            // lblNomDb
+            // lblUtilisateurText
             // 
-            lblNomDb.AutoSize = true;
-            lblNomDb.Location = new Point(531, 152);
-            lblNomDb.Name = "lblNomDb";
-            lblNomDb.Size = new Size(42, 20);
-            lblNomDb.TabIndex = 5;
-            lblNomDb.Text = "Nom";
+            lblUtilisateurText.AutoSize = true;
+            lblUtilisateurText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblUtilisateurText.Location = new Point(364, 211);
+            lblUtilisateurText.Name = "lblUtilisateurText";
+            lblUtilisateurText.Size = new Size(115, 28);
+            lblUtilisateurText.TabIndex = 3;
+            lblUtilisateurText.Text = "Utilisateur :";
             // 
-            // lblUtilisateur
+            // lblNomDbText
             // 
-            lblUtilisateur.AutoSize = true;
-            lblUtilisateur.Location = new Point(531, 219);
-            lblUtilisateur.Name = "lblUtilisateur";
-            lblUtilisateur.Size = new Size(76, 20);
-            lblUtilisateur.TabIndex = 6;
-            lblUtilisateur.Text = "Utilisateur";
+            lblNomDbText.AutoSize = true;
+            lblNomDbText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblNomDbText.Location = new Point(208, 145);
+            lblNomDbText.Name = "lblNomDbText";
+            lblNomDbText.Size = new Size(271, 28);
+            lblNomDbText.TabIndex = 2;
+            lblNomDbText.Text = "Nom de la Base de donnée :";
             // 
-            // lblEtatText
+            // lblEtatConnectionText
             // 
-            lblEtatText.AutoSize = true;
-            lblEtatText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEtatText.Location = new Point(406, 71);
-            lblEtatText.Name = "lblEtatText";
-            lblEtatText.Size = new Size(63, 28);
-            lblEtatText.TabIndex = 1;
-            lblEtatText.Text = "Etat : ";
+            lblEtatConnectionText.AutoSize = true;
+            lblEtatConnectionText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblEtatConnectionText.Location = new Point(208, 16);
+            lblEtatConnectionText.Name = "lblEtatConnectionText";
+            lblEtatConnectionText.Size = new Size(387, 28);
+            lblEtatConnectionText.TabIndex = 1;
+            lblEtatConnectionText.Text = "Etat de la connexion à la base de donnée";
             // 
-            // lblMachineNumero
-            // 
-            lblMachineNumero.AutoSize = true;
-            lblMachineNumero.Location = new Point(478, 27);
-            lblMachineNumero.Name = "lblMachineNumero";
-            lblMachineNumero.Size = new Size(65, 20);
-            lblMachineNumero.TabIndex = 2;
-            lblMachineNumero.Text = "Machine";
-            // 
-            // lblEtatMachine
-            // 
-            lblEtatMachine.AutoSize = true;
-            lblEtatMachine.Location = new Point(489, 78);
-            lblEtatMachine.Name = "lblEtatMachine";
-            lblEtatMachine.Size = new Size(35, 20);
-            lblEtatMachine.TabIndex = 3;
-            lblEtatMachine.Text = "etat";
-            // 
-            // Acceuil
+            // FrmMain
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -287,10 +298,11 @@
             Controls.Add(btnParametre);
             Controls.Add(btnGestionRecette);
             Controls.Add(btnTracabilite);
-            Name = "Acceuil";
+            Name = "FrmMain";
             Text = "Acceuil";
             pnlLotProduction.ResumeLayout(false);
             pnlLotProduction.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)grdLotEnProd).EndInit();
             pnlEtatMachine.ResumeLayout(false);
             pnlEtatMachine.PerformLayout();
             pnlAccueil.ResumeLayout(false);
@@ -323,5 +335,6 @@
         private Label lblEtatText;
         private Label lblUtilisateur;
         private Label lblNomDb;
+        private DataGridView grdLotEnProd;
     }
 }

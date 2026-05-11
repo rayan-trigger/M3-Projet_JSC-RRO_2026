@@ -1,6 +1,6 @@
 ﻿namespace M3_RRO_JSC
 {
-    partial class Gestion_lot
+    partial class FrmGestionLots
     {
         /// <summary>
         /// Required designer variable.
@@ -34,15 +34,20 @@
             btnGestionRecette = new Button();
             btnTracabilite = new Button();
             pnlGestionLot = new Panel();
-            btnCreerLot = new Button();
-            btnModifierLot = new Button();
-            btnSupprimerLot = new Button();
+            listBox1 = new ListBox();
             btnEnvoyerProductionLot = new Button();
+            btnSupprimerLot = new Button();
+            btnModifierLot = new Button();
+            btnCreerLot = new Button();
             pnlGestionLotText = new Panel();
             lblGestionLot = new Label();
-            listBox1 = new ListBox();
+            grdGestionLots = new DataGridView();
+            txtRechercheLots = new TextBox();
+            lblFiltresTextLot = new Label();
+            cboFiltresLots = new ComboBox();
             pnlGestionLot.SuspendLayout();
             pnlGestionLotText.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)grdGestionLots).BeginInit();
             SuspendLayout();
             // 
             // btnAccueil
@@ -103,6 +108,10 @@
             // pnlGestionLot
             // 
             pnlGestionLot.BackColor = SystemColors.ActiveCaption;
+            pnlGestionLot.Controls.Add(grdGestionLots);
+            pnlGestionLot.Controls.Add(txtRechercheLots);
+            pnlGestionLot.Controls.Add(lblFiltresTextLot);
+            pnlGestionLot.Controls.Add(cboFiltresLots);
             pnlGestionLot.Controls.Add(listBox1);
             pnlGestionLot.Controls.Add(btnEnvoyerProductionLot);
             pnlGestionLot.Controls.Add(btnSupprimerLot);
@@ -113,25 +122,23 @@
             pnlGestionLot.Size = new Size(1133, 677);
             pnlGestionLot.TabIndex = 1;
             // 
-            // btnCreerLot
+            // listBox1
             // 
-            btnCreerLot.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnCreerLot.Location = new Point(14, 12);
-            btnCreerLot.Name = "btnCreerLot";
-            btnCreerLot.Size = new Size(200, 60);
-            btnCreerLot.TabIndex = 0;
-            btnCreerLot.Text = "Créer";
-            btnCreerLot.UseVisualStyleBackColor = true;
+            listBox1.FormattingEnabled = true;
+            listBox1.Location = new Point(686, 315);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(8, 4);
+            listBox1.TabIndex = 4;
             // 
-            // btnModifierLot
+            // btnEnvoyerProductionLot
             // 
-            btnModifierLot.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnModifierLot.Location = new Point(220, 11);
-            btnModifierLot.Name = "btnModifierLot";
-            btnModifierLot.Size = new Size(200, 60);
-            btnModifierLot.TabIndex = 1;
-            btnModifierLot.Text = "Modifier";
-            btnModifierLot.UseVisualStyleBackColor = true;
+            btnEnvoyerProductionLot.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEnvoyerProductionLot.Location = new Point(741, 599);
+            btnEnvoyerProductionLot.Name = "btnEnvoyerProductionLot";
+            btnEnvoyerProductionLot.Size = new Size(302, 40);
+            btnEnvoyerProductionLot.TabIndex = 3;
+            btnEnvoyerProductionLot.Text = "Envoyer en production ";
+            btnEnvoyerProductionLot.UseVisualStyleBackColor = true;
             // 
             // btnSupprimerLot
             // 
@@ -143,15 +150,25 @@
             btnSupprimerLot.Text = "Supprimer";
             btnSupprimerLot.UseVisualStyleBackColor = true;
             // 
-            // btnEnvoyerProductionLot
+            // btnModifierLot
             // 
-            btnEnvoyerProductionLot.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEnvoyerProductionLot.Location = new Point(783, 590);
-            btnEnvoyerProductionLot.Name = "btnEnvoyerProductionLot";
-            btnEnvoyerProductionLot.Size = new Size(302, 40);
-            btnEnvoyerProductionLot.TabIndex = 3;
-            btnEnvoyerProductionLot.Text = "Envoyer en production ";
-            btnEnvoyerProductionLot.UseVisualStyleBackColor = true;
+            btnModifierLot.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnModifierLot.Location = new Point(220, 11);
+            btnModifierLot.Name = "btnModifierLot";
+            btnModifierLot.Size = new Size(200, 60);
+            btnModifierLot.TabIndex = 1;
+            btnModifierLot.Text = "Modifier";
+            btnModifierLot.UseVisualStyleBackColor = true;
+            // 
+            // btnCreerLot
+            // 
+            btnCreerLot.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnCreerLot.Location = new Point(14, 12);
+            btnCreerLot.Name = "btnCreerLot";
+            btnCreerLot.Size = new Size(200, 60);
+            btnCreerLot.TabIndex = 0;
+            btnCreerLot.Text = "Créer";
+            btnCreerLot.UseVisualStyleBackColor = true;
             // 
             // pnlGestionLotText
             // 
@@ -172,13 +189,44 @@
             lblGestionLot.TabIndex = 0;
             lblGestionLot.Text = "Gestion des lots";
             // 
-            // listBox1
+            // grdGestionLots
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(551, 306);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(8, 4);
-            listBox1.TabIndex = 4;
+            grdGestionLots.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grdGestionLots.GridColor = SystemColors.InactiveBorder;
+            grdGestionLots.Location = new Point(179, 315);
+            grdGestionLots.Name = "grdGestionLots";
+            grdGestionLots.RowHeadersWidth = 51;
+            grdGestionLots.Size = new Size(864, 188);
+            grdGestionLots.TabIndex = 10;
+            // 
+            // txtRechercheLots
+            // 
+            txtRechercheLots.BackColor = SystemColors.InactiveCaption;
+            txtRechercheLots.BorderStyle = BorderStyle.None;
+            txtRechercheLots.ForeColor = SystemColors.HighlightText;
+            txtRechercheLots.Location = new Point(179, 262);
+            txtRechercheLots.Name = "txtRechercheLots";
+            txtRechercheLots.PlaceholderText = "Rechercher";
+            txtRechercheLots.Size = new Size(864, 20);
+            txtRechercheLots.TabIndex = 9;
+            // 
+            // lblFiltresTextLot
+            // 
+            lblFiltresTextLot.AutoSize = true;
+            lblFiltresTextLot.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblFiltresTextLot.Location = new Point(745, 217);
+            lblFiltresTextLot.Name = "lblFiltresTextLot";
+            lblFiltresTextLot.Size = new Size(55, 23);
+            lblFiltresTextLot.TabIndex = 8;
+            lblFiltresTextLot.Text = "Filtres";
+            // 
+            // cboFiltresLots
+            // 
+            cboFiltresLots.FormattingEnabled = true;
+            cboFiltresLots.Location = new Point(823, 216);
+            cboFiltresLots.Name = "cboFiltresLots";
+            cboFiltresLots.Size = new Size(220, 28);
+            cboFiltresLots.TabIndex = 7;
             // 
             // Gestion_lot
             // 
@@ -195,8 +243,10 @@
             Name = "Gestion_lot";
             Text = "Gestion des lots ";
             pnlGestionLot.ResumeLayout(false);
+            pnlGestionLot.PerformLayout();
             pnlGestionLotText.ResumeLayout(false);
             pnlGestionLotText.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)grdGestionLots).EndInit();
             ResumeLayout(false);
         }
 
@@ -214,5 +264,9 @@
         private Panel pnlGestionLotText;
         private Label lblGestionLot;
         private ListBox listBox1;
+        private DataGridView grdGestionLots;
+        private TextBox txtRechercheLots;
+        private Label lblFiltresTextLot;
+        private ComboBox cboFiltresLots;
     }
 }

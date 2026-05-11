@@ -8,21 +8,11 @@ using System.Windows.Forms;
 
 namespace M3_RRO_JSC
 {
-    public partial class Acceuil : Form
+    public partial class FrmGestionRecettes : Form
     {
-        public Acceuil()
+        public FrmGestionRecettes()
         {
             InitializeComponent();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

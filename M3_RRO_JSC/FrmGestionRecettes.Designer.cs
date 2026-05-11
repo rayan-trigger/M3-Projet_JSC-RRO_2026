@@ -1,6 +1,6 @@
 ﻿namespace M3_RRO_JSC
 {
-    partial class Gestion_Recette
+    partial class FrmGestionRecettes
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             pnlGestionRecette = new Panel();
+            grdGestionRecette = new DataGridView();
+            txtRechercheRecettes = new TextBox();
+            lblFiltresTextRecette = new Label();
+            cboFiltresRecettes = new ComboBox();
             btnSupprimerRecette = new Button();
             btnModifierRecette = new Button();
             btnCreerRecette = new Button();
@@ -39,22 +43,18 @@
             btnTracabilite = new Button();
             pnlGestionRecetteText = new Panel();
             lblGestionRecette = new Label();
-            comboBox1 = new ComboBox();
-            label1 = new Label();
-            textBox1 = new TextBox();
-            dataGridView1 = new DataGridView();
             pnlGestionRecette.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)grdGestionRecette).BeginInit();
             pnlGestionRecetteText.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // pnlGestionRecette
             // 
             pnlGestionRecette.BackColor = SystemColors.ActiveCaption;
-            pnlGestionRecette.Controls.Add(dataGridView1);
-            pnlGestionRecette.Controls.Add(textBox1);
-            pnlGestionRecette.Controls.Add(label1);
-            pnlGestionRecette.Controls.Add(comboBox1);
+            pnlGestionRecette.Controls.Add(grdGestionRecette);
+            pnlGestionRecette.Controls.Add(txtRechercheRecettes);
+            pnlGestionRecette.Controls.Add(lblFiltresTextRecette);
+            pnlGestionRecette.Controls.Add(cboFiltresRecettes);
             pnlGestionRecette.Controls.Add(btnSupprimerRecette);
             pnlGestionRecette.Controls.Add(btnModifierRecette);
             pnlGestionRecette.Controls.Add(btnCreerRecette);
@@ -62,6 +62,45 @@
             pnlGestionRecette.Name = "pnlGestionRecette";
             pnlGestionRecette.Size = new Size(1133, 683);
             pnlGestionRecette.TabIndex = 1;
+            // 
+            // grdGestionRecette
+            // 
+            grdGestionRecette.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grdGestionRecette.GridColor = SystemColors.InactiveBorder;
+            grdGestionRecette.Location = new Point(220, 349);
+            grdGestionRecette.Name = "grdGestionRecette";
+            grdGestionRecette.RowHeadersWidth = 51;
+            grdGestionRecette.Size = new Size(864, 188);
+            grdGestionRecette.TabIndex = 6;
+            // 
+            // txtRechercheRecettes
+            // 
+            txtRechercheRecettes.BackColor = SystemColors.InactiveCaption;
+            txtRechercheRecettes.BorderStyle = BorderStyle.None;
+            txtRechercheRecettes.ForeColor = SystemColors.HighlightText;
+            txtRechercheRecettes.Location = new Point(220, 296);
+            txtRechercheRecettes.Name = "txtRechercheRecettes";
+            txtRechercheRecettes.PlaceholderText = "Rechercher";
+            txtRechercheRecettes.Size = new Size(864, 20);
+            txtRechercheRecettes.TabIndex = 5;
+            // 
+            // lblFiltresTextRecette
+            // 
+            lblFiltresTextRecette.AutoSize = true;
+            lblFiltresTextRecette.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblFiltresTextRecette.Location = new Point(786, 251);
+            lblFiltresTextRecette.Name = "lblFiltresTextRecette";
+            lblFiltresTextRecette.Size = new Size(55, 23);
+            lblFiltresTextRecette.TabIndex = 4;
+            lblFiltresTextRecette.Text = "Filtres";
+            // 
+            // cboFiltresRecettes
+            // 
+            cboFiltresRecettes.FormattingEnabled = true;
+            cboFiltresRecettes.Location = new Point(864, 250);
+            cboFiltresRecettes.Name = "cboFiltresRecettes";
+            cboFiltresRecettes.Size = new Size(220, 28);
+            cboFiltresRecettes.TabIndex = 3;
             // 
             // btnSupprimerRecette
             // 
@@ -167,41 +206,7 @@
             lblGestionRecette.TabIndex = 0;
             lblGestionRecette.Text = "Gestion des Recettes";
             // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(528, 209);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(394, 28);
-            comboBox1.TabIndex = 3;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(461, 214);
-            label1.Name = "label1";
-            label1.Size = new Size(55, 23);
-            label1.TabIndex = 4;
-            label1.Text = "Filtres";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(58, 255);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(864, 27);
-            textBox1.TabIndex = 5;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(58, 308);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(864, 188);
-            dataGridView1.TabIndex = 6;
-            // 
-            // Gestion_Recette
+            // FrmGestionRecettes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -213,14 +218,13 @@
             Controls.Add(btnGestionRecette);
             Controls.Add(btnTracabilite);
             Controls.Add(pnlGestionRecette);
-            Name = "Gestion_Recette";
+            Name = "FrmGestionRecettes";
             Text = "Gestion des recettes";
-            Load += Gestion_Recette_Load;
             pnlGestionRecette.ResumeLayout(false);
             pnlGestionRecette.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)grdGestionRecette).EndInit();
             pnlGestionRecetteText.ResumeLayout(false);
             pnlGestionRecetteText.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -236,9 +240,9 @@
         private Button btnTracabilite;
         private Panel pnlGestionRecetteText;
         private Label lblGestionRecette;
-        private DataGridView dataGridView1;
-        private TextBox textBox1;
-        private Label label1;
-        private ComboBox comboBox1;
+        private DataGridView grdGestionRecette;
+        private TextBox txtRechercheRecettes;
+        private Label lblFiltresTextRecette;
+        private ComboBox cboFiltresRecettes;
     }
 }
