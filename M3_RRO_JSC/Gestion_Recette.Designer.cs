@@ -28,182 +28,217 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel2 = new Panel();
-            panel1 = new Panel();
+            pnlGestionRecette = new Panel();
+            btnSupprimerRecette = new Button();
+            btnModifierRecette = new Button();
+            btnCreerRecette = new Button();
+            btnAccueil = new Button();
+            btnGestionLot = new Button();
+            btnParametre = new Button();
+            btnGestionRecette = new Button();
+            btnTracabilite = new Button();
+            pnlGestionRecetteText = new Panel();
+            lblGestionRecette = new Label();
+            comboBox1 = new ComboBox();
             label1 = new Label();
-            button5 = new Button();
-            panel3 = new Panel();
-            button8 = new Button();
-            button7 = new Button();
-            button6 = new Button();
-            button4 = new Button();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            panel2.SuspendLayout();
-            panel1.SuspendLayout();
-            panel3.SuspendLayout();
+            textBox1 = new TextBox();
+            dataGridView1 = new DataGridView();
+            pnlGestionRecette.SuspendLayout();
+            pnlGestionRecetteText.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // panel2
+            // pnlGestionRecette
             // 
-            panel2.BackColor = Color.Turquoise;
-            panel2.Controls.Add(panel1);
-            panel2.Controls.Add(button5);
-            panel2.Controls.Add(panel3);
-            panel2.Controls.Add(button2);
-            panel2.Controls.Add(button3);
-            panel2.Controls.Add(button4);
-            panel2.Controls.Add(button1);
-            panel2.Location = new Point(3, 1);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(1623, 810);
-            panel2.TabIndex = 1;
+            pnlGestionRecette.BackColor = SystemColors.ActiveCaption;
+            pnlGestionRecette.Controls.Add(dataGridView1);
+            pnlGestionRecette.Controls.Add(textBox1);
+            pnlGestionRecette.Controls.Add(label1);
+            pnlGestionRecette.Controls.Add(comboBox1);
+            pnlGestionRecette.Controls.Add(btnSupprimerRecette);
+            pnlGestionRecette.Controls.Add(btnModifierRecette);
+            pnlGestionRecette.Controls.Add(btnCreerRecette);
+            pnlGestionRecette.Location = new Point(186, 88);
+            pnlGestionRecette.Name = "pnlGestionRecette";
+            pnlGestionRecette.Size = new Size(1133, 683);
+            pnlGestionRecette.TabIndex = 1;
             // 
-            // panel1
+            // btnSupprimerRecette
             // 
-            panel1.BackColor = SystemColors.ActiveCaption;
-            panel1.Controls.Add(label1);
-            panel1.Location = new Point(177, 8);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1434, 62);
-            panel1.TabIndex = 2;
+            btnSupprimerRecette.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSupprimerRecette.Location = new Point(426, 11);
+            btnSupprimerRecette.Name = "btnSupprimerRecette";
+            btnSupprimerRecette.Size = new Size(200, 60);
+            btnSupprimerRecette.TabIndex = 2;
+            btnSupprimerRecette.Text = "Supprimer";
+            btnSupprimerRecette.UseVisualStyleBackColor = true;
+            // 
+            // btnModifierRecette
+            // 
+            btnModifierRecette.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnModifierRecette.Location = new Point(220, 11);
+            btnModifierRecette.Name = "btnModifierRecette";
+            btnModifierRecette.Size = new Size(200, 60);
+            btnModifierRecette.TabIndex = 1;
+            btnModifierRecette.Text = "Modifier";
+            btnModifierRecette.UseVisualStyleBackColor = true;
+            // 
+            // btnCreerRecette
+            // 
+            btnCreerRecette.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnCreerRecette.Location = new Point(14, 11);
+            btnCreerRecette.Name = "btnCreerRecette";
+            btnCreerRecette.Size = new Size(200, 60);
+            btnCreerRecette.TabIndex = 0;
+            btnCreerRecette.Text = "Créer";
+            btnCreerRecette.UseVisualStyleBackColor = true;
+            // 
+            // btnAccueil
+            // 
+            btnAccueil.BackColor = SystemColors.ActiveCaption;
+            btnAccueil.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAccueil.Location = new Point(12, 12);
+            btnAccueil.Name = "btnAccueil";
+            btnAccueil.Size = new Size(168, 147);
+            btnAccueil.TabIndex = 11;
+            btnAccueil.Text = "Accueil";
+            btnAccueil.UseVisualStyleBackColor = false;
+            // 
+            // btnGestionLot
+            // 
+            btnGestionLot.BackColor = SystemColors.ActiveCaption;
+            btnGestionLot.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGestionLot.Location = new Point(12, 165);
+            btnGestionLot.Name = "btnGestionLot";
+            btnGestionLot.Size = new Size(168, 147);
+            btnGestionLot.TabIndex = 12;
+            btnGestionLot.Text = "Gestion des lots ";
+            btnGestionLot.UseVisualStyleBackColor = false;
+            // 
+            // btnParametre
+            // 
+            btnParametre.BackColor = SystemColors.ActiveCaption;
+            btnParametre.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnParametre.Location = new Point(12, 624);
+            btnParametre.Name = "btnParametre";
+            btnParametre.Size = new Size(168, 147);
+            btnParametre.TabIndex = 15;
+            btnParametre.Text = "Paramètres";
+            btnParametre.UseVisualStyleBackColor = false;
+            // 
+            // btnGestionRecette
+            // 
+            btnGestionRecette.BackColor = SystemColors.ActiveCaption;
+            btnGestionRecette.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGestionRecette.Location = new Point(12, 318);
+            btnGestionRecette.Name = "btnGestionRecette";
+            btnGestionRecette.Size = new Size(168, 147);
+            btnGestionRecette.TabIndex = 13;
+            btnGestionRecette.Text = "Gestion des recettes";
+            btnGestionRecette.UseVisualStyleBackColor = false;
+            // 
+            // btnTracabilite
+            // 
+            btnTracabilite.BackColor = SystemColors.ActiveCaption;
+            btnTracabilite.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnTracabilite.Location = new Point(12, 471);
+            btnTracabilite.Name = "btnTracabilite";
+            btnTracabilite.Size = new Size(168, 147);
+            btnTracabilite.TabIndex = 14;
+            btnTracabilite.Text = "Traçabilité";
+            btnTracabilite.UseVisualStyleBackColor = false;
+            // 
+            // pnlGestionRecetteText
+            // 
+            pnlGestionRecetteText.BackColor = SystemColors.ActiveCaption;
+            pnlGestionRecetteText.Controls.Add(lblGestionRecette);
+            pnlGestionRecetteText.Location = new Point(186, 12);
+            pnlGestionRecetteText.Name = "pnlGestionRecetteText";
+            pnlGestionRecetteText.Size = new Size(1133, 70);
+            pnlGestionRecetteText.TabIndex = 16;
+            // 
+            // lblGestionRecette
+            // 
+            lblGestionRecette.AutoSize = true;
+            lblGestionRecette.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblGestionRecette.Location = new Point(407, 14);
+            lblGestionRecette.Name = "lblGestionRecette";
+            lblGestionRecette.Size = new Size(307, 41);
+            lblGestionRecette.TabIndex = 0;
+            lblGestionRecette.Text = "Gestion des Recettes";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(528, 209);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(394, 28);
+            comboBox1.TabIndex = 3;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(532, 15);
+            label1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(461, 214);
             label1.Name = "label1";
-            label1.Size = new Size(308, 41);
-            label1.TabIndex = 0;
-            label1.Text = "Gestion des recettes ";
-            label1.Click += label1_Click_1;
+            label1.Size = new Size(55, 23);
+            label1.TabIndex = 4;
+            label1.Text = "Filtres";
             // 
-            // button5
+            // textBox1
             // 
-            button5.BackColor = SystemColors.ActiveCaption;
-            button5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button5.Location = new Point(3, 651);
-            button5.Name = "button5";
-            button5.Size = new Size(168, 149);
-            button5.TabIndex = 5;
-            button5.Text = "Paramètres";
-            button5.UseVisualStyleBackColor = false;
+            textBox1.Location = new Point(58, 255);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(864, 27);
+            textBox1.TabIndex = 5;
             // 
-            // panel3
+            // dataGridView1
             // 
-            panel3.BackColor = SystemColors.ActiveCaption;
-            panel3.Controls.Add(button8);
-            panel3.Controls.Add(button7);
-            panel3.Controls.Add(button6);
-            panel3.Location = new Point(177, 79);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(1434, 721);
-            panel3.TabIndex = 1;
-            // 
-            // button8
-            // 
-            button8.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button8.Location = new Point(255, 13);
-            button8.Name = "button8";
-            button8.Size = new Size(120, 40);
-            button8.TabIndex = 2;
-            button8.Text = "Supprimer";
-            button8.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            button7.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button7.Location = new Point(129, 13);
-            button7.Name = "button7";
-            button7.Size = new Size(120, 40);
-            button7.TabIndex = 1;
-            button7.Text = "Modifier";
-            button7.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            button6.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button6.Location = new Point(3, 13);
-            button6.Name = "button6";
-            button6.Size = new Size(120, 40);
-            button6.TabIndex = 0;
-            button6.Text = "Créer";
-            button6.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            button4.BackColor = SystemColors.ActiveCaption;
-            button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button4.Location = new Point(3, 440);
-            button4.Name = "button4";
-            button4.Size = new Size(168, 178);
-            button4.TabIndex = 4;
-            button4.Text = "Traçabilité";
-            button4.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            button1.BackColor = SystemColors.ActiveCaption;
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(3, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(168, 89);
-            button1.TabIndex = 1;
-            button1.Text = "Accueil";
-            button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            button2.BackColor = SystemColors.ActiveCaption;
-            button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(3, 98);
-            button2.Name = "button2";
-            button2.Size = new Size(168, 152);
-            button2.TabIndex = 2;
-            button2.Text = "Gestion des lots ";
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            button3.BackColor = SystemColors.ActiveCaption;
-            button3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.Location = new Point(0, 256);
-            button3.Name = "button3";
-            button3.Size = new Size(168, 178);
-            button3.TabIndex = 3;
-            button3.Text = "Gestion des recettes";
-            button3.UseVisualStyleBackColor = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(58, 308);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(864, 188);
+            dataGridView1.TabIndex = 6;
             // 
             // Gestion_Recette
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1626, 813);
-            Controls.Add(panel2);
+            ClientSize = new Size(1331, 777);
+            Controls.Add(pnlGestionRecetteText);
+            Controls.Add(btnAccueil);
+            Controls.Add(btnGestionLot);
+            Controls.Add(btnParametre);
+            Controls.Add(btnGestionRecette);
+            Controls.Add(btnTracabilite);
+            Controls.Add(pnlGestionRecette);
             Name = "Gestion_Recette";
             Text = "Gestion des recettes";
             Load += Gestion_Recette_Load;
-            panel2.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            panel3.ResumeLayout(false);
+            pnlGestionRecette.ResumeLayout(false);
+            pnlGestionRecette.PerformLayout();
+            pnlGestionRecetteText.ResumeLayout(false);
+            pnlGestionRecetteText.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-        private Panel panel2;
-        private Button button5;
-        private Panel panel3;
-        private Button button4;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Panel panel1;
-        private Button button8;
-        private Button button7;
-        private Button button6;
+        private Panel pnlGestionRecette;
+        private Button btnSupprimerRecette;
+        private Button btnModifierRecette;
+        private Button btnCreerRecette;
+        private Button btnAccueil;
+        private Button btnGestionLot;
+        private Button btnParametre;
+        private Button btnGestionRecette;
+        private Button btnTracabilite;
+        private Panel pnlGestionRecetteText;
+        private Label lblGestionRecette;
+        private DataGridView dataGridView1;
+        private TextBox textBox1;
         private Label label1;
+        private ComboBox comboBox1;
     }
 }

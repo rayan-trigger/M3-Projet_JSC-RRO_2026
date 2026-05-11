@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("M3_RRO_JSC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+feecefbc8b487c8ebddee6cbd8b40261528d0c47")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+536a69e755a316c9ecf13a24ce2feda61205a131")]
 [assembly: System.Reflection.AssemblyProductAttribute("M3_RRO_JSC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("M3_RRO_JSC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

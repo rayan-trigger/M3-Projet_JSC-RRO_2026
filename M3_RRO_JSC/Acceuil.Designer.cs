@@ -28,258 +28,300 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel2 = new Panel();
-            panel5 = new Panel();
-            textBox5 = new TextBox();
-            textBox4 = new TextBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
-            label3 = new Label();
-            panel4 = new Panel();
-            label1 = new Label();
-            panel1 = new Panel();
-            button5 = new Button();
-            panel3 = new Panel();
-            label2 = new Label();
-            button4 = new Button();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            panel2.SuspendLayout();
-            panel5.SuspendLayout();
-            panel4.SuspendLayout();
-            panel3.SuspendLayout();
+            btnGestionRecette = new Button();
+            btnGestionLot = new Button();
+            btnAccueil = new Button();
+            btnTracabilite = new Button();
+            pnlLotProduction = new Panel();
+            lblLotProduction = new Label();
+            btnParametre = new Button();
+            pnlEtatMachine = new Panel();
+            lblMachineText = new Label();
+            pnlAccueil = new Panel();
+            lblAccueil = new Label();
+            pnlEtatConnectionDb = new Panel();
+            lblEtatConnectionText = new Label();
+            lblNomDbText = new Label();
+            lblUtilisateurText = new Label();
+            lblEtatConnection = new Label();
+            lblNomDb = new Label();
+            lblUtilisateur = new Label();
+            lblEtatText = new Label();
+            lblMachineNumero = new Label();
+            lblEtatMachine = new Label();
+            pnlLotProduction.SuspendLayout();
+            pnlEtatMachine.SuspendLayout();
+            pnlAccueil.SuspendLayout();
+            pnlEtatConnectionDb.SuspendLayout();
             SuspendLayout();
             // 
-            // panel2
+            // btnGestionRecette
             // 
-            panel2.BackColor = Color.Turquoise;
-            panel2.Controls.Add(panel5);
-            panel2.Controls.Add(panel4);
-            panel2.Controls.Add(panel1);
-            panel2.Controls.Add(button5);
-            panel2.Controls.Add(panel3);
-            panel2.Controls.Add(button4);
-            panel2.Controls.Add(button1);
-            panel2.Controls.Add(button2);
-            panel2.Controls.Add(button3);
-            panel2.Location = new Point(240, 150);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(851, 476);
-            panel2.TabIndex = 3;
+            btnGestionRecette.BackColor = SystemColors.ActiveCaption;
+            btnGestionRecette.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGestionRecette.Location = new Point(12, 312);
+            btnGestionRecette.Name = "btnGestionRecette";
+            btnGestionRecette.Size = new Size(168, 147);
+            btnGestionRecette.TabIndex = 3;
+            btnGestionRecette.Text = "Gestion des recettes";
+            btnGestionRecette.UseVisualStyleBackColor = false;
+            btnGestionRecette.Click += button3_Click;
             // 
-            // panel5
+            // btnGestionLot
             // 
-            panel5.BackColor = SystemColors.ActiveCaption;
-            panel5.Controls.Add(textBox5);
-            panel5.Controls.Add(textBox4);
-            panel5.Controls.Add(textBox3);
-            panel5.Controls.Add(textBox2);
-            panel5.Controls.Add(textBox1);
-            panel5.Controls.Add(label3);
-            panel5.Location = new Point(514, 276);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(333, 196);
-            panel5.TabIndex = 7;
+            btnGestionLot.BackColor = SystemColors.ActiveCaption;
+            btnGestionLot.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGestionLot.Location = new Point(12, 159);
+            btnGestionLot.Name = "btnGestionLot";
+            btnGestionLot.Size = new Size(168, 147);
+            btnGestionLot.TabIndex = 2;
+            btnGestionLot.Text = "Gestion des lots ";
+            btnGestionLot.UseVisualStyleBackColor = false;
             // 
-            // textBox5
+            // btnAccueil
             // 
-            textBox5.BackColor = Color.LimeGreen;
-            textBox5.BorderStyle = BorderStyle.None;
-            textBox5.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox5.ForeColor = SystemColors.InactiveBorder;
-            textBox5.Location = new Point(72, 43);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(175, 32);
-            textBox5.TabIndex = 10;
-            textBox5.Text = "       Connecté";
+            btnAccueil.BackColor = SystemColors.ActiveCaption;
+            btnAccueil.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAccueil.Location = new Point(12, 6);
+            btnAccueil.Name = "btnAccueil";
+            btnAccueil.Size = new Size(168, 147);
+            btnAccueil.TabIndex = 1;
+            btnAccueil.Text = "Accueil";
+            btnAccueil.UseVisualStyleBackColor = false;
             // 
-            // textBox4
+            // btnTracabilite
             // 
-            textBox4.Location = new Point(170, 136);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(147, 27);
-            textBox4.TabIndex = 9;
+            btnTracabilite.BackColor = SystemColors.ActiveCaption;
+            btnTracabilite.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnTracabilite.Location = new Point(12, 465);
+            btnTracabilite.Name = "btnTracabilite";
+            btnTracabilite.Size = new Size(168, 147);
+            btnTracabilite.TabIndex = 4;
+            btnTracabilite.Text = "Traçabilité";
+            btnTracabilite.UseVisualStyleBackColor = false;
             // 
-            // textBox3
+            // pnlLotProduction
             // 
-            textBox3.Location = new Point(170, 94);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(147, 27);
-            textBox3.TabIndex = 8;
+            pnlLotProduction.BackColor = SystemColors.ActiveCaption;
+            pnlLotProduction.Controls.Add(lblLotProduction);
+            pnlLotProduction.Location = new Point(186, 88);
+            pnlLotProduction.Name = "pnlLotProduction";
+            pnlLotProduction.Size = new Size(333, 677);
+            pnlLotProduction.TabIndex = 1;
             // 
-            // textBox2
+            // lblLotProduction
             // 
-            textBox2.BackColor = SystemColors.ActiveCaption;
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox2.Location = new Point(50, 136);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(110, 27);
-            textBox2.TabIndex = 7;
-            textBox2.Text = "Utilisateur :";
+            lblLotProduction.AutoSize = true;
+            lblLotProduction.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblLotProduction.Location = new Point(77, 19);
+            lblLotProduction.Name = "lblLotProduction";
+            lblLotProduction.Size = new Size(185, 28);
+            lblLotProduction.TabIndex = 0;
+            lblLotProduction.Text = "Lots en production";
             // 
-            // textBox1
+            // btnParametre
             // 
-            textBox1.BackColor = SystemColors.ActiveCaption;
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(3, 90);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(161, 27);
-            textBox1.TabIndex = 6;
-            textBox1.Text = "Nom de la base :";
+            btnParametre.BackColor = SystemColors.ActiveCaption;
+            btnParametre.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnParametre.Location = new Point(12, 618);
+            btnParametre.Name = "btnParametre";
+            btnParametre.Size = new Size(168, 147);
+            btnParametre.TabIndex = 5;
+            btnParametre.Text = "Paramètres";
+            btnParametre.UseVisualStyleBackColor = false;
             // 
-            // label3
+            // pnlEtatMachine
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(25, 12);
-            label3.Name = "label3";
-            label3.Size = new Size(288, 28);
-            label3.TabIndex = 3;
-            label3.Text = "Etat de la connexion à la base ";
+            pnlEtatMachine.BackColor = SystemColors.ActiveCaption;
+            pnlEtatMachine.Controls.Add(lblEtatMachine);
+            pnlEtatMachine.Controls.Add(lblMachineNumero);
+            pnlEtatMachine.Controls.Add(lblEtatText);
+            pnlEtatMachine.Controls.Add(lblMachineText);
+            pnlEtatMachine.Location = new Point(525, 88);
+            pnlEtatMachine.Name = "pnlEtatMachine";
+            pnlEtatMachine.Size = new Size(794, 330);
+            pnlEtatMachine.TabIndex = 6;
             // 
-            // panel4
+            // lblMachineText
             // 
-            panel4.BackColor = SystemColors.ActiveCaption;
-            panel4.Controls.Add(label1);
-            panel4.Location = new Point(176, 3);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(671, 70);
-            panel4.TabIndex = 3;
+            lblMachineText.AutoSize = true;
+            lblMachineText.BackColor = SystemColors.ActiveCaption;
+            lblMachineText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblMachineText.Location = new Point(364, 19);
+            lblMachineText.Name = "lblMachineText";
+            lblMachineText.Size = new Size(100, 28);
+            lblMachineText.TabIndex = 0;
+            lblMachineText.Text = "Machine :";
             // 
-            // label1
+            // pnlAccueil
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(277, 20);
-            label1.Name = "label1";
-            label1.Size = new Size(119, 41);
-            label1.TabIndex = 0;
-            label1.Text = "Accueil";
+            pnlAccueil.BackColor = SystemColors.ActiveCaption;
+            pnlAccueil.Controls.Add(lblAccueil);
+            pnlAccueil.Location = new Point(186, 12);
+            pnlAccueil.Name = "pnlAccueil";
+            pnlAccueil.Size = new Size(1133, 70);
+            pnlAccueil.TabIndex = 3;
             // 
-            // panel1
+            // lblAccueil
             // 
-            panel1.BackColor = SystemColors.ActiveCaption;
-            panel1.Location = new Point(514, 79);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(333, 191);
-            panel1.TabIndex = 6;
+            lblAccueil.AutoSize = true;
+            lblAccueil.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblAccueil.Location = new Point(489, 16);
+            lblAccueil.Name = "lblAccueil";
+            lblAccueil.Size = new Size(119, 41);
+            lblAccueil.TabIndex = 0;
+            lblAccueil.Text = "Accueil";
             // 
-            // button5
+            // pnlEtatConnectionDb
             // 
-            button5.BackColor = SystemColors.ActiveCaption;
-            button5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button5.Location = new Point(3, 383);
-            button5.Name = "button5";
-            button5.Size = new Size(168, 89);
-            button5.TabIndex = 5;
-            button5.Text = "Paramètres";
-            button5.UseVisualStyleBackColor = false;
+            pnlEtatConnectionDb.BackColor = SystemColors.ActiveCaption;
+            pnlEtatConnectionDb.Controls.Add(lblUtilisateur);
+            pnlEtatConnectionDb.Controls.Add(lblNomDb);
+            pnlEtatConnectionDb.Controls.Add(lblEtatConnection);
+            pnlEtatConnectionDb.Controls.Add(lblUtilisateurText);
+            pnlEtatConnectionDb.Controls.Add(lblNomDbText);
+            pnlEtatConnectionDb.Controls.Add(lblEtatConnectionText);
+            pnlEtatConnectionDb.Location = new Point(525, 427);
+            pnlEtatConnectionDb.Name = "pnlEtatConnectionDb";
+            pnlEtatConnectionDb.Size = new Size(794, 338);
+            pnlEtatConnectionDb.TabIndex = 7;
             // 
-            // panel3
+            // lblEtatConnectionText
             // 
-            panel3.BackColor = SystemColors.ActiveCaption;
-            panel3.Controls.Add(label2);
-            panel3.Location = new Point(176, 79);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(333, 393);
-            panel3.TabIndex = 1;
+            lblEtatConnectionText.AutoSize = true;
+            lblEtatConnectionText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblEtatConnectionText.Location = new Point(208, 16);
+            lblEtatConnectionText.Name = "lblEtatConnectionText";
+            lblEtatConnectionText.Size = new Size(387, 28);
+            lblEtatConnectionText.TabIndex = 1;
+            lblEtatConnectionText.Text = "Etat de la connexion à la base de donnée";
             // 
-            // label2
+            // lblNomDbText
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(77, 19);
-            label2.Name = "label2";
-            label2.Size = new Size(185, 28);
-            label2.TabIndex = 0;
-            label2.Text = "Lots en production";
+            lblNomDbText.AutoSize = true;
+            lblNomDbText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblNomDbText.Location = new Point(208, 145);
+            lblNomDbText.Name = "lblNomDbText";
+            lblNomDbText.Size = new Size(271, 28);
+            lblNomDbText.TabIndex = 2;
+            lblNomDbText.Text = "Nom de la Base de donnée :";
             // 
-            // button4
+            // lblUtilisateurText
             // 
-            button4.BackColor = SystemColors.ActiveCaption;
-            button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button4.Location = new Point(3, 288);
-            button4.Name = "button4";
-            button4.Size = new Size(168, 89);
-            button4.TabIndex = 4;
-            button4.Text = "Traçabilité";
-            button4.UseVisualStyleBackColor = false;
+            lblUtilisateurText.AutoSize = true;
+            lblUtilisateurText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblUtilisateurText.Location = new Point(364, 211);
+            lblUtilisateurText.Name = "lblUtilisateurText";
+            lblUtilisateurText.Size = new Size(115, 28);
+            lblUtilisateurText.TabIndex = 3;
+            lblUtilisateurText.Text = "Utilisateur :";
             // 
-            // button1
+            // lblEtatConnection
             // 
-            button1.BackColor = SystemColors.ActiveCaption;
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(3, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(168, 89);
-            button1.TabIndex = 1;
-            button1.Text = "Accueil";
-            button1.UseVisualStyleBackColor = false;
+            lblEtatConnection.AutoSize = true;
+            lblEtatConnection.BackColor = Color.Chartreuse;
+            lblEtatConnection.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblEtatConnection.Location = new Point(364, 75);
+            lblEtatConnection.Name = "lblEtatConnection";
+            lblEtatConnection.Size = new Size(104, 28);
+            lblEtatConnection.TabIndex = 4;
+            lblEtatConnection.Text = "Connecté ";
             // 
-            // button2
+            // lblNomDb
             // 
-            button2.BackColor = SystemColors.ActiveCaption;
-            button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(3, 98);
-            button2.Name = "button2";
-            button2.Size = new Size(168, 89);
-            button2.TabIndex = 2;
-            button2.Text = "Gestion des lots ";
-            button2.UseVisualStyleBackColor = false;
+            lblNomDb.AutoSize = true;
+            lblNomDb.Location = new Point(531, 152);
+            lblNomDb.Name = "lblNomDb";
+            lblNomDb.Size = new Size(42, 20);
+            lblNomDb.TabIndex = 5;
+            lblNomDb.Text = "Nom";
             // 
-            // button3
+            // lblUtilisateur
             // 
-            button3.BackColor = SystemColors.ActiveCaption;
-            button3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.Location = new Point(3, 193);
-            button3.Name = "button3";
-            button3.Size = new Size(168, 89);
-            button3.TabIndex = 3;
-            button3.Text = "Gestion des recettes";
-            button3.UseVisualStyleBackColor = false;
+            lblUtilisateur.AutoSize = true;
+            lblUtilisateur.Location = new Point(531, 219);
+            lblUtilisateur.Name = "lblUtilisateur";
+            lblUtilisateur.Size = new Size(76, 20);
+            lblUtilisateur.TabIndex = 6;
+            lblUtilisateur.Text = "Utilisateur";
+            // 
+            // lblEtatText
+            // 
+            lblEtatText.AutoSize = true;
+            lblEtatText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblEtatText.Location = new Point(406, 71);
+            lblEtatText.Name = "lblEtatText";
+            lblEtatText.Size = new Size(63, 28);
+            lblEtatText.TabIndex = 1;
+            lblEtatText.Text = "Etat : ";
+            // 
+            // lblMachineNumero
+            // 
+            lblMachineNumero.AutoSize = true;
+            lblMachineNumero.Location = new Point(478, 27);
+            lblMachineNumero.Name = "lblMachineNumero";
+            lblMachineNumero.Size = new Size(65, 20);
+            lblMachineNumero.TabIndex = 2;
+            lblMachineNumero.Text = "Machine";
+            // 
+            // lblEtatMachine
+            // 
+            lblEtatMachine.AutoSize = true;
+            lblEtatMachine.Location = new Point(489, 78);
+            lblEtatMachine.Name = "lblEtatMachine";
+            lblEtatMachine.Size = new Size(35, 20);
+            lblEtatMachine.TabIndex = 3;
+            lblEtatMachine.Text = "etat";
             // 
             // Acceuil
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1331, 777);
-            Controls.Add(panel2);
+            Controls.Add(pnlEtatConnectionDb);
+            Controls.Add(pnlEtatMachine);
+            Controls.Add(pnlAccueil);
+            Controls.Add(btnAccueil);
+            Controls.Add(btnGestionLot);
+            Controls.Add(pnlLotProduction);
+            Controls.Add(btnParametre);
+            Controls.Add(btnGestionRecette);
+            Controls.Add(btnTracabilite);
             Name = "Acceuil";
             Text = "Acceuil";
-            Load += Acceuil_Load;
-            panel2.ResumeLayout(false);
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
+            pnlLotProduction.ResumeLayout(false);
+            pnlLotProduction.PerformLayout();
+            pnlEtatMachine.ResumeLayout(false);
+            pnlEtatMachine.PerformLayout();
+            pnlAccueil.ResumeLayout(false);
+            pnlAccueil.PerformLayout();
+            pnlEtatConnectionDb.ResumeLayout(false);
+            pnlEtatConnectionDb.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Panel panel2;
-        private Panel panel1;
-        private Button button5;
-        private Panel panel3;
-        private Button button4;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Panel panel5;
-        private Panel panel4;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private TextBox textBox5;
-        private TextBox textBox4;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private Button btnGestionRecette;
+        private Button btnGestionLot;
+        private Button btnAccueil;
+        private Button btnTracabilite;
+        private Panel pnlLotProduction;
+        private Label lblLotProduction;
+        private Button btnParametre;
+        private Panel pnlEtatMachine;
+        private Panel pnlAccueil;
+        private Label lblAccueil;
+        private Panel pnlEtatConnectionDb;
+        private Label lblMachineText;
+        private Label lblEtatConnectionText;
+        private Label lblUtilisateurText;
+        private Label lblNomDbText;
+        private Label lblEtatConnection;
+        private Label lblEtatMachine;
+        private Label lblMachineNumero;
+        private Label lblEtatText;
+        private Label lblUtilisateur;
+        private Label lblNomDb;
     }
 }
