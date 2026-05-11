@@ -4,6 +4,9 @@
     <Compile Update="Acceuil.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FrmParamDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Gestion_lot.cs">
       <SubType>Form</SubType>
     </Compile>
