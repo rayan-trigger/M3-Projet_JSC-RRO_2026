@@ -1,20 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="FrmParametres.cs">
+    <Compile Update="AccueilControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="FrmCreationRecette.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmCreationLot.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FrmTracabilite.cs">
-      <SubType>Form</SubType>
+    <Compile Update="LotsControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="FrmGestionLots.cs">
-      <SubType>Form</SubType>
+    <Compile Update="NavBar.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="FrmGestionRecettes.cs">
-      <SubType>Form</SubType>
+    <Compile Update="RecettesControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="TracabiliteControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ParametreControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
 </Project>

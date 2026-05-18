@@ -8,11 +8,16 @@ using System.Windows.Forms;
 
 namespace M3_RRO_JSC
 {
-    public partial class FrmGestionRecettes : Form
+    public partial class TracabiliteControl : UserControl
     {
-        public FrmGestionRecettes()
+        public TracabiliteControl()
         {
             InitializeComponent();
+        }
+
+        private void TracabiliteControl_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

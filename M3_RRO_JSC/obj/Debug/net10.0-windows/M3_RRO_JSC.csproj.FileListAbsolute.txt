@@ -1,8 +1,6 @@
 C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\bin\Debug\net10.0-windows\M3_RRO_JSC.exe
 C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\bin\Debug\net10.0-windows\M3_RRO_JSC.dll
-C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.Acceuil.resources
-C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.Gestion_lot.resources
-C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.Gestion_Recette.resources
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.FrmMain.resources
 C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.csproj.GenerateResource.cache
 C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.AssemblyInfoInputs.cache
@@ -12,8 +10,17 @@ C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-
 C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.dll
 C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\refint\M3_RRO_JSC.dll
 C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.pdb
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.NavBar.resources
 C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\bin\Debug\net10.0-windows\M3_RRO_JSC.deps.json
 C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\bin\Debug\net10.0-windows\M3_RRO_JSC.runtimeconfig.json
 C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\bin\Debug\net10.0-windows\M3_RRO_JSC.pdb
 C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.genruntimeconfig.cache
 C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\ref\M3_RRO_JSC.dll
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC..resources
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.AccueilControl.resources
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.LotsControl.resources
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.ParametreControl.resources
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.RecettesControl.resources
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.TracabiliteControl.resources
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.FrmCreationLot.resources
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.FrmCreationRecette.resources

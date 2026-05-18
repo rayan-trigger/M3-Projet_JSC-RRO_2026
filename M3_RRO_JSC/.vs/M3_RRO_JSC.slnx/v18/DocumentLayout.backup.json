@@ -3,12 +3,48 @@
   "WorkspaceRootPath": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\juju_\\source\\repos\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\frmgestionrecettes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:frmgestionrecettes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\juju_\\source\\repos\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\recettescontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:recettescontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\juju_\\source\\repos\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\frmgestionlots.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:frmgestionlots.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\juju_\\source\\repos\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\recettescontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:recettescontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\juju_\\source\\repos\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\frmcreationlot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:frmcreationlot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\juju_\\source\\repos\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\frmcreationlot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:frmcreationlot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\juju_\\source\\repos\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\frmcreationrecette.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:frmcreationrecette.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\juju_\\source\\repos\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\lotscontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:lotscontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\juju_\\source\\repos\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\lotscontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:lotscontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\juju_\\source\\repos\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\navbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:navbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\juju_\\source\\repos\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\frmcreationlot.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:frmcreationlot.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\juju_\\source\\repos\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\juju_\\source\\repos\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\navbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:navbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,31 +54,34 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FrmGestionLots.cs [Conception]",
-              "DocumentMoniker": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\FrmGestionLots.cs",
-              "RelativeDocumentMoniker": "FrmGestionLots.cs",
-              "ToolTip": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\FrmGestionLots.cs [Conception]",
-              "RelativeToolTip": "FrmGestionLots.cs [Conception]",
+              "DocumentIndex": 9,
+              "Title": "FrmMain.cs",
+              "DocumentMoniker": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\FrmMain.cs",
+              "RelativeDocumentMoniker": "FrmMain.cs",
+              "ToolTip": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\FrmMain.cs",
+              "RelativeToolTip": "FrmMain.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-11T09:41:15.388Z",
-              "EditorCaption": " [Conception]"
+              "WhenOpened": "2026-05-15T09:10:45.472Z",
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FrmGestionRecettes.cs",
-              "DocumentMoniker": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\FrmGestionRecettes.cs",
-              "RelativeDocumentMoniker": "FrmGestionRecettes.cs",
-              "ToolTip": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\FrmGestionRecettes.cs",
-              "RelativeToolTip": "FrmGestionRecettes.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "NavBar.cs",
+              "DocumentMoniker": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\NavBar.cs",
+              "RelativeDocumentMoniker": "NavBar.cs",
+              "ToolTip": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\NavBar.cs",
+              "RelativeToolTip": "NavBar.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAwwC8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-11T09:39:38.004Z",
+              "WhenOpened": "2026-05-15T09:12:13.057Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
@@ -60,6 +99,118 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FrmCreationRecette.cs [Conception]",
+              "DocumentMoniker": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\FrmCreationRecette.cs",
+              "RelativeDocumentMoniker": "FrmCreationRecette.cs",
+              "ToolTip": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\FrmCreationRecette.cs [Conception]",
+              "RelativeToolTip": "FrmCreationRecette.cs [Conception]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-18T12:37:54.239Z",
+              "EditorCaption": " [Conception]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RecettesControl.cs",
+              "DocumentMoniker": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\RecettesControl.cs",
+              "RelativeDocumentMoniker": "RecettesControl.cs",
+              "ToolTip": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\RecettesControl.cs*",
+              "RelativeToolTip": "RecettesControl.cs*",
+              "ViewState": "AgIAAAMAAAAAAAAAAIAwwBAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-18T12:37:26.899Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FrmCreationLot.cs",
+              "DocumentMoniker": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\FrmCreationLot.cs",
+              "RelativeDocumentMoniker": "FrmCreationLot.cs",
+              "ToolTip": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\FrmCreationLot.cs",
+              "RelativeToolTip": "FrmCreationLot.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEUAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-18T12:04:45.625Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RecettesControl.cs [Conception]",
+              "DocumentMoniker": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\RecettesControl.cs",
+              "RelativeDocumentMoniker": "RecettesControl.cs",
+              "ToolTip": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\RecettesControl.cs [Conception]*",
+              "RelativeToolTip": "RecettesControl.cs [Conception]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-18T12:37:24.711Z",
+              "EditorCaption": " [Conception]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FrmCreationLot.cs [Conception]",
+              "DocumentMoniker": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\FrmCreationLot.cs",
+              "RelativeDocumentMoniker": "FrmCreationLot.cs",
+              "ToolTip": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\FrmCreationLot.cs [Conception]",
+              "RelativeToolTip": "FrmCreationLot.cs [Conception]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-18T12:38:02.32Z",
+              "EditorCaption": " [Conception]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "NavBar.cs [Conception]",
+              "DocumentMoniker": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\NavBar.cs",
+              "RelativeDocumentMoniker": "NavBar.cs",
+              "ToolTip": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\NavBar.cs [Conception]",
+              "RelativeToolTip": "NavBar.cs [Conception]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-18T11:52:15.138Z",
+              "EditorCaption": " [Conception]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LotsControl.cs [Conception]",
+              "DocumentMoniker": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\LotsControl.cs",
+              "RelativeDocumentMoniker": "LotsControl.cs",
+              "ToolTip": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\LotsControl.cs [Conception]",
+              "RelativeToolTip": "LotsControl.cs [Conception]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-18T11:45:46.508Z",
+              "EditorCaption": " [Conception]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LotsControl.cs",
+              "DocumentMoniker": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\LotsControl.cs",
+              "RelativeDocumentMoniker": "LotsControl.cs",
+              "ToolTip": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\LotsControl.cs",
+              "RelativeToolTip": "LotsControl.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-18T11:47:51.328Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FrmCreationLot.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\FrmCreationLot.Designer.cs",
+              "RelativeDocumentMoniker": "FrmCreationLot.Designer.cs",
+              "ToolTip": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\FrmCreationLot.Designer.cs",
+              "RelativeToolTip": "FrmCreationLot.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHIAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-18T12:17:54.764Z",
+              "EditorCaption": ""
             }
           ]
         }

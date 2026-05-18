@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace M3_RRO_JSC
 {
-    public partial class FrmTracabilite : Form
+    public partial class RecettesControl : UserControl
     {
-        public FrmTracabilite()
+        public RecettesControl()
         {
             InitializeComponent();
         }

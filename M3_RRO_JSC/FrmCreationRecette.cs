@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace M3_RRO_JSC
 {
-    public partial class FrmParametres : Form
+    public partial class FrmCreationRecette : Form
     {
-        public FrmParametres()
+        public FrmCreationRecette()
         {
             InitializeComponent();
         }

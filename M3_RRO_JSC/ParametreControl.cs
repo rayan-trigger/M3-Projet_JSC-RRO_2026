@@ -8,13 +8,11 @@ using System.Windows.Forms;
 
 namespace M3_RRO_JSC
 {
-    public partial class FrmGestionLots : Form
+    public partial class ParametreControl : UserControl
     {
-        public FrmGestionLots()
+        public ParametreControl()
         {
             InitializeComponent();
         }
-
-       
     }
 }
