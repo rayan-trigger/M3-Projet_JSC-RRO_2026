@@ -38,6 +38,7 @@
             btnTerminerCreaLot = new Button();
             btnAnnulerCreaLot = new Button();
             btnCreeCreaLot = new Button();
+            btnVoirOperation = new Button();
             SuspendLayout();
             // 
             // lblTitreCreaLot
@@ -135,11 +136,21 @@
             btnCreeCreaLot.UseVisualStyleBackColor = true;
             btnCreeCreaLot.Click += btnCreeCreaLot_Click;
             // 
+            // btnVoirOperation
+            // 
+            btnVoirOperation.Location = new Point(673, 227);
+            btnVoirOperation.Name = "btnVoirOperation";
+            btnVoirOperation.Size = new Size(31, 28);
+            btnVoirOperation.TabIndex = 11;
+            btnVoirOperation.Text = " ... ";
+            btnVoirOperation.UseVisualStyleBackColor = true;
+            // 
             // FrmCreationLot
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(882, 553);
+            Controls.Add(btnVoirOperation);
             Controls.Add(btnAnnulerCreaLot);
             Controls.Add(btnTerminerCreaLot);
             Controls.Add(btnCreeCreaLot);
@@ -168,5 +179,6 @@
         private Button btnTerminerCreaLot;
         private Button btnAnnulerCreaLot;
         private Button btnCreeCreaLot;
+        private Button btnVoirOperation;
     }
 }

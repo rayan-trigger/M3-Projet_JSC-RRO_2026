@@ -107,7 +107,7 @@
             btnCreerLot.TabIndex = 0;
             btnCreerLot.Text = "Créer";
             btnCreerLot.UseVisualStyleBackColor = true;
-            btnCreerLot.Click += btnCreerLot_Click;
+            btnCreerLot.Click += btnCreer_Click;
             // 
             // btnModifierLot
             // 
@@ -118,6 +118,7 @@
             btnModifierLot.TabIndex = 11;
             btnModifierLot.Text = "Modifier";
             btnModifierLot.UseVisualStyleBackColor = true;
+            btnModifierLot.Click += btnModifierLot_Click;
             // 
             // LotsControl
             // 

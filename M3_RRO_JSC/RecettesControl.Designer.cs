@@ -29,16 +29,13 @@
         private void InitializeComponent()
         {
             txtRechercheRecettes = new TextBox();
-            lblFiltresTextRecette = new Label();
-            cboFiltresRecettes = new ComboBox();
             btnSupprimerRecette = new Button();
             btnModifierRecette = new Button();
             btnCreerRecette = new Button();
-            lstRecette = new ListBox();
-            lstOperation = new ListBox();
             lblListeRecette = new Label();
-            lblListeOperation = new Label();
-            btnSupprimerOperation = new Button();
+            grdRecette = new DataGridView();
+            cboRecette = new ComboBox();
+            ((System.ComponentModel.ISupportInitialize)grdRecette).BeginInit();
             SuspendLayout();
             // 
             // txtRechercheRecettes
@@ -46,29 +43,11 @@
             txtRechercheRecettes.BackColor = SystemColors.InactiveCaption;
             txtRechercheRecettes.BorderStyle = BorderStyle.None;
             txtRechercheRecettes.ForeColor = SystemColors.HighlightText;
-            txtRechercheRecettes.Location = new Point(20, 157);
+            txtRechercheRecettes.Location = new Point(564, 155);
             txtRechercheRecettes.Name = "txtRechercheRecettes";
             txtRechercheRecettes.PlaceholderText = "Rechercher";
             txtRechercheRecettes.Size = new Size(293, 20);
             txtRechercheRecettes.TabIndex = 5;
-            // 
-            // lblFiltresTextRecette
-            // 
-            lblFiltresTextRecette.AutoSize = true;
-            lblFiltresTextRecette.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblFiltresTextRecette.Location = new Point(688, 158);
-            lblFiltresTextRecette.Name = "lblFiltresTextRecette";
-            lblFiltresTextRecette.Size = new Size(55, 23);
-            lblFiltresTextRecette.TabIndex = 4;
-            lblFiltresTextRecette.Text = "Filtres";
-            // 
-            // cboFiltresRecettes
-            // 
-            cboFiltresRecettes.FormattingEnabled = true;
-            cboFiltresRecettes.Location = new Point(811, 157);
-            cboFiltresRecettes.Name = "cboFiltresRecettes";
-            cboFiltresRecettes.Size = new Size(220, 28);
-            cboFiltresRecettes.TabIndex = 3;
             // 
             // btnSupprimerRecette
             // 
@@ -83,12 +62,13 @@
             // btnModifierRecette
             // 
             btnModifierRecette.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnModifierRecette.Location = new Point(313, 13);
+            btnModifierRecette.Location = new Point(372, 555);
             btnModifierRecette.Name = "btnModifierRecette";
-            btnModifierRecette.Size = new Size(200, 60);
+            btnModifierRecette.Size = new Size(346, 60);
             btnModifierRecette.TabIndex = 1;
-            btnModifierRecette.Text = "Modifier";
+            btnModifierRecette.Text = "Modifier la recette selectionné";
             btnModifierRecette.UseVisualStyleBackColor = true;
+            btnModifierRecette.Click += btnModifierRecette_Click;
             // 
             // btnCreerRecette
             // 
@@ -99,83 +79,59 @@
             btnCreerRecette.TabIndex = 0;
             btnCreerRecette.Text = "Créer";
             btnCreerRecette.UseVisualStyleBackColor = true;
-            // 
-            // lstRecette
-            // 
-            lstRecette.FormattingEnabled = true;
-            lstRecette.Location = new Point(20, 214);
-            lstRecette.Name = "lstRecette";
-            lstRecette.Size = new Size(346, 324);
-            lstRecette.TabIndex = 6;
-            // 
-            // lstOperation
-            // 
-            lstOperation.FormattingEnabled = true;
-            lstOperation.Location = new Point(387, 214);
-            lstOperation.Name = "lstOperation";
-            lstOperation.Size = new Size(346, 324);
-            lstOperation.TabIndex = 7;
+            btnCreerRecette.Click += btnCreerRecette_Click;
             // 
             // lblListeRecette
             // 
             lblListeRecette.AutoSize = true;
-            lblListeRecette.Location = new Point(20, 113);
+            lblListeRecette.Location = new Point(20, 169);
             lblListeRecette.Name = "lblListeRecette";
-            lblListeRecette.Size = new Size(126, 20);
+            lblListeRecette.Size = new Size(210, 20);
             lblListeRecette.TabIndex = 8;
-            lblListeRecette.Text = "Liste des Recettes";
+            lblListeRecette.Text = "Selectionner la recette afiicher";
             // 
-            // lblListeOperation
+            // grdRecette
             // 
-            lblListeOperation.AutoSize = true;
-            lblListeOperation.Location = new Point(415, 113);
-            lblListeOperation.Name = "lblListeOperation";
-            lblListeOperation.Size = new Size(126, 20);
-            lblListeOperation.TabIndex = 9;
-            lblListeOperation.Text = "Liste des Recettes";
+            grdRecette.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grdRecette.Location = new Point(20, 236);
+            grdRecette.Name = "grdRecette";
+            grdRecette.RowHeadersWidth = 51;
+            grdRecette.Size = new Size(1037, 265);
+            grdRecette.TabIndex = 11;
             // 
-            // btnSupprimerOperation
+            // cboRecette
             // 
-            btnSupprimerOperation.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSupprimerOperation.Location = new Point(387, 555);
-            btnSupprimerOperation.Name = "btnSupprimerOperation";
-            btnSupprimerOperation.Size = new Size(346, 60);
-            btnSupprimerOperation.TabIndex = 10;
-            btnSupprimerOperation.Text = "Supprimer l'opération selectionné";
-            btnSupprimerOperation.UseVisualStyleBackColor = true;
+            cboRecette.FormattingEnabled = true;
+            cboRecette.Location = new Point(20, 202);
+            cboRecette.Name = "cboRecette";
+            cboRecette.Size = new Size(200, 28);
+            cboRecette.TabIndex = 12;
             // 
             // RecettesControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(btnSupprimerOperation);
-            Controls.Add(lblListeOperation);
+            Controls.Add(cboRecette);
+            Controls.Add(grdRecette);
             Controls.Add(lblListeRecette);
-            Controls.Add(lstOperation);
-            Controls.Add(lstRecette);
             Controls.Add(txtRechercheRecettes);
             Controls.Add(btnCreerRecette);
-            Controls.Add(lblFiltresTextRecette);
             Controls.Add(btnModifierRecette);
-            Controls.Add(cboFiltresRecettes);
             Controls.Add(btnSupprimerRecette);
             Name = "RecettesControl";
             Size = new Size(1210, 675);
+            ((System.ComponentModel.ISupportInitialize)grdRecette).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
         private TextBox txtRechercheRecettes;
-        private Label lblFiltresTextRecette;
-        private ComboBox cboFiltresRecettes;
         private Button btnSupprimerRecette;
         private Button btnModifierRecette;
         private Button btnCreerRecette;
-        private ListBox lstRecette;
-        private ListBox lstOperation;
         private Label lblListeRecette;
-        private Label lblListeOperation;
-        private Button btnSupprimerOperation;
+        private DataGridView grdRecette;
+        private ComboBox cboRecette;
     }
 }
