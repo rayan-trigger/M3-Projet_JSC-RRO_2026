@@ -50,11 +50,15 @@ namespace M3_RRO_JSC
 
             grdGestionLots.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grdGestionLots.AllowUserToAddRows = false;
+
+            grdGestionLots.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grdGestionLots.MultiSelect = false;
+            grdGestionLots.AllowUserToAddRows = false;
         }
 
         private void btnModifierLot_Click(object sender, EventArgs e)
         {
-            if(grdGestionLots.CurrentRow == null)
+            if (grdGestionLots.CurrentRow == null)
             {
                 MessageBox.Show("Veuillet selectionner un lot a modifier");
                 return;
@@ -62,12 +66,12 @@ namespace M3_RRO_JSC
 
             int index = grdGestionLots.CurrentRow.Index;
 
-            if ( index < 0 ||index >= LotData.ListeLots.Count)
+            if (index < 0 || index >= LotData.ListeLots.Count)
             {
                 MessageBox.Show(" Selection invalide");
             }
 
-           Lot lotSelectionne = LotData.ListeLots[index];
+            Lot lotSelectionne = LotData.ListeLots[index];
 
             FrmCreationLot popup = new FrmCreationLot(lotSelectionne);
 
@@ -78,9 +82,41 @@ namespace M3_RRO_JSC
 
         }
 
+        private void btnSupprimerLot_Click(object sender, EventArgs e)
+        {
+           if (grdGestionLots.CurrentRow == null)
+           {
+                MessageBox.Show(" Veuillez selctionner un lot a supprimer");
+                return;
+           }
 
+            int index = grdGestionLots.CurrentRow.Index; 
 
-        
+            if ( index < 0 || index >= LotData.ListeLots.Count)
+            {
+                MessageBox.Show("Selection invalide");
+                return;
+            }
 
+            Lot lotSelectionner = LotData.ListeLots[index];
+
+            DialogResult confirmation = MessageBox.Show(
+                "Voulez-Vous vraiment supprimer le lot : " + lotSelectionner.NomLot + " ?",
+                "Confirmation de suppression ",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+                ); 
+
+            if( confirmation != DialogResult.Yes)
+            {
+                return;
+            }
+
+            LotData.ListeLots.RemoveAt(index);
+
+            ChargerLots();
+
+            MessageBox.Show("Lot supprimer avec succès.");
+        }
     }
 }

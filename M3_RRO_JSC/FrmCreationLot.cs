@@ -23,13 +23,13 @@ namespace M3_RRO_JSC
             ChargerComboRecettes();
         }
 
-        public FrmCreationLot( Lot lot)
+        public FrmCreationLot(Lot lot)
         {
-            InitializeComponent( );
+            InitializeComponent();
 
             ChargerComboRecettes();
 
-            lotAModifier = lot; 
+            lotAModifier = lot;
 
             modeModification = true;
 
@@ -56,7 +56,7 @@ namespace M3_RRO_JSC
 
                 else
                 {
-                    CreerNouveauLot(); 
+                    CreerNouveauLot();
 
                 }
 
@@ -102,14 +102,14 @@ namespace M3_RRO_JSC
 
         private void btnCreeCreaLot_Click(object sender, EventArgs e)
         {
-            
-                FrmCreationRecette popup = new FrmCreationRecette();
 
-                if (popup.ShowDialog() == DialogResult.OK)
-                {
-                    ChargerComboRecettes();
-                }
-            
+            FrmCreationRecette popup = new FrmCreationRecette();
+
+            if (popup.ShowDialog() == DialogResult.OK)
+            {
+                ChargerComboRecettes();
+            }
+
         }
 
         private void ChargerComboRecettes()
@@ -134,11 +134,11 @@ namespace M3_RRO_JSC
             txtQuantiteCreaLot.Text = lotAModifier.QuantitePieces.ToString();
 
             cboRecetteCreaLot.SelectedItem = lotAModifier.RecetteAssociee;
-            
-            
+
+
         }
 
-        
+
 
         private void CreerNouveauLot()
         {
@@ -167,6 +167,39 @@ namespace M3_RRO_JSC
             lotAModifier.NomLot = txtNomCreaLot.Text.Trim();
             lotAModifier.QuantitePieces = int.Parse(txtQuantiteCreaLot.Text);
             lotAModifier.RecetteAssociee = recetteSelectionnee;
+
+        }
+
+        private void btnTerminerCreaLot_MouseEnter(object sender, EventArgs e)
+        {
+            btnTerminerCreaLot.Cursor = Cursors.Hand;
+        }
+
+        private void btnTerminerCreaLot_MouseLeave(object sender, EventArgs e)
+        {
+            btnTerminerCreaLot.Cursor = Cursors.Default;
+        }
+
+        private void btnAnnulerCreaLot_MouseEnter(object sender, EventArgs e)
+        {
+            btnAnnulerCreaLot.Cursor = Cursors.Hand;
+        }
+
+        private void btnAnnulerCreaLot_MouseLeave(object sender, EventArgs e)
+        {
+            btnAnnulerCreaLot.Cursor = Cursors.Default;
+
+        }
+
+        private void btnCreeCreaLot_MouseEnter(object sender, EventArgs e)
+        {
+            btnCreeCreaLot.Cursor = Cursors.Hand;
+
+        }
+
+        private void btnCreeCreaLot_MouseLeave(object sender, EventArgs e)
+        {
+            btnCreeCreaLot.Cursor = Cursors.Default;
 
         }
     }

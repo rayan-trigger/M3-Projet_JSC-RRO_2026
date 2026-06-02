@@ -97,6 +97,7 @@
             btnSupprimerLot.TabIndex = 2;
             btnSupprimerLot.Text = "Supprimer";
             btnSupprimerLot.UseVisualStyleBackColor = true;
+            btnSupprimerLot.Click += btnSupprimerLot_Click;
             // 
             // btnCreerLot
             // 

@@ -52,17 +52,18 @@
             // btnSupprimerRecette
             // 
             btnSupprimerRecette.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSupprimerRecette.Location = new Point(20, 555);
+            btnSupprimerRecette.Location = new Point(561, 3);
             btnSupprimerRecette.Name = "btnSupprimerRecette";
             btnSupprimerRecette.Size = new Size(346, 60);
             btnSupprimerRecette.TabIndex = 2;
             btnSupprimerRecette.Text = "Supprimer la recette selectionné";
             btnSupprimerRecette.UseVisualStyleBackColor = true;
+            btnSupprimerRecette.Click += btnSupprimerRecette_Click;
             // 
             // btnModifierRecette
             // 
             btnModifierRecette.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnModifierRecette.Location = new Point(372, 555);
+            btnModifierRecette.Location = new Point(209, 3);
             btnModifierRecette.Name = "btnModifierRecette";
             btnModifierRecette.Size = new Size(346, 60);
             btnModifierRecette.TabIndex = 1;

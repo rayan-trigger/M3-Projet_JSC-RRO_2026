@@ -149,7 +149,7 @@
             grdOperationCreaRecette.RowHeadersWidth = 51;
             grdOperationCreaRecette.Size = new Size(1214, 205);
             grdOperationCreaRecette.TabIndex = 31;
-            grdOperationCreaRecette.CellContentClick += grdOperationCreaRecette_CellContentClick;
+            grdOperationCreaRecette.SelectionChanged += grdOperationCreaRecette_SelectionChanged;
             // 
             // ckbMoteurCreaRecette
             // 
