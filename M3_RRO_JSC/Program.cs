@@ -9,6 +9,7 @@ namespace M3_RRO_JSC
         {
             ApplicationConfiguration.Initialize();
             Application.Run(new FrmMain());
+            Application.Run();
         }
     }
 }
