@@ -16,7 +16,7 @@ namespace M3_RRO_JSC
         private const string COL_NOM_OPERATION = "Nom opération";
         private const string COL_MOTEUR_ACTIF = "Moteur actif";
         private const string COL_SENS = "SENS";
-        private const string COL_POSITION= "Position";
+        private const string COL_POSITION = "Position";
         private const string COL_TEMPS_ATTENTE = "Temps d'attente";
         private const string COL_CYCLE_VERIN = "Cycle vérin";
         private const string COL_QUITTANCE = "Quittance";
@@ -29,7 +29,7 @@ namespace M3_RRO_JSC
 
         private int indexOperationSelectionnee = -1;
 
-        private bool chargementEnCours;
+        private bool chargementEnCours  = false;
 
         public FrmCreationRecette()
         {
@@ -394,11 +394,18 @@ namespace M3_RRO_JSC
             MessageBox.Show("Recette modifiée avec succès.");
         }
 
-        
+
 
 
         private void ChargerOperationSelectionnee()
+
         {
+            if ( chargementEnCours)
+            {
+                return;
+            }
+
+
             if (grdOperationCreaRecette.CurrentRow == null)
             {
                 return;
@@ -412,11 +419,20 @@ namespace M3_RRO_JSC
                 return;
             }
 
+            DataRow row = tableOperations.Rows[index];
+
+            if(row.RowState == DataRowState.Deleted ||row.RowState == DataRowState.Detached)
+
+            {
+                return;
+            }
+          
+
             indexOperationSelectionnee = index;
 
-            DataRow row = tableOperations.Rows[indexOperationSelectionnee];
 
             txtNomOperation.Text = row[COL_NOM_OPERATION].ToString();
+
 
             ckbMoteurCreaRecette.Checked = row[COL_MOTEUR_ACTIF].ToString() == "Oui";
             ckbCycleVerinCreaRecette.Checked = row[COL_CYCLE_VERIN].ToString() == "Oui";
@@ -431,7 +447,67 @@ namespace M3_RRO_JSC
 
         private void grdOperationCreaRecette_SelectionChanged(object sender, EventArgs e)
         {
+            if (chargementEnCours)
+            {
+                return;
+            }
+
             ChargerOperationSelectionnee();
+        }
+
+        private void btnSupprimerCreaRecette_Click(object sender, EventArgs e)
+
+        {
+            SupprimerOperationSelectionee();
+        }
+
+        private void SupprimerOperationSelectionee()
+
+        {
+            // vérifie qu'une ligne est bien selectionnée dans le tableau 
+            if ( grdOperationCreaRecette.CurrentRow == null)
+            {
+                MessageBox.Show("Veuillez sélectionner une ligne à supprimer");
+                return;
+            }
+
+            int index = grdOperationCreaRecette.CurrentRow.Index;
+
+            // Vérifie que l'index est valide
+            if ( index <0 || index >= tableOperations.Rows.Count)
+            {
+                MessageBox.Show("Sélection Invalide");
+                return;
+
+            }
+
+
+            string nomOperation = tableOperations.Rows[index][COL_NOM_OPERATION].ToString();
+
+            DialogResult confirmation = MessageBox.Show(
+                "Voulez-vous vraiment supprimer l'opération : " + nomOperation + " ? ",
+                "Confirmation de suppression",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+                );
+
+            if (confirmation != DialogResult.Yes)
+            {
+                return;
+                
+            }
+            chargementEnCours = true;
+
+            grdOperationCreaRecette.ClearSelection();
+            tableOperations.Rows.RemoveAt(index);
+
+            chargementEnCours = false;
+
+            ViderChampsOperation();
+
+            MessageBox.Show("Opération supprimée avec succés.");
+
+
         }
     }
 

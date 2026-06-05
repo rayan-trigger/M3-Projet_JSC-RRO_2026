@@ -46,13 +46,14 @@
             ckbQuittanceCreaRecette = new CheckBox();
             ckbCycleVerinCreaRecette = new CheckBox();
             btnValiderCreaRecette = new Button();
+            btnSupprimerCreaRecette = new Button();
             ((System.ComponentModel.ISupportInitialize)grdOperationCreaRecette).BeginInit();
             SuspendLayout();
             // 
             // btnAnnulerCreaRecette
             // 
             btnAnnulerCreaRecette.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAnnulerCreaRecette.Location = new Point(670, 512);
+            btnAnnulerCreaRecette.Location = new Point(313, 512);
             btnAnnulerCreaRecette.Name = "btnAnnulerCreaRecette";
             btnAnnulerCreaRecette.Size = new Size(150, 75);
             btnAnnulerCreaRecette.TabIndex = 20;
@@ -63,7 +64,7 @@
             // btnEnregistrerCreaRecette
             // 
             btnEnregistrerCreaRecette.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEnregistrerCreaRecette.Location = new Point(313, 512);
+            btnEnregistrerCreaRecette.Location = new Point(133, 512);
             btnEnregistrerCreaRecette.Name = "btnEnregistrerCreaRecette";
             btnEnregistrerCreaRecette.Size = new Size(150, 75);
             btnEnregistrerCreaRecette.TabIndex = 19;
@@ -208,7 +209,7 @@
             // btnValiderCreaRecette
             // 
             btnValiderCreaRecette.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnValiderCreaRecette.Location = new Point(836, 77);
+            btnValiderCreaRecette.Location = new Point(584, 527);
             btnValiderCreaRecette.Name = "btnValiderCreaRecette";
             btnValiderCreaRecette.Size = new Size(285, 44);
             btnValiderCreaRecette.TabIndex = 39;
@@ -216,11 +217,23 @@
             btnValiderCreaRecette.UseVisualStyleBackColor = true;
             btnValiderCreaRecette.Click += btnValiderCreaRecette_Click;
             // 
+            // btnSupprimerCreaRecette
+            // 
+            btnSupprimerCreaRecette.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSupprimerCreaRecette.Location = new Point(901, 527);
+            btnSupprimerCreaRecette.Name = "btnSupprimerCreaRecette";
+            btnSupprimerCreaRecette.Size = new Size(285, 44);
+            btnSupprimerCreaRecette.TabIndex = 40;
+            btnSupprimerCreaRecette.Text = "Supprimer l'opération";
+            btnSupprimerCreaRecette.UseVisualStyleBackColor = true;
+            btnSupprimerCreaRecette.Click += btnSupprimerCreaRecette_Click;
+            // 
             // FrmCreationRecette
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1305, 638);
+            Controls.Add(btnSupprimerCreaRecette);
             Controls.Add(btnValiderCreaRecette);
             Controls.Add(ckbCycleVerinCreaRecette);
             Controls.Add(ckbQuittanceCreaRecette);
@@ -267,5 +280,6 @@
         private CheckBox ckbQuittanceCreaRecette;
         private CheckBox ckbCycleVerinCreaRecette;
         private Button btnValiderCreaRecette;
+        private Button btnSupprimerCreaRecette;
     }
 }

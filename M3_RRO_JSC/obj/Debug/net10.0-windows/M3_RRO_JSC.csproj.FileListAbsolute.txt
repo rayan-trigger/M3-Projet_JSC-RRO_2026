@@ -24,3 +24,17 @@ C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-
 C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.TracabiliteControl.resources
 C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.FrmCreationLot.resources
 C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.FrmCreationRecette.resources
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\bin\Debug\net10.0-windows\BouncyCastle.Cryptography.dll
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\bin\Debug\net10.0-windows\Google.Protobuf.dll
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\bin\Debug\net10.0-windows\K4os.Compression.LZ4.dll
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\bin\Debug\net10.0-windows\K4os.Compression.LZ4.Streams.dll
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\bin\Debug\net10.0-windows\K4os.Hash.xxHash.dll
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\bin\Debug\net10.0-windows\MySql.Data.dll
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\bin\Debug\net10.0-windows\ZstdSharp.dll
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\bin\Debug\net10.0-windows\runtimes\win-x64\native\comerr64.dll
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\bin\Debug\net10.0-windows\runtimes\win-x64\native\gssapi64.dll
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\bin\Debug\net10.0-windows\runtimes\win-x64\native\k5sprt64.dll
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\bin\Debug\net10.0-windows\runtimes\win-x64\native\krb5_64.dll
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\bin\Debug\net10.0-windows\runtimes\win-x64\native\krbcc64.dll
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.csproj.AssemblyReference.cache
+C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.csproj.Up2Date
