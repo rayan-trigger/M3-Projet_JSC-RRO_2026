@@ -150,6 +150,7 @@
             btnVoirOperation.TabIndex = 11;
             btnVoirOperation.Text = " ... ";
             btnVoirOperation.UseVisualStyleBackColor = true;
+            btnVoirOperation.Click += btnVoirOperation_Click;
             // 
             // FrmCreationLot
             // 

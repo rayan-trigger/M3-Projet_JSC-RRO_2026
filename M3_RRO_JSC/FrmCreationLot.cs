@@ -21,6 +21,7 @@ namespace M3_RRO_JSC
             InitializeComponent();
 
             ChargerComboRecettes();
+
         }
 
         public FrmCreationLot(Lot lot)
@@ -78,7 +79,7 @@ namespace M3_RRO_JSC
 
             if (!int.TryParse(txtQuantiteCreaLot.Text, out int quantite) || quantite <= 0)
             {
-                MessageBox.Show("La quantité de pièces doit être un nombre supérieur à 0.");
+                MessageBox.Show ("La quantité de pièces doit être un nombre supérieur à 0.");
                 txtQuantiteCreaLot.Focus();
                 return false;
             }
@@ -201,6 +202,26 @@ namespace M3_RRO_JSC
         {
             btnCreeCreaLot.Cursor = Cursors.Default;
 
+        }
+
+        private void btnVoirOperation_Click(object sender, EventArgs e)
+        {
+            if (cboRecetteCreaLot.SelectedIndex == -1)
+            {
+                MessageBox.Show("Veuillez selectionner une recette");
+                return;
+            }
+
+            Recette recetteSelectionnee = cboRecetteCreaLot.SelectedItem as Recette;
+
+            if (recetteSelectionnee == null)
+            {
+                MessageBox.Show("Recette invalide");
+                return;
+            }
+
+            FrmDetailsRecette popup = new FrmDetailsRecette(recetteSelectionnee);
+            popup.ShowDialog(this);
         }
     }
 

@@ -15,7 +15,7 @@ namespace M3_RRO_JSC
     {
         private const string COL_NOM_OPERATION = "Nom opération";
         private const string COL_MOTEUR_ACTIF = "Moteur actif";
-        private const string COL_SENS = "SENS";
+        private const string COL_SENS = "Sens";
         private const string COL_POSITION = "Position";
         private const string COL_TEMPS_ATTENTE = "Temps d'attente";
         private const string COL_CYCLE_VERIN = "Cycle vérin";
