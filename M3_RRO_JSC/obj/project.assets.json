@@ -1,11 +1,7 @@
 {
   "version": 3,
   "targets": {
-<<<<<<< Updated upstream
-    "net10.0-windows": {
-=======
     "net10.0-windows7.0": {
->>>>>>> Stashed changes
       "BouncyCastle.Cryptography/2.6.2": {
         "type": "package",
         "compile": {
@@ -290,11 +286,7 @@
     }
   },
   "projectFileDependencyGroups": {
-<<<<<<< Updated upstream
-    "net10.0-windows": [
-=======
     "net10.0-windows7.0": [
->>>>>>> Stashed changes
       "MySql.Data >= 9.7.0"
     ]
   },
@@ -672,7 +664,7 @@
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Problème de lecture du fichier cache C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0."
+      "message": "Problème de lecture du fichier cache C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 4 | BytePositionInLine: 0."
     }
   ]
 }

@@ -288,6 +288,24 @@ namespace M3_RRO_JSC
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
+        // Handler to delete the selected operation (added to fix missing event method)
+        private void btnSupprimerCreaRecette_Click(object sender, EventArgs e)
+        {
+            if (indexOperationSelectionnee < 0 || indexOperationSelectionnee >= tableOperations.Rows.Count)
+            {
+                MessageBox.Show("Veuillez sélectionner une opération à supprimer.");
+                return;
+            }
+
+            var result = MessageBox.Show("Supprimer l'opération sélectionnée ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                tableOperations.Rows.RemoveAt(indexOperationSelectionnee);
+                ViderChampsOperation();
+            }
+        }
+
         /// <summary>
         /// Charge les informations de la recette à modifier et met à jour l'interface utilisateur avec ses données.§
         /// </summary>
@@ -394,31 +412,15 @@ namespace M3_RRO_JSC
 
 
 
-
-        private void ChargerOperationSelectionnee()
+        private void ChargerOperationSelectionnee(object sender, DataGridViewCellEventArgs e)
 
         {
-            if (e.RowIndex < 0)
+            if (e == null || e.RowIndex < 0)
             {
                 return;
             }
 
-
-            DataRow row = tableOperations.Rows[indexOperationSelectionnee];
-            txtNomOperation.Text = row["Nom opération"].ToString();
-            ckbMoteurCreaRecette.Checked = row["Moteur actif"].ToString() == "Oui";
-            cboSensCreaRecette.SelectedItem = row["Sens"].ToString();
-            cboPositionCreaRecette.SelectedItem = row["Position"].ToString();
-            cboTempsCreaRecette.SelectedItem = row["Temps d'attente"].ToString();
-            ckbCycleVerinCreaRecette.Checked = row["Cycle vérin"].ToString() == "Oui";
-            ckbQuittanceCreaRecette.Checked = row["Quittance"].ToString() == "Oui";
-<<<<<<< Updated upstream
-=======
-            DataRow
->>>>>>> main
-
-
-            int index = grdOperationCreaRecette.CurrentRow.Index;
+            int index = e.RowIndex;
 
             if (index < 0 || index >= tableOperations.Rows.Count)
             {
@@ -427,19 +429,39 @@ namespace M3_RRO_JSC
 
             DataRow row = tableOperations.Rows[index];
 
-            if(row.RowState == DataRowState.Deleted ||row.RowState == DataRowState.Detached)
-
+            if (row.RowState == DataRowState.Deleted || row.RowState == DataRowState.Detached)
             {
                 return;
             }
-          
+
+            txtNomOperation.Text = row[COL_NOM_OPERATION].ToString();
+            ckbMoteurCreaRecette.Checked = row[COL_MOTEUR_ACTIF].ToString() == "Oui";
+            cboSensCreaRecette.SelectedItem = row[COL_SENS].ToString();
+            cboPositionCreaRecette.SelectedItem = row[COL_POSITION].ToString();
+            cboTempsCreaRecette.SelectedItem = row[COL_TEMPS_ATTENTE].ToString();
+            ckbCycleVerinCreaRecette.Checked = row[COL_CYCLE_VERIN].ToString() == "Oui";
+            ckbQuittanceCreaRecette.Checked = row[COL_QUITTANCE].ToString() == "Oui";
 
             indexOperationSelectionnee = index;
+        }
 
+        // Handle the DataGridView.SelectionChanged event wired in the designer.
+        private void grdOperationCreaRecette_SelectionChanged(object sender, EventArgs e)
+        {
+            if (chargementEnCours)
+            {
+                return;
+            }
 
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
+            DataGridView dgv = sender as DataGridView ?? grdOperationCreaRecette;
+            if (dgv?.CurrentRow == null)
+            {
+                indexOperationSelectionnee = -1;
+                return;
+            }
+
+            // Reuse existing loader by creating a DataGridViewCellEventArgs with the current row index.
+            ChargerOperationSelectionnee(sender, new DataGridViewCellEventArgs(dgv.CurrentRow.Index, 0));
         }
     }
 }
