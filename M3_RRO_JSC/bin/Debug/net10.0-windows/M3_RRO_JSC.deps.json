@@ -7,7 +7,6 @@
   "targets": {
     ".NETCoreApp,Version=v10.0": {
       "M3_RRO_JSC/1.0.0": {
-<<<<<<< HEAD
         "dependencies": {
           "MySql.Data": "9.7.0"
         },
@@ -107,11 +106,6 @@
             "fileVersion": "0.8.6.0"
           }
         }
-=======
-        "runtime": {
-          "M3_RRO_JSC.dll": {}
-        }
->>>>>>> main
       }
     }
   },
@@ -120,7 +114,6 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
-<<<<<<< HEAD
     },
     "BouncyCastle.Cryptography/2.6.2": {
       "type": "package",
@@ -170,8 +163,6 @@
       "sha512": "sha512-iP4jVLQoQmUjMU88g1WObiNr6YKZGvh4aOXn3yOJsHqZsflwRsxZPcIBvNXgjXO3vQKSLctXGLTpcBPLnWPS8A==",
       "path": "zstdsharp.port/0.8.6",
       "hashPath": "zstdsharp.port.0.8.6.nupkg.sha512"
-=======
->>>>>>> main
     }
   }
 }

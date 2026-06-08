@@ -1,31 +1,50 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\",
+  "WorkspaceRootPath": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\",
   "Documents": [
     {
-<<<<<<< HEAD
-      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\rondray\\onedrive - divtec\\documents\\github\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\dbmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:dbmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\rondray\\onedrive - divtec\\documents\\github\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\accueilcontrol.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:accueilcontrol.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\accueilcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:accueilcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\rondray\\onedrive - divtec\\documents\\github\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\accueilcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:accueilcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\rondray\\onedrive - divtec\\documents\\github\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\parametrecontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:parametrecontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\rondray\\onedrive - divtec\\documents\\github\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\frmcreationrecette.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:frmcreationrecette.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\rondray\\onedrive - divtec\\documents\\github\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\parametrecontrol.resx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:parametrecontrol.resx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\rondray\\onedrive - divtec\\documents\\github\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\accueilcontrol.resx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:accueilcontrol.resx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\rondray\\onedrive - divtec\\documents\\github\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\parametrecontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:parametrecontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\rondray\\onedrive - divtec\\documents\\github\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\parametrecontrol.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:parametrecontrol.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\rondray\\onedrive - divtec\\documents\\github\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\m3_rro_jsc.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:m3_rro_jsc.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-=======
-      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\juju_\\source\\repos\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\frmcreationrecette.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:frmcreationrecette.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\juju_\\source\\repos\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\frmcreationrecette.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:frmcreationrecette.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\juju_\\source\\repos\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\lotscontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:lotscontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\juju_\\source\\repos\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\recettescontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:recettescontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
->>>>>>> main
+      "AbsoluteMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|c:\\users\\rondray\\onedrive - divtec\\documents\\github\\m3-projet_jsc-rro_2026\\m3_rro_jsc\\dbmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{220D2EF4-7FC3-C460-06CA-55EA20497A1E}|M3_RRO_JSC.csproj|solutionrelative:dbmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,15 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-<<<<<<< Updated upstream
-<<<<<<< HEAD
           "SelectedChildIndex": 3,
-=======
-          "SelectedChildIndex": 7,
->>>>>>> main
-=======
-          "SelectedChildIndex": 4,
->>>>>>> Stashed changes
           "Children": [
             {
               "$type": "Bookmark",
@@ -59,7 +70,122 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AccueilControl.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\AccueilControl.Designer.cs",
+              "RelativeDocumentMoniker": "AccueilControl.Designer.cs",
+              "ToolTip": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\AccueilControl.Designer.cs",
+              "RelativeToolTip": "AccueilControl.Designer.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAtwB8AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T07:28:11.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AccueilControl.cs",
+              "DocumentMoniker": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\AccueilControl.cs",
+              "RelativeDocumentMoniker": "AccueilControl.cs",
+              "ToolTip": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\AccueilControl.cs",
+              "RelativeToolTip": "AccueilControl.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAkwDEAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T07:27:28.574Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ParametreControl.cs",
+              "DocumentMoniker": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\ParametreControl.cs",
+              "RelativeDocumentMoniker": "ParametreControl.cs",
+              "ToolTip": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\ParametreControl.cs",
+              "RelativeToolTip": "ParametreControl.cs",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAMwHwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T07:26:41.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ParametreControl.resx",
+              "DocumentMoniker": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\ParametreControl.resx",
+              "RelativeDocumentMoniker": "ParametreControl.resx",
+              "ToolTip": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\ParametreControl.resx",
+              "RelativeToolTip": "ParametreControl.resx",
+              "ViewState": "AgIAADEAAAAAAAAAAAAIwDkAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2026-06-08T07:26:03.177Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AccueilControl.resx",
+              "DocumentMoniker": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\AccueilControl.resx",
+              "RelativeDocumentMoniker": "AccueilControl.resx",
+              "ToolTip": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\AccueilControl.resx",
+              "RelativeToolTip": "AccueilControl.resx",
+              "ViewState": "AgIAADsAAAAAAAAAAAAIwBwAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2026-06-08T07:25:11.454Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ParametreControl.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\ParametreControl.Designer.cs",
+              "RelativeDocumentMoniker": "ParametreControl.Designer.cs",
+              "ToolTip": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\ParametreControl.Designer.cs",
+              "RelativeToolTip": "ParametreControl.Designer.cs",
+              "ViewState": "AgIAAKYAAAAAAAAAAAAkwMkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T07:21:09.999Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "AccueilControl.cs [Conception]",
+              "DocumentMoniker": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\AccueilControl.cs",
+              "RelativeDocumentMoniker": "AccueilControl.cs",
+              "ToolTip": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\AccueilControl.cs [Conception]",
+              "RelativeToolTip": "AccueilControl.cs [Conception]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T07:19:54.672Z",
+              "EditorCaption": " [Conception]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FrmCreationRecette.cs",
+              "DocumentMoniker": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\FrmCreationRecette.cs",
+              "RelativeDocumentMoniker": "FrmCreationRecette.cs",
+              "ToolTip": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\FrmCreationRecette.cs",
+              "RelativeToolTip": "FrmCreationRecette.cs",
+              "ViewState": "AgIAAGUBAAAAAAAAAADwv2YBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T07:31:28.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ParametreControl.cs [Conception]",
+              "DocumentMoniker": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\ParametreControl.cs",
+              "RelativeDocumentMoniker": "ParametreControl.cs",
+              "ToolTip": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\ParametreControl.cs [Conception]",
+              "RelativeToolTip": "ParametreControl.cs [Conception]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T07:19:54.743Z",
+              "EditorCaption": " [Conception]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "M3_RRO_JSC.csproj",
               "DocumentMoniker": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\M3_RRO_JSC.csproj",
               "RelativeDocumentMoniker": "M3_RRO_JSC.csproj",
@@ -67,12 +193,12 @@
               "RelativeToolTip": "M3_RRO_JSC.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-06-08T06:01:56.275Z"
+              "WhenOpened": "2026-06-08T07:19:54.755Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-<<<<<<< HEAD
-              "DocumentIndex": 0,
+              "DocumentIndex": 10,
               "Title": "DBManager.cs",
               "DocumentMoniker": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\DBManager.cs",
               "RelativeDocumentMoniker": "DBManager.cs",
@@ -80,6 +206,7 @@
               "RelativeToolTip": "DBManager.cs",
               "ViewState": "AgIAAEcAAAAAAAAAAAAgwEsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+<<<<<<< Updated upstream
               "WhenOpened": "2026-06-08T06:01:56.39Z",
 =======
               "DocumentIndex": 1,
@@ -143,6 +270,9 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-05T14:25:37.423Z",
               "EditorCaption": " [Conception]"
+=======
+              "WhenOpened": "2026-06-08T07:19:54.79Z"
+>>>>>>> Stashed changes
             }
           ]
         }

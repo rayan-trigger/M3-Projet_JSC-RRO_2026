@@ -1,20 +1,8 @@
-<<<<<<< HEAD
 ﻿using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Asn1.Cmp;
 using System;
-=======
 ﻿using System;
->>>>>>> main
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-<<<<<<< HEAD
 using static M3_RRO_JSC.DBManager;
-=======
->>>>>>> main
 
 namespace M3_RRO_JSC
 {
@@ -24,7 +12,6 @@ namespace M3_RRO_JSC
         public AccueilControl()
         {
             InitializeComponent();
-<<<<<<< HEAD
             SetStatus(IsConnected);
         }
 
@@ -62,8 +49,6 @@ namespace M3_RRO_JSC
         {
             if (IsConnected)
             SetInfoDB(_connectionString);
-=======
->>>>>>> main
         }
     
 

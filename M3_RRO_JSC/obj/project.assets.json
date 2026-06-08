@@ -1,7 +1,11 @@
 {
-  "version": 4,
+  "version": 3,
   "targets": {
+<<<<<<< Updated upstream
     "net10.0-windows": {
+=======
+    "net10.0-windows7.0": {
+>>>>>>> Stashed changes
       "BouncyCastle.Cryptography/2.6.2": {
         "type": "package",
         "compile": {
@@ -286,28 +290,32 @@
     }
   },
   "projectFileDependencyGroups": {
+<<<<<<< Updated upstream
     "net10.0-windows": [
+=======
+    "net10.0-windows7.0": [
+>>>>>>> Stashed changes
       "MySql.Data >= 9.7.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\juju_\\.nuget\\packages\\": {},
+    "C:\\Users\\rondray\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\M3_RRO_JSC.csproj",
+      "projectUniqueName": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\M3_RRO_JSC.csproj",
       "projectName": "M3_RRO_JSC",
-      "projectPath": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\M3_RRO_JSC.csproj",
-      "packagesPath": "C:\\Users\\juju_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\obj\\",
+      "projectPath": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\M3_RRO_JSC.csproj",
+      "packagesPath": "C:\\Users\\rondray\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\juju_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\rondray\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -316,11 +324,11 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net10.0-windows": {
-          "framework": "net10.0-windows7.0",
+        "net10.0-windows7.0": {
           "targetAlias": "net10.0-windows",
           "projectReferences": {}
         }
@@ -338,8 +346,7 @@
       "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
-      "net10.0-windows": {
-        "framework": "net10.0-windows7.0",
+      "net10.0-windows7.0": {
         "targetAlias": "net10.0-windows",
         "dependencies": {
           "MySql.Data": {
@@ -659,5 +666,13 @@
         }
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problème de lecture du fichier cache C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0."
+    }
+  ]
 }

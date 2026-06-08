@@ -1,20 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-<<<<<<< HEAD
   <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-=======
-  <!--
     Microsoft ResX Schema
 
     Version 2.0
@@ -40,9 +26,7 @@
     <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
-    </data>
-<<<<<<< HEAD
-                
+    </data>    
     There are any number of "resheader" rows that contain simple 
     name/value pairs.
     
@@ -67,7 +51,6 @@
     
     mimetype: application/x-microsoft.net.object.soap.base64
     value   : The object must be serialized with 
-=======
 
     There are any number of "resheader" rows that contain simple
     name/value pairs.
@@ -93,18 +76,10 @@
 
     mimetype: application/x-microsoft.net.object.soap.base64
     value   : The object must be serialized with
->>>>>>> main
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-<<<<<<< HEAD
+
     value   : The object must be serialized into a byte array 
-=======
-    value   : The object must be serialized into a byte array
->>>>>>> main
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
