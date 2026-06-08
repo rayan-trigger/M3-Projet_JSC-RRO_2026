@@ -101,14 +101,21 @@ namespace M3_RRO_JSC
 
             grdOperationCreaRecette.DataSource = tableOperations;
 
+<<<<<<< HEAD
             grdOperationCreaRecette.ReadOnly = true;
             grdOperationCreaRecette.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grdOperationCreaRecette.MultiSelect = false;
             grdOperationCreaRecette.AllowUserToAddRows = false;
             grdOperationCreaRecette.AllowUserToDeleteRows = false;
             grdOperationCreaRecette.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            grdOperationCreaRecette.EditMode = DataGridViewEditMode.EditProgrammatically;
+=======
+            grdOperationCreaRecette.ReadOnly= true;
+            grdOperationCreaRecette.SelectionMode= DataGridViewSelectionMode.FullRowSelect;
+            grdOperationCreaRecette.MultiSelect= false;
+            grdOperationCreaRecette.AllowUserToAddRows = false;
+            grdOperationCreaRecette.AllowUserToDeleteRows = false;
+            grdOperationCreaRecette.AutoSizeColumnsMode=DataGridViewAutoSizeColumnsMode.Fill;
+>>>>>>> main
 
         }
 
@@ -400,16 +407,28 @@ namespace M3_RRO_JSC
         private void ChargerOperationSelectionnee()
 
         {
-            if ( chargementEnCours)
+<<<<<<< HEAD
+            if (e.RowIndex < 0)
+=======
+            if (e.RowIndex <  0)
+>>>>>>> main
             {
                 return;
             }
 
 
-            if (grdOperationCreaRecette.CurrentRow == null)
-            {
-                return;
-            }
+<<<<<<< HEAD
+            DataRow row = tableOperations.Rows[indexOperationSelectionnee];
+            txtNomOperation.Text = row["Nom opération"].ToString();
+            ckbMoteurCreaRecette.Checked = row["Moteur actif"].ToString() == "Oui";
+            cboSensCreaRecette.SelectedItem = row["Sens"].ToString();
+            cboPositionCreaRecette.SelectedItem = row["Position"].ToString();
+            cboTempsCreaRecette.SelectedItem = row["Temps d'attente"].ToString();
+            ckbCycleVerinCreaRecette.Checked = row["Cycle vérin"].ToString() == "Oui";
+            ckbQuittanceCreaRecette.Checked = row["Quittance"].ToString() == "Oui";
+=======
+            DataRow
+>>>>>>> main
 
 
             int index = grdOperationCreaRecette.CurrentRow.Index;
@@ -431,88 +450,16 @@ namespace M3_RRO_JSC
             indexOperationSelectionnee = index;
 
 
-            txtNomOperation.Text = row[COL_NOM_OPERATION].ToString();
-
-
-            ckbMoteurCreaRecette.Checked = row[COL_MOTEUR_ACTIF].ToString() == "Oui";
-            ckbCycleVerinCreaRecette.Checked = row[COL_CYCLE_VERIN].ToString() == "Oui";
-            ckbQuittanceCreaRecette.Checked = row[COL_QUITTANCE].ToString() == "Oui";
-
-            cboSensCreaRecette.SelectedItem = row[COL_SENS].ToString();
-            cboPositionCreaRecette.SelectedItem = row[COL_POSITION].ToString();
-            cboTempsCreaRecette.SelectedItem = row[COL_TEMPS_ATTENTE].ToString();
-
-            btnValiderCreaRecette.Text = "Modifier l'opértation";
+<<<<<<< HEAD
         }
 
-        private void grdOperationCreaRecette_SelectionChanged(object sender, EventArgs e)
-        {
-            if (chargementEnCours)
-            {
-                return;
-            }
-
-            ChargerOperationSelectionnee();
-        }
-
-        private void btnSupprimerCreaRecette_Click(object sender, EventArgs e)
-
-        {
-            SupprimerOperationSelectionee();
-        }
-
-        private void SupprimerOperationSelectionee()
-
-        {
-            // vérifie qu'une ligne est bien selectionnée dans le tableau 
-            if ( grdOperationCreaRecette.CurrentRow == null)
-            {
-                MessageBox.Show("Veuillez sélectionner une ligne à supprimer");
-                return;
-            }
-
-            int index = grdOperationCreaRecette.CurrentRow.Index;
-
-            // Vérifie que l'index est valide
-            if ( index <0 || index >= tableOperations.Rows.Count)
-            {
-                MessageBox.Show("Sélection Invalide");
-                return;
-
-            }
 
 
-            string nomOperation = tableOperations.Rows[index][COL_NOM_OPERATION].ToString();
-
-            DialogResult confirmation = MessageBox.Show(
-                "Voulez-vous vraiment supprimer l'opération : " + nomOperation + " ? ",
-                "Confirmation de suppression",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-                );
-
-            if (confirmation != DialogResult.Yes)
-            {
-                return;
-                
-            }
-            chargementEnCours = true;
-
-            grdOperationCreaRecette.ClearSelection();
-            tableOperations.Rows.RemoveAt(index);
-
-            chargementEnCours = false;
-
-            ViderChampsOperation();
-
-            MessageBox.Show("Opération supprimée avec succés.");
-
-
-        }
+    }
+=======
     }
 
 
 
-
-
+>>>>>>> main
 }

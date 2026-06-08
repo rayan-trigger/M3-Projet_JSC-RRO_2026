@@ -1,6 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "tvoDsGRClYw=",
+<<<<<<< HEAD
+  "dgSpecHash": "LSNC+MSNaXY=",
+=======
+  "dgSpecHash": "HmgvLwQ8ptI=",
+>>>>>>> main
   "success": true,
   "projectFilePath": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\M3_RRO_JSC.csproj",
   "expectedPackageFiles": [

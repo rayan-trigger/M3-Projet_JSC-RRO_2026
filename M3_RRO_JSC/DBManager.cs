@@ -14,26 +14,64 @@ namespace M3_RRO_JSC
     /// </summary>
     public static class DBManager
     {
+        public static bool IsConnected =>
+            _connection != null && _connection.State == System.Data.ConnectionState.Open;
+
+
         // Instance unique de la connexion MySQL pour toute l'application
-        private static MySqlConnection _connection;
+        public static MySqlConnection _connection;
 
         // Objet de verrouillage pour rendre l'accès thread-safe (évite les accès concurrents)
         private static readonly object _lock = new object();
 
         // Chaîne de connexion mémorisée après l'appel à ConnectToDB
-        private static string _connectionString;
+        public static string _connectionString;
 
         /// <summary>
         /// Initialise la chaîne de connexion et tente une première ouverture.
         /// A appeler une seule fois au démarrage de l'application (ex: Form_Load).
         /// </summary>
-        public static void ConnectToDB(string databaseName, string userName, string password)
+        public static void ConnectToDB(string databaseIP, string databaseName, string userName, string password, string SQLPort)
         {
             _connectionString =
-                $"server=localhost;database={databaseName};user={userName};password={password};port=3306;SslMode=None;";
+                $"server={databaseIP};database={databaseName};user={userName};password={password};port={SQLPort};";
 
-            // S'assure que la connexion est ouverte dès le début
-            EnsureConnection();
+            try
+            {
+                // S'assure que la connexion est ouverte dès le début
+                EnsureConnection();
+                MessageBox.Show("Connexion réussie à la base de données !");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+            /// <summary>
+            /// Teste la connexion à la base de données avec les paramètres fournis.
+            /// Affiche un message de succès ou d'échec.
+            /// Retourne true si la connexion est réussie, false sinon.
+            /// Cette méthode est utilisée pour valider les paramètres avant de les enregistrer.
+            /// Elle n'affecte pas la connexion principale utilisée par l'application.
+            /// </summary>
+        public static bool TestConnexion(string databaseIP, string databaseName, string userName, string password, string SQLPort) {
+            _connectionString =
+                $"server={databaseIP};database={databaseName};user={userName};password={password};port={SQLPort};";
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(_connectionString))
+                {
+                    conn.Open();
+                    MessageBox.Show("Connexion réussie !");
+                    return conn.State == System.Data.ConnectionState.Open;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Connexion échouée ! {ex.Message}");
+                return false;
+            }
         }
 
         /// <summary>
@@ -81,13 +119,17 @@ namespace M3_RRO_JSC
         {
             lock (_lock)
             {
-                if (_connection != null)
+                if (IsConnected)
                 {
                     _connection.Close();
                     _connection.Dispose();
                     _connection = null;
                 }
-            }
+            }        }
+
+        public static string GetConnexionInfo()
+        {
+            return _connectionString;
         }
 
         // ================== MÉTHODES D'EXÉCUTION DE REQUÊTES ==================

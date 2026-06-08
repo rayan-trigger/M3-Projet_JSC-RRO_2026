@@ -39,7 +39,11 @@
             lblMotPassePara = new Label();
             lblUtilisateurPara = new Label();
             lblBasePara = new Label();
+<<<<<<< HEAD
+            btnConnexionDB = new Button();
+=======
             btnResetDB = new Button();
+>>>>>>> main
             SuspendLayout();
             // 
             // txtPortSqlPara
@@ -48,6 +52,11 @@
             txtPortSqlPara.Name = "txtPortSqlPara";
             txtPortSqlPara.Size = new Size(200, 27);
             txtPortSqlPara.TabIndex = 16;
+<<<<<<< HEAD
+            txtPortSqlPara.MouseEnter += txtPortSqlPara_MouseEnter;
+            txtPortSqlPara.MouseLeave += txtPortSqlPara_MouseLeave;
+=======
+>>>>>>> main
             // 
             // txtNomUtiliPara
             // 
@@ -55,6 +64,11 @@
             txtNomUtiliPara.Name = "txtNomUtiliPara";
             txtNomUtiliPara.Size = new Size(400, 27);
             txtNomUtiliPara.TabIndex = 15;
+<<<<<<< HEAD
+            txtNomUtiliPara.MouseEnter += txtNomUtiliPara_MouseEnter;
+            txtNomUtiliPara.MouseLeave += txtNomUtiliPara_MouseLeave;
+=======
+>>>>>>> main
             // 
             // txtMotPassePara
             // 
@@ -62,6 +76,11 @@
             txtMotPassePara.Name = "txtMotPassePara";
             txtMotPassePara.Size = new Size(400, 27);
             txtMotPassePara.TabIndex = 14;
+<<<<<<< HEAD
+            txtMotPassePara.MouseEnter += txtMotPassePara_MouseEnter;
+            txtMotPassePara.MouseLeave += txtMotPassePara_MouseLeave;
+=======
+>>>>>>> main
             // 
             // txtAdresseIpPara
             // 
@@ -69,6 +88,11 @@
             txtAdresseIpPara.Name = "txtAdresseIpPara";
             txtAdresseIpPara.Size = new Size(400, 27);
             txtAdresseIpPara.TabIndex = 13;
+<<<<<<< HEAD
+            txtAdresseIpPara.MouseEnter += txtAdresseIpPara_MouseEnter;
+            txtAdresseIpPara.MouseLeave += txtAdresseIpPara_MouseLeave;
+=======
+>>>>>>> main
             // 
             // txtNomBasePara
             // 
@@ -76,16 +100,31 @@
             txtNomBasePara.Name = "txtNomBasePara";
             txtNomBasePara.Size = new Size(400, 27);
             txtNomBasePara.TabIndex = 12;
+<<<<<<< HEAD
+            txtNomBasePara.MouseEnter += txtNomBasePara_MouseEnter;
+            txtNomBasePara.MouseLeave += txtNomBasePara_MouseLeave;
+=======
+>>>>>>> main
             // 
             // btnTesterPara
             // 
             btnTesterPara.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+<<<<<<< HEAD
+            btnTesterPara.Location = new Point(494, 488);
+=======
             btnTesterPara.Location = new Point(494, 486);
+>>>>>>> main
             btnTesterPara.Name = "btnTesterPara";
             btnTesterPara.Size = new Size(200, 60);
             btnTesterPara.TabIndex = 10;
             btnTesterPara.Text = "Tester";
             btnTesterPara.UseVisualStyleBackColor = true;
+<<<<<<< HEAD
+            btnTesterPara.Click += btnTesterPara_Click;
+            btnTesterPara.MouseEnter += btnTesterPara_MouseEnter;
+            btnTesterPara.MouseLeave += btnTesterPara_MouseLeave;
+=======
+>>>>>>> main
             // 
             // lblPortSqlPara
             // 
@@ -137,6 +176,20 @@
             lblBasePara.TabIndex = 5;
             lblBasePara.Text = "Nom de la base de donnée";
             // 
+<<<<<<< HEAD
+            // btnConnexionDB
+            // 
+            btnConnexionDB.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnConnexionDB.Location = new Point(738, 488);
+            btnConnexionDB.Name = "btnConnexionDB";
+            btnConnexionDB.Size = new Size(200, 60);
+            btnConnexionDB.TabIndex = 17;
+            btnConnexionDB.Text = "Connexion";
+            btnConnexionDB.UseVisualStyleBackColor = true;
+            btnConnexionDB.Click += btnConnexionDB_Click;
+            btnConnexionDB.MouseEnter += btnConnexionDB_MouseEnter;
+            btnConnexionDB.MouseLeave += btnConnexionDB_MouseLeave;
+=======
             // btnResetDB
             // 
             btnResetDB.Location = new Point(923, 602);
@@ -145,12 +198,17 @@
             btnResetDB.TabIndex = 17;
             btnResetDB.Text = "Reset de la base de donnée";
             btnResetDB.UseVisualStyleBackColor = true;
+>>>>>>> main
             // 
             // ParametreControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+<<<<<<< HEAD
+            Controls.Add(btnConnexionDB);
+=======
             Controls.Add(btnResetDB);
+>>>>>>> main
             Controls.Add(txtPortSqlPara);
             Controls.Add(btnTesterPara);
             Controls.Add(txtAdresseIpPara);
@@ -164,6 +222,10 @@
             Controls.Add(lblAdressePara);
             Name = "ParametreControl";
             Size = new Size(1210, 675);
+<<<<<<< HEAD
+            Load += ParametreControl_Load;
+=======
+>>>>>>> main
             ResumeLayout(false);
             PerformLayout();
         }
@@ -180,6 +242,10 @@
         private Label lblMotPassePara;
         private Label lblUtilisateurPara;
         private Label lblBasePara;
+<<<<<<< HEAD
+        private Button btnConnexionDB;
+=======
         private Button btnResetDB;
+>>>>>>> main
     }
 }

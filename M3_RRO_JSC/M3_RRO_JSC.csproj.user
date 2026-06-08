@@ -7,6 +7,8 @@
     <Compile Update="FrmCreationRecette.cs">
       <SubType>Form</SubType>
     </Compile>
+<<<<<<< HEAD
+=======
     <Compile Update="FrmCreationLot.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -28,6 +30,7 @@
     <Compile Update="TracabiliteControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+>>>>>>> main
     <Compile Update="ParametreControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

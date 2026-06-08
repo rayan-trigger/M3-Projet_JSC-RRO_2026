@@ -29,10 +29,21 @@
         private void InitializeComponent()
         {
             pnlEtatConnectionDb = new Panel();
+<<<<<<< HEAD
+            lblPort = new Label();
+            lblPortText = new Label();
+            lblIPDB = new Label();
+            lblUtilisateurText = new Label();
+            lblUtilisateur = new Label();
+            lblNomDb = new Label();
+            lblEtatConnection = new Label();
+            lblIPDBText = new Label();
+=======
             lblUtilisateur = new Label();
             lblNomDb = new Label();
             lblEtatConnection = new Label();
             lblUtilisateurText = new Label();
+>>>>>>> main
             lblNomDbText = new Label();
             lblEtatConnectionText = new Label();
             pnlEtatMachine = new Panel();
@@ -52,10 +63,21 @@
             // pnlEtatConnectionDb
             // 
             pnlEtatConnectionDb.BackColor = SystemColors.ActiveCaption;
+<<<<<<< HEAD
+            pnlEtatConnectionDb.Controls.Add(lblPort);
+            pnlEtatConnectionDb.Controls.Add(lblPortText);
+            pnlEtatConnectionDb.Controls.Add(lblIPDB);
+            pnlEtatConnectionDb.Controls.Add(lblUtilisateurText);
+            pnlEtatConnectionDb.Controls.Add(lblUtilisateur);
+            pnlEtatConnectionDb.Controls.Add(lblNomDb);
+            pnlEtatConnectionDb.Controls.Add(lblEtatConnection);
+            pnlEtatConnectionDb.Controls.Add(lblIPDBText);
+=======
             pnlEtatConnectionDb.Controls.Add(lblUtilisateur);
             pnlEtatConnectionDb.Controls.Add(lblNomDb);
             pnlEtatConnectionDb.Controls.Add(lblEtatConnection);
             pnlEtatConnectionDb.Controls.Add(lblUtilisateurText);
+>>>>>>> main
             pnlEtatConnectionDb.Controls.Add(lblNomDbText);
             pnlEtatConnectionDb.Controls.Add(lblEtatConnectionText);
             pnlEtatConnectionDb.Location = new Point(416, 212);
@@ -63,10 +85,55 @@
             pnlEtatConnectionDb.Size = new Size(794, 463);
             pnlEtatConnectionDb.TabIndex = 11;
             // 
+<<<<<<< HEAD
+            // lblPort
+            // 
+            lblPort.AutoSize = true;
+            lblPort.Location = new Point(501, 237);
+            lblPort.Name = "lblPort";
+            lblPort.Size = new Size(35, 20);
+            lblPort.TabIndex = 10;
+            lblPort.Text = "Port";
+            // 
+            // lblPortText
+            // 
+            lblPortText.AutoSize = true;
+            lblPortText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblPortText.Location = new Point(418, 229);
+            lblPortText.Name = "lblPortText";
+            lblPortText.Size = new Size(61, 28);
+            lblPortText.TabIndex = 9;
+            lblPortText.Text = "Port :";
+            // 
+            // lblIPDB
+            // 
+            lblIPDB.AutoSize = true;
+            lblIPDB.Location = new Point(501, 209);
+            lblIPDB.Name = "lblIPDB";
+            lblIPDB.Size = new Size(21, 20);
+            lblIPDB.TabIndex = 8;
+            lblIPDB.Text = "IP";
+            // 
+            // lblUtilisateurText
+            // 
+            lblUtilisateurText.AutoSize = true;
+            lblUtilisateurText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblUtilisateurText.Location = new Point(364, 173);
+            lblUtilisateurText.Name = "lblUtilisateurText";
+            lblUtilisateurText.Size = new Size(115, 28);
+            lblUtilisateurText.TabIndex = 7;
+            lblUtilisateurText.Text = "Utilisateur :";
+            // 
+            // lblUtilisateur
+            // 
+            lblUtilisateur.AutoSize = true;
+            lblUtilisateur.Location = new Point(501, 181);
+=======
             // lblUtilisateur
             // 
             lblUtilisateur.AutoSize = true;
             lblUtilisateur.Location = new Point(531, 219);
+>>>>>>> main
             lblUtilisateur.Name = "lblUtilisateur";
             lblUtilisateur.Size = new Size(76, 20);
             lblUtilisateur.TabIndex = 6;
@@ -75,7 +142,11 @@
             // lblNomDb
             // 
             lblNomDb.AutoSize = true;
+<<<<<<< HEAD
+            lblNomDb.Location = new Point(501, 153);
+=======
             lblNomDb.Location = new Point(531, 152);
+>>>>>>> main
             lblNomDb.Name = "lblNomDb";
             lblNomDb.Size = new Size(42, 20);
             lblNomDb.TabIndex = 5;
@@ -84,6 +155,25 @@
             // lblEtatConnection
             // 
             lblEtatConnection.AutoSize = true;
+<<<<<<< HEAD
+            lblEtatConnection.BackColor = Color.Red;
+            lblEtatConnection.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblEtatConnection.Location = new Point(359, 80);
+            lblEtatConnection.Name = "lblEtatConnection";
+            lblEtatConnection.Size = new Size(120, 28);
+            lblEtatConnection.TabIndex = 4;
+            lblEtatConnection.Text = "Déconnecté";
+            // 
+            // lblIPDBText
+            // 
+            lblIPDBText.AutoSize = true;
+            lblIPDBText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblIPDBText.Location = new Point(386, 201);
+            lblIPDBText.Name = "lblIPDBText";
+            lblIPDBText.Size = new Size(93, 28);
+            lblIPDBText.TabIndex = 3;
+            lblIPDBText.Text = "Serveur :";
+=======
             lblEtatConnection.BackColor = Color.Chartreuse;
             lblEtatConnection.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblEtatConnection.Location = new Point(364, 75);
@@ -101,6 +191,7 @@
             lblUtilisateurText.Size = new Size(115, 28);
             lblUtilisateurText.TabIndex = 3;
             lblUtilisateurText.Text = "Utilisateur :";
+>>>>>>> main
             // 
             // lblNomDbText
             // 
@@ -211,6 +302,10 @@
             Controls.Add(pnlLotProduction);
             Name = "AccueilControl";
             Size = new Size(1210, 675);
+<<<<<<< HEAD
+            Load += AccueilControl_Load;
+=======
+>>>>>>> main
             pnlEtatConnectionDb.ResumeLayout(false);
             pnlEtatConnectionDb.PerformLayout();
             pnlEtatMachine.ResumeLayout(false);
@@ -224,10 +319,14 @@
         #endregion
 
         private Panel pnlEtatConnectionDb;
+<<<<<<< HEAD
+        private Label lblIPDBText;
+=======
         private Label lblUtilisateur;
         private Label lblNomDb;
         private Label lblEtatConnection;
         private Label lblUtilisateurText;
+>>>>>>> main
         private Label lblNomDbText;
         private Label lblEtatConnectionText;
         private Panel pnlEtatMachine;
@@ -238,5 +337,15 @@
         private Panel pnlLotProduction;
         private DataGridView grdLotEnProd;
         private Label lblLotProduction;
+<<<<<<< HEAD
+        public Label lblNomDb;
+        public Label lblUtilisateur;
+        public Label lblEtatConnection;
+        private Label lblUtilisateurText;
+        public Label lblIPDB;
+        public Label lblPort;
+        private Label lblPortText;
+=======
+>>>>>>> main
     }
 }
