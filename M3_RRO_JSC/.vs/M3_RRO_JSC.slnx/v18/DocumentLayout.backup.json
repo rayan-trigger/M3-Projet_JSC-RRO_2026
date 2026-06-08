@@ -35,11 +35,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< Updated upstream
 <<<<<<< HEAD
           "SelectedChildIndex": 3,
 =======
           "SelectedChildIndex": 7,
 >>>>>>> main
+=======
+          "SelectedChildIndex": 4,
+>>>>>>> Stashed changes
           "Children": [
             {
               "$type": "Bookmark",
@@ -48,6 +52,10 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
@@ -70,7 +78,7 @@
               "RelativeDocumentMoniker": "DBManager.cs",
               "ToolTip": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\DBManager.cs",
               "RelativeToolTip": "DBManager.cs",
-              "ViewState": "AgIAAEcAAAAAAAAAAAAgwFYAAABJAAAAAAAAAA==",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAgwEsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-08T06:01:56.39Z",
 =======
