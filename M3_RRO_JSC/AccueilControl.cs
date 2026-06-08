@@ -15,35 +15,38 @@ namespace M3_RRO_JSC
         {
             InitializeComponent();
         }
-    }
+    
 
 
-    public void ChargerLotEnProduction()
+        public void ChargerLotEnProduction()
         {
-            
-                grdLotEnProd.Rows.Clear();
-                grdLotEnProd.Columns.Clear();
 
-                grdLotEnProd.Columns.Add("NomLot", " Nom du lot");
-                grdLotEnProd.Columns.Add("Quantite", "Quantité");
-                grdLotEnProd.Columns.Add("Recette", "Recette");
-                grdLotEnProd.Columns.Add("DateCreation", "Date de création");
+            grdLotEnProd.Rows.Clear();
+            grdLotEnProd.Columns.Clear();
 
-                if (LotData.LotEnProduction != null)
-                {
-                    Lot lot = LotData.LotEnProduction;
+            grdLotEnProd.Columns.Add("NomLot", " Nom du lot");
+            grdLotEnProd.Columns.Add("Quantite", "Quantité");
+            grdLotEnProd.Columns.Add("Recette", "Recette");
+            grdLotEnProd.Columns.Add("DateCreation", "Date de création");
 
-                    grdLotEnProd.Rows.Add(
-                        lot.NomLot,
-                        lot.QuantitePieces,
-                        lot.RecetteAssociee != ? lot.RecetteAssociee.NomRecette : "",
-                        lot.DateCreation.ToString("dd/MM/yyyy HH:mm")
-                        );
-                }
+            if (LotData.LotEnProduction != null)
+            {
+                Lot lot = LotData.LotEnProduction;
+
+                grdLotEnProd.Rows.Add(
+                    lot.NomLot,
+                    lot.QuantitePieces,
+                    lot.RecetteAssociee != null ? lot.RecetteAssociee.NomRecette : "",
+                    lot.DateCreation.ToString("dd/MM/yyyy HH:mm")
+                    );
+            }
 
 
             grdLotEnProd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            grd
+            grdLotEnProd.AllowUserToAddRows = false;
+            grdLotEnProd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grdLotEnProd.MultiSelect = false;
+        }
 
 
 
@@ -54,5 +57,5 @@ namespace M3_RRO_JSC
                 
             
 
-        }
+    }
 }
