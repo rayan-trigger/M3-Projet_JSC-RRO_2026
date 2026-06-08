@@ -125,8 +125,7 @@ namespace M3_RRO_JSC
                     _connection.Dispose();
                     _connection = null;
                 }
-            }
-        }
+            }        }
 
         public static string GetConnexionInfo()
         {
