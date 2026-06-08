@@ -87,6 +87,7 @@
             btnEnvoyerProductionLot.TabIndex = 3;
             btnEnvoyerProductionLot.Text = "Envoyer en production ";
             btnEnvoyerProductionLot.UseVisualStyleBackColor = true;
+            btnEnvoyerProductionLot.Click += btnEnvoyerProductionLot_Click;
             // 
             // btnSupprimerLot
             // 
@@ -97,6 +98,7 @@
             btnSupprimerLot.TabIndex = 2;
             btnSupprimerLot.Text = "Supprimer";
             btnSupprimerLot.UseVisualStyleBackColor = true;
+            btnSupprimerLot.Click += btnSupprimerLot_Click;
             // 
             // btnCreerLot
             // 

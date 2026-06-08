@@ -10,10 +10,14 @@ namespace M3_RRO_JSC
         public int QuantitePieces { get; set; }
         public Recette RecetteAssociee { get; set; }
         public DateTime DateCreation { get; set; }
+
     }
 
     public static class LotData
     {
         public static List<Lot> ListeLots { get; set; } = new List<Lot>();
+
+        public static Lot LotEnProduction { get; set; }
+
     }
 }

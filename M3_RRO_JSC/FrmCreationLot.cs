@@ -21,15 +21,16 @@ namespace M3_RRO_JSC
             InitializeComponent();
 
             ChargerComboRecettes();
+
         }
 
-        public FrmCreationLot( Lot lot)
+        public FrmCreationLot(Lot lot)
         {
-            InitializeComponent( );
+            InitializeComponent();
 
             ChargerComboRecettes();
 
-            lotAModifier = lot; 
+            lotAModifier = lot;
 
             modeModification = true;
 
@@ -56,7 +57,7 @@ namespace M3_RRO_JSC
 
                 else
                 {
-                    CreerNouveauLot(); 
+                    CreerNouveauLot();
 
                 }
 
@@ -78,7 +79,7 @@ namespace M3_RRO_JSC
 
             if (!int.TryParse(txtQuantiteCreaLot.Text, out int quantite) || quantite <= 0)
             {
-                MessageBox.Show("La quantité de pièces doit être un nombre supérieur à 0.");
+                MessageBox.Show ("La quantité de pièces doit être un nombre supérieur à 0.");
                 txtQuantiteCreaLot.Focus();
                 return false;
             }
@@ -102,14 +103,14 @@ namespace M3_RRO_JSC
 
         private void btnCreeCreaLot_Click(object sender, EventArgs e)
         {
-            
-                FrmCreationRecette popup = new FrmCreationRecette();
 
-                if (popup.ShowDialog() == DialogResult.OK)
-                {
-                    ChargerComboRecettes();
-                }
-            
+            FrmCreationRecette popup = new FrmCreationRecette();
+
+            if (popup.ShowDialog() == DialogResult.OK)
+            {
+                ChargerComboRecettes();
+            }
+
         }
 
         private void ChargerComboRecettes()
@@ -134,11 +135,11 @@ namespace M3_RRO_JSC
             txtQuantiteCreaLot.Text = lotAModifier.QuantitePieces.ToString();
 
             cboRecetteCreaLot.SelectedItem = lotAModifier.RecetteAssociee;
-            
-            
+
+
         }
 
-        
+
 
         private void CreerNouveauLot()
         {
@@ -168,6 +169,59 @@ namespace M3_RRO_JSC
             lotAModifier.QuantitePieces = int.Parse(txtQuantiteCreaLot.Text);
             lotAModifier.RecetteAssociee = recetteSelectionnee;
 
+        }
+
+        private void btnTerminerCreaLot_MouseEnter(object sender, EventArgs e)
+        {
+            btnTerminerCreaLot.Cursor = Cursors.Hand;
+        }
+
+        private void btnTerminerCreaLot_MouseLeave(object sender, EventArgs e)
+        {
+            btnTerminerCreaLot.Cursor = Cursors.Default;
+        }
+
+        private void btnAnnulerCreaLot_MouseEnter(object sender, EventArgs e)
+        {
+            btnAnnulerCreaLot.Cursor = Cursors.Hand;
+        }
+
+        private void btnAnnulerCreaLot_MouseLeave(object sender, EventArgs e)
+        {
+            btnAnnulerCreaLot.Cursor = Cursors.Default;
+
+        }
+
+        private void btnCreeCreaLot_MouseEnter(object sender, EventArgs e)
+        {
+            btnCreeCreaLot.Cursor = Cursors.Hand;
+
+        }
+
+        private void btnCreeCreaLot_MouseLeave(object sender, EventArgs e)
+        {
+            btnCreeCreaLot.Cursor = Cursors.Default;
+
+        }
+
+        private void btnVoirOperation_Click(object sender, EventArgs e)
+        {
+            if (cboRecetteCreaLot.SelectedIndex == -1)
+            {
+                MessageBox.Show("Veuillez selectionner une recette");
+                return;
+            }
+
+            Recette recetteSelectionnee = cboRecetteCreaLot.SelectedItem as Recette;
+
+            if (recetteSelectionnee == null)
+            {
+                MessageBox.Show("Recette invalide");
+                return;
+            }
+
+            FrmDetailsRecette popup = new FrmDetailsRecette(recetteSelectionnee);
+            popup.ShowDialog(this);
         }
     }
 

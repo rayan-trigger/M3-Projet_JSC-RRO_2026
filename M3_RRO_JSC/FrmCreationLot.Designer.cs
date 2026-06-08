@@ -113,6 +113,8 @@
             btnTerminerCreaLot.Text = "Terminer";
             btnTerminerCreaLot.UseVisualStyleBackColor = true;
             btnTerminerCreaLot.Click += btnTerminer_Click;
+            btnTerminerCreaLot.MouseEnter += btnTerminerCreaLot_MouseEnter;
+            btnTerminerCreaLot.MouseLeave += btnTerminerCreaLot_MouseLeave;
             // 
             // btnAnnulerCreaLot
             // 
@@ -124,6 +126,8 @@
             btnAnnulerCreaLot.Text = "Annuler";
             btnAnnulerCreaLot.UseVisualStyleBackColor = true;
             btnAnnulerCreaLot.Click += btnAnnulerCreaLot_Click;
+            btnAnnulerCreaLot.MouseEnter += btnAnnulerCreaLot_MouseEnter;
+            btnAnnulerCreaLot.MouseLeave += btnAnnulerCreaLot_MouseLeave;
             // 
             // btnCreeCreaLot
             // 
@@ -135,6 +139,8 @@
             btnCreeCreaLot.Text = "Créer Recette";
             btnCreeCreaLot.UseVisualStyleBackColor = true;
             btnCreeCreaLot.Click += btnCreeCreaLot_Click;
+            btnCreeCreaLot.MouseEnter += btnCreeCreaLot_MouseEnter;
+            btnCreeCreaLot.MouseLeave += btnCreeCreaLot_MouseLeave;
             // 
             // btnVoirOperation
             // 
@@ -144,6 +150,7 @@
             btnVoirOperation.TabIndex = 11;
             btnVoirOperation.Text = " ... ";
             btnVoirOperation.UseVisualStyleBackColor = true;
+            btnVoirOperation.Click += btnVoirOperation_Click;
             // 
             // FrmCreationLot
             // 

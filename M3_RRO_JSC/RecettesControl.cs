@@ -39,6 +39,9 @@ namespace M3_RRO_JSC
 
             grdRecette.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grdRecette.AllowUserToAddRows = false;
+            grdRecette.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grdRecette.MultiSelect = false; 
+
         }
         private void InitialiserDataGridAvecTable()
         {
@@ -94,6 +97,45 @@ namespace M3_RRO_JSC
             {
                 ChargerRecettes();
             }
+        }
+
+        private void btnSupprimerRecette_Click(object sender, EventArgs e)
+        {
+            if (grdRecette.CurrentRow == null)
+            {
+                MessageBox.Show("Veuillez sélectionner une recette à supprimer");
+                return;
+            }
+
+
+            int index = grdRecette.CurrentRow.Index;
+
+            if ( index < 0 || index >= RecetteData.ListeRecettes.Count)
+            {
+                MessageBox.Show("Selection invalide");
+                return;
+            }
+
+            Recette recetteSlectionne = RecetteData.ListeRecettes[index];
+
+            DialogResult confirmation = MessageBox.Show(
+                "Voulez-vous vraiment supprimer la recette : " + recetteSlectionne.NomRecette + "?",
+                "Confirmation de suppression",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+                );
+
+            if(confirmation !=DialogResult.Yes)
+            {
+                return;
+            }
+
+            RecetteData.ListeRecettes.RemoveAt(index);
+
+            ChargerRecettes();
+
+            MessageBox.Show("Recette supprimée avec succès.");
+
         }
     }
 
