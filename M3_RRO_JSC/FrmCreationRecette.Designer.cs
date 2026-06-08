@@ -169,6 +169,7 @@
             cboSensCreaRecette.Name = "cboSensCreaRecette";
             cboSensCreaRecette.Size = new Size(151, 28);
             cboSensCreaRecette.TabIndex = 34;
+            cboSensCreaRecette.SelectedIndexChanged += cboSensCreaRecette_SelectedIndexChanged;
             // 
             // cboPositionCreaRecette
             // 
@@ -177,6 +178,7 @@
             cboPositionCreaRecette.Name = "cboPositionCreaRecette";
             cboPositionCreaRecette.Size = new Size(151, 28);
             cboPositionCreaRecette.TabIndex = 35;
+            cboPositionCreaRecette.SelectedIndexChanged += cboPositionCreaRecette_SelectedIndexChanged;
             // 
             // cboTempsCreaRecette
             // 

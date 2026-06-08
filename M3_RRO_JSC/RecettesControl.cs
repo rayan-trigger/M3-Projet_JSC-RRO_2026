@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySqlX.XDevAPI.Relational;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,8 @@ namespace M3_RRO_JSC
         {
             InitializeComponent();
 
+            RecetteData.ListeRecettes = RecetteManager.GetAllRecette();
+
             ChargerRecettes();
 
 
@@ -24,13 +27,14 @@ namespace M3_RRO_JSC
             grdRecette.Rows.Clear();
             grdRecette.Columns.Clear();
 
-            grdRecette.Columns.Add("DateCreation", "Date de création");
+            grdRecette.Columns.Add("IdRecette", "ID");
+            grdRecette.Columns.Add("DateCraetion", "Date de création");
             grdRecette.Columns.Add("NomRecette", "Nom de la recette");
-            grdRecette.Columns.Add("NbOperations", "Nombre d'opérations");
 
             foreach (Recette recette in RecetteData.ListeRecettes)
             {
                 grdRecette.Rows.Add(
+                    recette.IdRecette,
                     recette.DateCreation.ToString("dd/MM/yyyy HH:mm"),
                     recette.NomRecette,
                     recette.Operations.Count
@@ -40,9 +44,57 @@ namespace M3_RRO_JSC
             grdRecette.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grdRecette.AllowUserToAddRows = false;
             grdRecette.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            grdRecette.MultiSelect = false; 
+            grdRecette.MultiSelect = false;
 
         }
+
+        private void ChargerOperationsRecetteSelectionner()
+
+        {
+            grdOperationRecette.Rows.Clear();
+            grdOperationRecette.Columns.Clear();
+
+            grdOperationRecette.Columns.Add("NomOperation", "NomOperation");
+            grdOperationRecette.Columns.Add("MoteurActif", "MoteurActif");
+            grdOperationRecette.Columns.Add("Sens", "Sens");
+            grdOperationRecette.Columns.Add("Position", "Position");
+            grdOperationRecette.Columns.Add("TempsAttente", "TempsAttente");
+            grdOperationRecette.Columns.Add("CycleVerin", "CycleVerin");
+            grdOperationRecette.Columns.Add("Quitance", "Quittance");
+
+            if (grdRecette.CurrentRow == null)
+            {
+                return;
+            }
+
+            int index = grdRecette.CurrentRow.Index;
+
+            if (index < 0 || index >= RecetteData.ListeRecettes.Count)
+            {
+                return;
+            }
+
+            Recette recetteSelectionnee = RecetteData.ListeRecettes[index];
+
+            foreach (OperationRecette operation in recetteSelectionnee.Operations)
+            {
+                grdOperationRecette.Rows.Add(
+                    operation.NomOperation,
+                    operation.MoteurActif ? "Oui" : "Non",
+                    operation.Sens,
+                    operation.Position,
+                    operation.TempsAttente,
+                    operation.CycleVerin ? "Oui" : "Non",
+                    operation.Quittance ? "Oui" : "Non"
+                       );
+                grdOperationRecette.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                grdOperationRecette.AllowUserToAddRows = false;
+                grdOperationRecette.ReadOnly = true;
+            }
+
+        }
+
+
         private void InitialiserDataGridAvecTable()
         {
             DataTable table = new DataTable();
@@ -110,7 +162,7 @@ namespace M3_RRO_JSC
 
             int index = grdRecette.CurrentRow.Index;
 
-            if ( index < 0 || index >= RecetteData.ListeRecettes.Count)
+            if (index < 0 || index >= RecetteData.ListeRecettes.Count)
             {
                 MessageBox.Show("Selection invalide");
                 return;
@@ -125,7 +177,7 @@ namespace M3_RRO_JSC
                 MessageBoxIcon.Warning
                 );
 
-            if(confirmation !=DialogResult.Yes)
+            if (confirmation != DialogResult.Yes)
             {
                 return;
             }
@@ -136,6 +188,17 @@ namespace M3_RRO_JSC
 
             MessageBox.Show("Recette supprimée avec succès.");
 
+        }
+
+
+
+
+      
+
+        private void grdRecette_SelectionChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("Sélection détectée");
+            ChargerOperationsRecetteSelectionner();
         }
     }
 

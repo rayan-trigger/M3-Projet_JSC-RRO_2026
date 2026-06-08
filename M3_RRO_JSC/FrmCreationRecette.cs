@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Google.Protobuf.WellKnownTypes;
+using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +9,8 @@ using System.Security.Authentication.ExtendedProtection;
 using System.Text;
 using System.Windows.Forms;
 using static M3_RRO_JSC.OperationRecette;
+using static System.Resources.ResXFileRef;
+using MySql.Data.MySqlClient;
 
 namespace M3_RRO_JSC
 {
@@ -29,7 +33,7 @@ namespace M3_RRO_JSC
 
         private int indexOperationSelectionnee = -1;
 
-        private bool chargementEnCours  = false;
+        private bool chargementEnCours = false;
 
         public FrmCreationRecette()
         {
@@ -58,19 +62,21 @@ namespace M3_RRO_JSC
             ChargerRecetteAModifier();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void InitialiserComboBox()
+        /*  Ici on utilise System.Enum pour être sûr d’utiliser la classe Enum officielle du framework C#.
+            Comme j’ai un fichier qui s’appelle Enums.cs, j’ai préféré écrire System.Enum pour éviter toute ambiguïté avec mes propres types.*/
         {
-            cboSensCreaRecette.Items.Clear();
-            cboSensCreaRecette.Items.Add("Horaire");
-            cboSensCreaRecette.Items.Add("Anti-horaire");
-            cboSensCreaRecette.SelectedIndex = -1;
+            cboSensCreaRecette.DataSource = null;
+            cboPositionCreaRecette.DataSource = null;
 
-            cboPositionCreaRecette.Items.Clear();
-            cboPositionCreaRecette.Items.Add("3h");
-            cboPositionCreaRecette.Items.Add("6h");
-            cboPositionCreaRecette.Items.Add("9h");
-            cboPositionCreaRecette.Items.Add("12h");
+            cboPositionCreaRecette.DataSource = System.Enum.GetValues(typeof(PosMoteur));
             cboPositionCreaRecette.SelectedIndex = -1;
+
+            cboSensCreaRecette.DataSource = System.Enum.GetValues(typeof(SensMoteur));
+            cboSensCreaRecette.SelectedIndex = -1;
 
             cboTempsCreaRecette.Items.Clear();
             cboTempsCreaRecette.Items.Add("0");
@@ -382,6 +388,33 @@ namespace M3_RRO_JSC
                 nouvelleRecette.Operations.Add(operation);
             }
 
+            long idRecette = RecetteManager.CreateRecette(nouvelleRecette.NomRecette);
+
+            if (idRecette == -1)
+            {
+                MessageBox.Show("la recette n'a pas pu être enregistrer dans la base de donnée.");
+                return;
+            }
+
+            int numeroOperation = 1;
+
+            foreach (OperationRecette operation in nouvelleRecette.Operations)
+            {
+                long idOperation = RecetteManager.CreateOperation(operation);
+
+                if (idOperation == -1)
+                {
+                    MessageBox.Show("Une opération n'a pas pu être enregistrée dans la base de données.");
+                    return;
+                }
+
+                RecetteManager.AjouterOperationRecette(idRecette, idOperation, numeroOperation);
+
+                numeroOperation++;
+
+            }
+
+
             RecetteData.ListeRecettes.Add(nouvelleRecette);
 
             MessageBox.Show("Recette enregistrée avec succès.");
@@ -463,5 +496,20 @@ namespace M3_RRO_JSC
             // Reuse existing loader by creating a DataGridViewCellEventArgs with the current row index.
             ChargerOperationSelectionnee(sender, new DataGridViewCellEventArgs(dgv.CurrentRow.Index, 0));
         }
+
+        private void cboSensCreaRecette_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboPositionCreaRecette_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
+
+
+
+
+
 }

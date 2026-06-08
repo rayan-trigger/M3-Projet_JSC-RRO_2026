@@ -57,9 +57,9 @@ namespace M3_RRO_JSC
                     operation.NomOperation,
                     operation.MoteurActif ? "Oui" : "Non",
                     operation.Sens,
-                     operation.Position,
-                       operation.TempsAttente,
-                   operation.CycleVerin ? "Oui" : "Non",
+                    operation.Position,
+                    operation.TempsAttente,
+                    operation.CycleVerin ? "Oui" : "Non",
                     operation.Quittance ? "Oui" : "Non"
                        );
 
@@ -75,6 +75,11 @@ namespace M3_RRO_JSC
             grdDetailsRecette.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grdDetailsRecette.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grdDetailsRecette.MultiSelect = false;
+
+            if (table.Rows.Count == 0)
+            {
+                MessageBox.Show("Aucune opération trouvée pour cette recette");
+            }
        }
     }
 }
