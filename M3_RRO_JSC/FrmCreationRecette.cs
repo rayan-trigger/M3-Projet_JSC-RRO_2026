@@ -89,12 +89,21 @@ namespace M3_RRO_JSC
 
             grdOperationCreaRecette.DataSource = tableOperations;
 
+<<<<<<< HEAD
             grdOperationCreaRecette.ReadOnly = true;
             grdOperationCreaRecette.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grdOperationCreaRecette.MultiSelect = false;
             grdOperationCreaRecette.AllowUserToAddRows = false;
             grdOperationCreaRecette.AllowUserToDeleteRows = false;
             grdOperationCreaRecette.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+=======
+            grdOperationCreaRecette.ReadOnly= true;
+            grdOperationCreaRecette.SelectionMode= DataGridViewSelectionMode.FullRowSelect;
+            grdOperationCreaRecette.MultiSelect= false;
+            grdOperationCreaRecette.AllowUserToAddRows = false;
+            grdOperationCreaRecette.AllowUserToDeleteRows = false;
+            grdOperationCreaRecette.AutoSizeColumnsMode=DataGridViewAutoSizeColumnsMode.Fill;
+>>>>>>> main
 
         }
 
@@ -341,13 +350,18 @@ namespace M3_RRO_JSC
 
         private void grdOperationCreaRecette_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+<<<<<<< HEAD
             if (e.RowIndex < 0)
+=======
+            if (e.RowIndex <  0)
+>>>>>>> main
             {
                 return;
             }
 
             indexOperationSelectionnee = e.RowIndex;
 
+<<<<<<< HEAD
             DataRow row = tableOperations.Rows[indexOperationSelectionnee];
             txtNomOperation.Text = row["Nom opération"].ToString();
             ckbMoteurCreaRecette.Checked = row["Moteur actif"].ToString() == "Oui";
@@ -356,13 +370,23 @@ namespace M3_RRO_JSC
             cboTempsCreaRecette.SelectedItem = row["Temps d'attente"].ToString();
             ckbCycleVerinCreaRecette.Checked = row["Cycle vérin"].ToString() == "Oui";
             ckbQuittanceCreaRecette.Checked = row["Quittance"].ToString() == "Oui";
+=======
+            DataRow
+>>>>>>> main
 
 
 
 
+<<<<<<< HEAD
         }
 
 
 
     }
+=======
+    }
+
+
+
+>>>>>>> main
 }

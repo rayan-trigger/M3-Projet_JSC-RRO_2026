@@ -24,6 +24,7 @@ C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-
 C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.TracabiliteControl.resources
 C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.FrmCreationLot.resources
 C:\Users\juju_\source\repos\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.FrmCreationRecette.resources
+<<<<<<< HEAD
 C:\Users\rondray\OneDrive - DIVTEC\Documents\GitHub\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.csproj.AssemblyReference.cache
 C:\Users\rondray\OneDrive - DIVTEC\Documents\GitHub\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC..resources
 C:\Users\rondray\OneDrive - DIVTEC\Documents\GitHub\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.AccueilControl.resources
@@ -64,3 +65,5 @@ C:\Users\rondray\OneDrive - DIVTEC\Documents\GitHub\M3-Projet_JSC-RRO_2026\M3_RR
 C:\Users\rondray\OneDrive - DIVTEC\Documents\GitHub\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.csproj.Up2Date
 C:\Users\rondray\OneDrive - DIVTEC\Documents\GitHub\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\M3_RRO_JSC.genruntimeconfig.cache
 C:\Users\rondray\OneDrive - DIVTEC\Documents\GitHub\M3-Projet_JSC-RRO_2026\M3_RRO_JSC\obj\Debug\net10.0-windows\ref\M3_RRO_JSC.dll
+=======
+>>>>>>> main

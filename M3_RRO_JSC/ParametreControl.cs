@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 ﻿using MySql.Data.MySqlClient;
 using static M3_RRO_JSC.DBManager;
 using System;
+=======
+﻿using System;
+>>>>>>> main
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +20,7 @@ namespace M3_RRO_JSC
         {
             InitializeComponent();
         }
+<<<<<<< HEAD
 
         private void btnTesterPara_Click(object sender, EventArgs e)
         {
@@ -123,5 +128,7 @@ namespace M3_RRO_JSC
                 ? "Se déconnecter"
                 : "Se connecter";
         }
+=======
+>>>>>>> main
     }
 }
