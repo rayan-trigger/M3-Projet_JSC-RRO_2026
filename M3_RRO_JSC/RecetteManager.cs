@@ -280,7 +280,7 @@ namespace M3_RRO_JSC
         }
 
         /// <summary>
-        /// Récupère toutes les opérations associées à une recette données, les opérations sont retrouvées grâce à la table " Contenir".
+        /// Récupère toutes les opérations associées à une recette données, les opérations sont retrouvées grâce à la table "Contenir".
         /// </summary>
         /// <param name="idRecette"> Identifiant de la recette dont on veur récupèrer les opérations </param>
         /// <returns> La liste des opérations liées à la recette.
@@ -330,11 +330,134 @@ namespace M3_RRO_JSC
 
             return operations;
         }
+        /// <summary>
+        /// Supprime une recette de la base de donnée avec ses liens dans la table "Contenir", mais ne supprime pas les opréations.
+        /// </summary>
+        /// <param name="idRecette"> Identifiant de la recette a supprimer. </param>
+        public static void DeleteRecette( int idRecette)
+        {
+            try
+            {
+                using (MySqlCommand cmd = GetConnection().CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM Contenir WHERE Id_Recette = @idRecette;";
+                    cmd.Parameters.AddWithValue("@idRecette", idRecette);
+                    cmd.ExecuteNonQuery(); 
+                }
+
+                using (MySqlCommand cmd = GetConnection().CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM Recette WHERE Id_Recette = @idRecette;";
+                    cmd.Parameters.AddWithValue("@idRecette", idRecette);
+                    cmd.ExecuteNonQuery();
+                }
+            } catch (MySqlException ex)
+            {
+                MessageBox.Show("Erreur suppresion recette : " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Vérifie si une recette est utilisée par un lot qui n'est plus modifiable. Une recette ne doit plus être modifiée si elle est associée à un lot 
+        /// déjà envoyé en production, terminé ou en erreur.
+        /// </summary>
+        /// <param name="idRecette"> Identifaint de la recette à vérifier.</param>
+        /// <returns> true si la recette est bloquée.
+        /// </returns> false si la recette peut encore être modifier ou supprimée
+        public static bool RecetteEstBloquee(int idRecette)
+        {
+            bool recetteBloquee = false;
+
+            try
+            {
+                using (MySqlCommand cmd = GetConnection().CreateCommand())
+                {
+                    cmd.CommandText = "SELECT COUNT(*) " +
+                                       "FROM lot l " +
+                                       "INNER JOIN Etat e ON l.Id_Etat = e.Id_Etat " +
+                                       "WHERE l.Id_Recette = @idRecette " +
+                                       "AND e.ETA_Libelle <> @etatAutorise;";
+                    cmd.Parameters.AddWithValue("@idRecette", idRecette);
+                    cmd.Parameters.AddWithValue("@etatAutorise", "En attente");
+
+                    //// ExecuteScalar récupère le résultat du COUNT(*), donc le nombre de lots bloquants trouvés
+                    int nombreLotsBloquant = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    // Si au moins un lot bloquant existe, la recette ne peut plus être modifiée
+                    recetteBloquee = nombreLotsBloquant > 0;
+                }
+            }
+            catch(MySqlException ex)
+            {
+                MessageBox.Show("Erreur vérification modification recette: " + ex.Message);
+
+                //// Par sécurité, si on n'arrive pas à vérifier, on bloque l'action.
+                recetteBloquee = true;
+            }
+
+            return recetteBloquee;
+
+        }
 
 
+        /// <summary>
+        /// Modifie une recette existante dans la base de donnée, Cette methode fonction supprime les anciens lien avec ses opérations, ajoute les nouvelles opérations 
+        ///  et recrée les liens avec la table "Contenir".
+        /// </summary>
+        /// <param name="recette">Recette contenant les nouvelles informations à enregistrer.</param>
+        public static void UpDateRecette(Recette recette)
+        {
+            try
+            {
+                //Modification du nom de la recette dans la table Recette.
+                using (MySqlCommand cmd = GetConnection().CreateCommand())
+                {
+                    cmd.CommandText = "UPDATE Recette SET REC_Nom = @nomRecette WHERE Id_Recette = @idRecette;";
 
 
+                    cmd.Parameters.AddWithValue("@nomRecette", recette.NomRecette);
+                    cmd.Parameters.AddWithValue("@idRecette", recette.IdRecette);
 
+                    cmd.ExecuteNonQuery();
+                }
+
+                //Suppression des anciens liens entre la recette et ses opérations.
+                using (MySqlCommand cmd = GetConnection().CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM Contenir WHERE Id_Recette = @idRecette;";
+
+
+                    cmd.Parameters.AddWithValue("@idRecette", recette.IdRecette);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                //Variable qui permet de garder l'ordre des opérations dans la recette.
+                int numeroOperation = 1;
+
+                //Parcours de toutes les opérations de la recette modifiée.
+                foreach (OperationRecette operation in recette.Operations)
+                {
+                    // Ajout de l'opération dans la table operation.
+                    long idOperation = CreateOperation(operation);
+
+                    if (idOperation != -1 )
+                    {
+                        //Ajout du lien dans la table Contenir.
+                        AjouterOperationRecette(recette.IdRecette, idOperation, numeroOperation);
+                        numeroOperation++;
+
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Erreur modification recette :\n\n"  + ex.ToString());
+
+            }
+        }
+
+              
 
 
 

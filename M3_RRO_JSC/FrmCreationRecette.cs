@@ -250,12 +250,21 @@ namespace M3_RRO_JSC
             }));
         }
 
+        /// <summary>
+        /// Enregistre la recette selon le mode actuel du formualire. si le formulaire est en mode modification, la recette existante est mise à jour, sinon 
+        /// une nouvelle recette est créée.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEnregistrerCreaRecette_Click(object sender, EventArgs e)
         {
+            //Vérifie que le nom de la recette est saisi et qu'au moins une opération a été ajoutée.
             if (!RecetteValide())
             {
                 return;
             }
+
+            //Si le formulaire a été ouvert pour modifier une recette existante,on met à jour cette recette.
 
             if (modeModification)
             {
@@ -263,6 +272,7 @@ namespace M3_RRO_JSC
             }
             else
             {
+                // Sinon le formulaire est en mode création 
                 CreerNouvelleRecette();
             }
 
@@ -295,20 +305,49 @@ namespace M3_RRO_JSC
             this.Close();
         }
 
-        // Handler to delete the selected operation (added to fix missing event method)
+        /// <summary>
+        /// Supprime l'opération sélectionnée dans le tableau temporaire des opérations, mais on ne supprime rien de la base de donnée tant que l'utilisateur n'a pas appuyer sur le 
+        /// boutons enregistrer modification car s'il entre 2 il clic sur annuler on aurait supprimer des donnée qu'on ne voulait pas. 
+        /// Pendant la suppression, on bloque le chargement automatique de la sélection pour évité de lire une ligne qui vient d'être supprimé.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSupprimerCreaRecette_Click(object sender, EventArgs e)
         {
+            // Vérifie qu'une opération est bien sélectionnée dans le tableau.
             if (indexOperationSelectionnee < 0 || indexOperationSelectionnee >= tableOperations.Rows.Count)
             {
                 MessageBox.Show("Veuillez sélectionner une opération à supprimer.");
                 return;
             }
 
-            var result = MessageBox.Show("Supprimer l'opération sélectionnée ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            DialogResult result = MessageBox.Show(
+                " Supprimer l'opération sélectionnée ?",
+                "Confirmation",
+                 MessageBoxButtons.YesNo,
+                 MessageBoxIcon.Question
+               );
+
+            if (result != DialogResult.Yes)
             {
+                return;
+            }
+            try
+            {
+                // Bloque temporairement le chargement automatique de la sélection. 
+                chargementEnCours = true;
+
+                // Supprime l'opération dans le tableau temporaire.
                 tableOperations.Rows.RemoveAt(indexOperationSelectionnee);
+
+                indexOperationSelectionnee = -1;
+
                 ViderChampsOperation();
+            }
+            finally
+            {
+                // Réactiuve toujours le chargement automatique même si une erreur survient.
+                chargementEnCours = false;
             }
         }
 
@@ -430,55 +469,90 @@ namespace M3_RRO_JSC
         /// s'affiche à la fin de l'opération.</remarks>
         private void ModifierRecetteExistante()
         {
+            // Modification du nom de la recette avec le texte saisi.
             recetteAModifier.NomRecette = txtNomCreaLot.Text.Trim();
 
+            //On vide l'ancienne liste d'opérations de l'objet recette.
             recetteAModifier.Operations.Clear();
 
+            //On recrée la liste des opérations à partir du tableau du formulaire.
             foreach (DataRow row in tableOperations.Rows)
             {
                 OperationRecette operation = CreerOperationDepuisLigne(row);
                 recetteAModifier.Operations.Add(operation);
             }
 
+            //Enregistrement des modifications dans la base de données.
+            RecetteManager.UpDateRecette(recetteAModifier);
+
             MessageBox.Show("Recette modifiée avec succès.");
         }
 
-
-
-        private void ChargerOperationSelectionnee(object sender, DataGridViewCellEventArgs e)
-
+        /// <summary>
+        /// Charge dans les champs du formulaire les informations de l'opération sélectionnée dans le tableau opération.
+        /// Cette methode permet de modifier une opération existante, ci celle-ci est selctionnée les texteBox, Combox et checkBocx du formulaire se remplissent
+        /// </summary>
+        private void ChargerOperationSelectionnee()
         {
-            if (e == null || e.RowIndex < 0)
+            if (grdOperationCreaRecette.CurrentRow == null)
             {
                 return;
             }
 
-            int index = e.RowIndex;
+            //Récupère l'index de la ligne sélectionnée dans le datagrid.
+            int index = grdOperationCreaRecette.CurrentRow.Index;
 
+            // Vérifie que l'index correspond bien à une ligne existante dans le Datatable.
             if (index < 0 || index >= tableOperations.Rows.Count)
             {
                 return;
             }
 
-            DataRow row = tableOperations.Rows[index];
+            indexOperationSelectionnee = index;
 
+            DataRow row = tableOperations.Rows[indexOperationSelectionnee];
+
+            // évite de lire une ligne qui vient d'être supprimée (difficile a faire) .
             if (row.RowState == DataRowState.Deleted || row.RowState == DataRowState.Detached)
             {
                 return;
             }
 
             txtNomOperation.Text = row[COL_NOM_OPERATION].ToString();
+
             ckbMoteurCreaRecette.Checked = row[COL_MOTEUR_ACTIF].ToString() == "Oui";
-            cboSensCreaRecette.SelectedItem = row[COL_SENS].ToString();
-            cboPositionCreaRecette.SelectedItem = row[COL_POSITION].ToString();
-            cboTempsCreaRecette.SelectedItem = row[COL_TEMPS_ATTENTE].ToString();
             ckbCycleVerinCreaRecette.Checked = row[COL_CYCLE_VERIN].ToString() == "Oui";
             ckbQuittanceCreaRecette.Checked = row[COL_QUITTANCE].ToString() == "Oui";
 
-            indexOperationSelectionnee = index;
+            string sensTexte = row[COL_SENS].ToString();
+            string positionTexte = row[COL_POSITION].ToString();
+
+            if (System.Enum.TryParse(sensTexte, out SensMoteur sens))
+            {
+                cboSensCreaRecette.SelectedItem = sens;
+            }
+            else
+            {
+                cboSensCreaRecette.SelectedIndex = -1;
+            }
+
+            if (System.Enum.TryParse(positionTexte, out PosMoteur position))
+            {
+                cboPositionCreaRecette.SelectedItem = position;
+            }
+            else
+            {
+                cboPositionCreaRecette.SelectedIndex = -1;
+            }
+
+            cboTempsCreaRecette.SelectedItem = row[COL_TEMPS_ATTENTE].ToString();
+
+            btnValiderCreaRecette.Text = "Modifier l'opération";
         }
 
-        // Handle the DataGridView.SelectionChanged event wired in the designer.
+        
+
+        
         private void grdOperationCreaRecette_SelectionChanged(object sender, EventArgs e)
         {
             if (chargementEnCours)
@@ -492,9 +566,7 @@ namespace M3_RRO_JSC
                 indexOperationSelectionnee = -1;
                 return;
             }
-
-            // Reuse existing loader by creating a DataGridViewCellEventArgs with the current row index.
-            ChargerOperationSelectionnee(sender, new DataGridViewCellEventArgs(dgv.CurrentRow.Index, 0));
+            ChargerOperationSelectionnee();
         }
 
         private void cboSensCreaRecette_SelectedIndexChanged(object sender, EventArgs e)

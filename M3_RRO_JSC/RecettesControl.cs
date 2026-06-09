@@ -143,14 +143,33 @@ namespace M3_RRO_JSC
 
             Recette recetteSelectionnee = RecetteData.ListeRecettes[index];
 
+            if (RecetteManager.RecetteEstBloquee(recetteSelectionnee.IdRecette))
+            {
+                MessageBox.Show("Cette recette ne peut plus être modifié car elle est utlilisé par un lot envoyé en prodcution. ",
+                                "Modification impossible",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning
+                                );
+                return;
+                    
+            }
+
             FrmCreationRecette popup = new FrmCreationRecette(recetteSelectionnee);
 
             if (popup.ShowDialog() == DialogResult.OK)
             {
+                RecetteData.ListeRecettes = RecetteManager.GetAllRecette();
                 ChargerRecettes();
+                MessageBox.Show("Recette modifiée avec succès.");
             }
         }
 
+        /// <summary>
+        /// Supprime la recette sélectionnée dans le tableau des recettes, cette méthode vérifie d'abord qu'une ligne a été selectionnée puis demande a l'utilisateur avant de supprimer la recette.
+        /// Aprés la suppresssion, la liste des recettes est rechargés depuis la base de donnée et le tableau est mis a jour dans l'application.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSupprimerRecette_Click(object sender, EventArgs e)
         {
             if (grdRecette.CurrentRow == null)
@@ -168,10 +187,20 @@ namespace M3_RRO_JSC
                 return;
             }
 
-            Recette recetteSlectionne = RecetteData.ListeRecettes[index];
+            Recette recetteSelectionne = RecetteData.ListeRecettes[index];
 
-            DialogResult confirmation = MessageBox.Show(
-                "Voulez-vous vraiment supprimer la recette : " + recetteSlectionne.NomRecette + "?",
+            if (RecetteManager.RecetteEstBloquee(recetteSelectionne.IdRecette))
+            {
+                MessageBox.Show("Cette recette ne peut plus être supprimé car elle est utlilisé par un lot envoyé en prodcution. ",
+                                "Suppression impossible",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning
+                                );
+                return;
+
+            }
+                DialogResult confirmation = MessageBox.Show(
+                "Voulez-vous vraiment supprimer la recette : " + recetteSelectionne.NomRecette + "?",
                 "Confirmation de suppression",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning
@@ -182,18 +211,19 @@ namespace M3_RRO_JSC
                 return;
             }
 
-            RecetteData.ListeRecettes.RemoveAt(index);
+            RecetteManager.DeleteRecette(recetteSelectionne.IdRecette);
 
+            RecetteData.ListeRecettes = RecetteManager.GetAllRecette();
             ChargerRecettes();
-
             MessageBox.Show("Recette supprimée avec succès.");
+
 
         }
 
 
 
 
-      
+
 
         private void grdRecette_SelectionChanged(object sender, EventArgs e)
         {
