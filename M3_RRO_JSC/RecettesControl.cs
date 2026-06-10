@@ -55,7 +55,6 @@ namespace M3_RRO_JSC
             grdOperationRecette.Columns.Clear();
 
             grdOperationRecette.Columns.Add("NomOperation", "NomOperation");
-            grdOperationRecette.Columns.Add("MoteurActif", "MoteurActif");
             grdOperationRecette.Columns.Add("Sens", "Sens");
             grdOperationRecette.Columns.Add("Position", "Position");
             grdOperationRecette.Columns.Add("TempsAttente", "TempsAttente");
@@ -80,7 +79,6 @@ namespace M3_RRO_JSC
             {
                 grdOperationRecette.Rows.Add(
                     operation.NomOperation,
-                    operation.MoteurActif ? "Oui" : "Non",
                     operation.Sens,
                     operation.Position,
                     operation.TempsAttente,
@@ -227,7 +225,7 @@ namespace M3_RRO_JSC
 
         private void grdRecette_SelectionChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("Sélection détectée");
+           
             ChargerOperationsRecetteSelectionner();
         }
     }

@@ -14,27 +14,45 @@ namespace M3_RRO_JSC
     internal class RecetteManager
     {
 
+
+        // 
         /// <summary>
-        /// Cette méthode reçoit le texte sélectionné dans le ComboBox.Elle essaie de le convertir en valeur de l’enum PosMoteur.
-        /// Par exemple : C’est 2 qui est enregistré dans la colonne OPE_PositionMoteur si on choisit la position 3H.
+        /// Cette méthode convertit le texte choisi par l’utilisateur en valeur numérique pour la base de données.
+        /// Convertit le texte de la position moteur sélectionnée dans l'application en valeur numérique correspondante a l'enum PosMoteur.
         /// </summary>
-        /// <param name="positionTexte"></param>
-        /// <returns> Si la conversion fonctionne, on retourne la valeur numérique de cette position pour l’enregistrer dans la base.
-        /// </returns> Si la conversion échoue, on retourne 0, qui correspond à Inactif.
+        /// <param name="positionTexte"> Texte récupéré depuis le ComboBox ouu depuis le tableau.
+        /// </param>
+        /// <returns>La valeur numérique correspondante à la position moteur 
+        /// </returns> 0 si aucune posiiton n'est selectionné ou si la conversion échoue.
         public static int ConvertirPositionMoteur(String positionTexte)
         {
-            if (System.Enum.TryParse(positionTexte, out PosMoteur position))
-
-            {
-                return (int)position;
-            }
-
-            else
+            if (string.IsNullOrWhiteSpace(positionTexte))
             {
                 return 0;
-
             }
 
+            switch(positionTexte)
+            {
+                case "12h":
+                    return (int)PosMoteur.Midi;
+
+                case "3h":
+                    return (int)PosMoteur.TroisHeures;
+
+                case "6h":
+                    return (int)PosMoteur.SixHeures;
+
+                case "9h":
+                    return (int)PosMoteur.NeufHeures;
+
+                default:
+                    if(System.Enum.TryParse(positionTexte, out PosMoteur position))
+                    {
+                        return (int)position;
+                    }
+
+                    return 0;
+            }
         }
 
 
@@ -85,25 +103,39 @@ namespace M3_RRO_JSC
                 return 0;
             }
         }
+
+
         /// <summary>
-        /// Convertit la position du moteur enregistrés dans la base de donnée en texte utilisable dans le tableau DataGrid
+        /// Cette methode convertit la valeur numérique de la base en texte lisible pour l’affichage.
+        /// Convertit la valeur numérique de la position moteur enregistré dans la base de donnée en texte lisible pour l'utilisateur.
         /// </summary>
-        /// <param name="positionValeur">Valeur numérique stockée dans la base de donnée</param>
-        /// <returns> Le nom de la position moteur correspondante 
-        /// </returns> Positon inactive, pas de position choisit
+        /// <param name="positionValeur"> Valeur numérique récupérée depuis la base de donnée.</param>
+        /// <returns> Le texte correspondant à la position moteur 
+        /// </returns> Une chaîne vide si la valeur ne correspond à aucune position connue.
         public static string ConvertirPositionMoteurEnTexte( int positionValeur)
         {
-            if (System.Enum.IsDefined(typeof(PosMoteur),positionValeur))
-            {
-                return ((PosMoteur)positionValeur).ToString();
-            }
-            else
-            {
-                return PosMoteur.Inactif.ToString();
+            switch ((PosMoteur)positionValeur)
+            { 
+
+                case PosMoteur.Midi:
+                return "12h";
+
+                case PosMoteur.TroisHeures:
+                return "3h";
+
+                case PosMoteur.SixHeures:
+                return "6h";
+
+                case PosMoteur.NeufHeures:
+                return "9h";
+
+                default:
+                return "";
+
             }
 
         }
-
+           
         /// <summary>
         /// Convertit le sens moteur enregistré en base 
         /// </summary>

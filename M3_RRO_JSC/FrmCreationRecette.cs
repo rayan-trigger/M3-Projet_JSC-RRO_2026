@@ -18,7 +18,6 @@ namespace M3_RRO_JSC
 
     {
         private const string COL_NOM_OPERATION = "Nom opération";
-        private const string COL_MOTEUR_ACTIF = "Moteur actif";
         private const string COL_SENS = "Sens";
         private const string COL_POSITION = "Position";
         private const string COL_TEMPS_ATTENTE = "Temps d'attente";
@@ -41,6 +40,8 @@ namespace M3_RRO_JSC
 
             InitialiserComboBox();
             InitialiserTableOperations();
+            ActivationMoteur();
+            ActivationCycleVerin();
 
             this.Text = "Création de recette";
             btnEnregistrerCreaRecette.Text = "Enregistrer la recette";
@@ -63,20 +64,25 @@ namespace M3_RRO_JSC
         }
 
         /// <summary>
-        /// 
+        /// Initialise les comboBox du formulaire création recette.
         /// </summary>
         private void InitialiserComboBox()
-        /*  Ici on utilise System.Enum pour être sûr d’utiliser la classe Enum officielle du framework C#.
-            Comme j’ai un fichier qui s’appelle Enums.cs, j’ai préféré écrire System.Enum pour éviter toute ambiguïté avec mes propres types.*/
+
         {
             cboSensCreaRecette.DataSource = null;
-            cboPositionCreaRecette.DataSource = null;
+            cboSensCreaRecette.Items.Clear();
+            cboSensCreaRecette.Items.Add("Horaire");
+            cboSensCreaRecette.Items.Add("AntiHoraire");
+            cboSensCreaRecette.SelectedIndex = -1;
 
-            cboPositionCreaRecette.DataSource = System.Enum.GetValues(typeof(PosMoteur));
+            cboPositionCreaRecette.DataSource = null;
+            cboPositionCreaRecette.Items.Clear();
+            cboPositionCreaRecette.Items.Add("3h");
+            cboPositionCreaRecette.Items.Add("6h");
+            cboPositionCreaRecette.Items.Add("9h");
+            cboPositionCreaRecette.Items.Add("12h");
             cboPositionCreaRecette.SelectedIndex = -1;
 
-            cboSensCreaRecette.DataSource = System.Enum.GetValues(typeof(SensMoteur));
-            cboSensCreaRecette.SelectedIndex = -1;
 
             cboTempsCreaRecette.Items.Clear();
             cboTempsCreaRecette.Items.Add("0");
@@ -98,7 +104,6 @@ namespace M3_RRO_JSC
             tableOperations = new DataTable();
 
             tableOperations.Columns.Add(COL_NOM_OPERATION);
-            tableOperations.Columns.Add(COL_MOTEUR_ACTIF);
             tableOperations.Columns.Add(COL_SENS);
             tableOperations.Columns.Add(COL_POSITION);
             tableOperations.Columns.Add(COL_TEMPS_ATTENTE);
@@ -133,13 +138,19 @@ namespace M3_RRO_JSC
                 position = cboPositionCreaRecette.SelectedItem.ToString();
             }
 
-            string temps = cboTempsCreaRecette.SelectedItem.ToString();
+            string temps = "0";
+
+            if (!ckbCycleVerinCreaRecette.Checked)
+            {
+                temps = cboTempsCreaRecette.SelectedItem.ToString();
+
+            }
+
 
             if (indexOperationSelectionnee == -1)
             {
                 tableOperations.Rows.Add(
                 txtNomOperation.Text.Trim(),
-                ckbMoteurCreaRecette.Checked ? "Oui" : "Non",
                 sens,
                 position,
                 temps,
@@ -153,7 +164,6 @@ namespace M3_RRO_JSC
                 DataRow row = tableOperations.Rows[indexOperationSelectionnee];
 
                 row[COL_NOM_OPERATION] = txtNomOperation.Text.Trim();
-                row[COL_MOTEUR_ACTIF] = ckbMoteurCreaRecette.Checked ? "Oui" : "Non";
                 row[COL_SENS] = sens;
                 row[COL_POSITION] = position;
                 row[COL_TEMPS_ATTENTE] = temps;
@@ -176,13 +186,6 @@ namespace M3_RRO_JSC
                 return false;
             }
 
-            if (!ckbMoteurCreaRecette.Checked && !ckbCycleVerinCreaRecette.Checked)
-            {
-                MessageBox.Show("Veuillez sélectionner au moins une action : moteur actif ou cycle vérin.");
-                ckbMoteurCreaRecette.Focus();
-                return false;
-            }
-
             if (ckbMoteurCreaRecette.Checked)
             {
                 if (cboSensCreaRecette.SelectedIndex == -1)
@@ -200,7 +203,7 @@ namespace M3_RRO_JSC
                 }
             }
 
-            if (cboTempsCreaRecette.SelectedIndex == -1)
+            if (!ckbCycleVerinCreaRecette.Checked && cboTempsCreaRecette.SelectedIndex == -1)
             {
                 MessageBox.Show("Veuillez sélectionner le temps d'attente.");
                 cboTempsCreaRecette.Focus();
@@ -372,7 +375,6 @@ namespace M3_RRO_JSC
             {
                 tableOperations.Rows.Add(
                     operation.NomOperation,
-                    operation.MoteurActif ? "Oui" : "Non",
                     operation.Sens,
                     operation.Position,
                     operation.TempsAttente,
@@ -396,7 +398,6 @@ namespace M3_RRO_JSC
             OperationRecette operation = new OperationRecette();
 
             operation.NomOperation = row[COL_NOM_OPERATION].ToString();
-            operation.MoteurActif = row[COL_MOTEUR_ACTIF].ToString() == "Oui";
             operation.Sens = row[COL_SENS].ToString();
             operation.Position = row[COL_POSITION].ToString();
             operation.TempsAttente = row[COL_TEMPS_ATTENTE].ToString();
@@ -459,6 +460,8 @@ namespace M3_RRO_JSC
             MessageBox.Show("Recette enregistrée avec succès.");
         }
 
+
+
         /// <summary>
         /// Met à jour les informations de la recette existante avec les valeurs saisies par l'utilisateur et remplace
         /// la liste des opérations associées.
@@ -520,39 +523,23 @@ namespace M3_RRO_JSC
 
             txtNomOperation.Text = row[COL_NOM_OPERATION].ToString();
 
-            ckbMoteurCreaRecette.Checked = row[COL_MOTEUR_ACTIF].ToString() == "Oui";
             ckbCycleVerinCreaRecette.Checked = row[COL_CYCLE_VERIN].ToString() == "Oui";
             ckbQuittanceCreaRecette.Checked = row[COL_QUITTANCE].ToString() == "Oui";
 
             string sensTexte = row[COL_SENS].ToString();
             string positionTexte = row[COL_POSITION].ToString();
 
-            if (System.Enum.TryParse(sensTexte, out SensMoteur sens))
-            {
-                cboSensCreaRecette.SelectedItem = sens;
-            }
-            else
-            {
-                cboSensCreaRecette.SelectedIndex = -1;
-            }
-
-            if (System.Enum.TryParse(positionTexte, out PosMoteur position))
-            {
-                cboPositionCreaRecette.SelectedItem = position;
-            }
-            else
-            {
-                cboPositionCreaRecette.SelectedIndex = -1;
-            }
+            cboSensCreaRecette.SelectedItem = sensTexte;
+            cboPositionCreaRecette.SelectedItem = positionTexte;
 
             cboTempsCreaRecette.SelectedItem = row[COL_TEMPS_ATTENTE].ToString();
 
             btnValiderCreaRecette.Text = "Modifier l'opération";
         }
 
-        
 
-        
+
+
         private void grdOperationCreaRecette_SelectionChanged(object sender, EventArgs e)
         {
             if (chargementEnCours)
@@ -569,14 +556,47 @@ namespace M3_RRO_JSC
             ChargerOperationSelectionnee();
         }
 
-        private void cboSensCreaRecette_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
+        /// <summary>
+        /// Active ou désactive les comboBox du moteur selon si la checkBox moteur est cocher ou non.
+        /// Si le moteur n'est pas actif les comboBox sont vidés et desactivés
+        /// </summary>
+        private void ActivationMoteur()
+        {
+            bool moteurActif = ckbMoteurCreaRecette.Checked;
+
+            cboSensCreaRecette.Enabled = moteurActif;
+            cboPositionCreaRecette.Enabled = moteurActif;
+
+            if (!moteurActif)
+            {
+                cboSensCreaRecette.SelectedIndex = -1;
+                cboSensCreaRecette.SelectedIndex = -1;
+            }
         }
 
-        private void cboPositionCreaRecette_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
+        private void ActivationCycleVerin()
+        {
+            if (ckbCycleVerinCreaRecette.Checked)
+            {
+                cboTempsCreaRecette.SelectedItem = "0";
+                cboTempsCreaRecette.Enabled = false;
+            }
+            else
+            {
+                cboTempsCreaRecette.Enabled = true;
+            }
+        }
+
+        private void ckbMoteurCreaRecette_CheckedChanged(object sender, EventArgs e)
+        {
+            ActivationMoteur();
+        }
+
+        private void ckbCycleVerinCreaRecette_CheckedChanged(object sender, EventArgs e)
+        {
+            ActivationCycleVerin();
         }
     }
 
