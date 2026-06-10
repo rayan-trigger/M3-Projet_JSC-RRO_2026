@@ -72,3 +72,10 @@ bin/**
 # Backup files
 *.bak
 *.backup
+
+# cache
+*.cs
+*.cache
+*.editorconfig
+*.json
+*.props
