@@ -12,7 +12,6 @@ namespace M3_RRO_JSC
     {
 
         private const string COL_NOM_OPERATION = "Nom opération";
-        private const string COL_MOTEUR_ACTIF = "Moteur actif";
         private const string COL_SENS = "Sens";
         private const string COL_POSITION = "Position";
         private const string COL_TEMPS_ATTENTE = "Temps d'attente";
@@ -40,7 +39,6 @@ namespace M3_RRO_JSC
             DataTable table = new DataTable();
 
             table.Columns.Add(COL_NOM_OPERATION);
-            table.Columns.Add (COL_MOTEUR_ACTIF);
             table.Columns.Add (COL_SENS);
             table.Columns.Add (COL_POSITION);
             table.Columns.Add (COL_TEMPS_ATTENTE);
@@ -55,11 +53,10 @@ namespace M3_RRO_JSC
                 {
                     table.Rows.Add(
                     operation.NomOperation,
-                    operation.MoteurActif ? "Oui" : "Non",
                     operation.Sens,
-                     operation.Position,
-                       operation.TempsAttente,
-                   operation.CycleVerin ? "Oui" : "Non",
+                    operation.Position,
+                    operation.TempsAttente,
+                    operation.CycleVerin ? "Oui" : "Non",
                     operation.Quittance ? "Oui" : "Non"
                        );
 
@@ -75,6 +72,11 @@ namespace M3_RRO_JSC
             grdDetailsRecette.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grdDetailsRecette.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grdDetailsRecette.MultiSelect = false;
+
+            if (table.Rows.Count == 0)
+            {
+                MessageBox.Show("Aucune opération trouvée pour cette recette");
+            }
        }
     }
 }

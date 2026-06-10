@@ -115,8 +115,9 @@ namespace M3_RRO_JSC
 
         private void ChargerComboRecettes()
         {
-            cboRecetteCreaLot.DataSource = null;
+            RecetteData.ListeRecettes = RecetteManager.GetAllRecette();
 
+            cboRecetteCreaLot.DataSource = null;
             cboRecetteCreaLot.DataSource = RecetteData.ListeRecettes.ToList();
             cboRecetteCreaLot.DisplayMember = "NomRecette";
             cboRecetteCreaLot.ValueMember = "NomRecette";

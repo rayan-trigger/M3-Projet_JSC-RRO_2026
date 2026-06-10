@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySqlX.XDevAPI.Relational;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,8 @@ namespace M3_RRO_JSC
         {
             InitializeComponent();
 
+            RecetteData.ListeRecettes = RecetteManager.GetAllRecette();
+
             ChargerRecettes();
 
 
@@ -24,13 +27,14 @@ namespace M3_RRO_JSC
             grdRecette.Rows.Clear();
             grdRecette.Columns.Clear();
 
-            grdRecette.Columns.Add("DateCreation", "Date de création");
+            grdRecette.Columns.Add("IdRecette", "ID");
+            grdRecette.Columns.Add("DateCraetion", "Date de création");
             grdRecette.Columns.Add("NomRecette", "Nom de la recette");
-            grdRecette.Columns.Add("NbOperations", "Nombre d'opérations");
 
             foreach (Recette recette in RecetteData.ListeRecettes)
             {
                 grdRecette.Rows.Add(
+                    recette.IdRecette,
                     recette.DateCreation.ToString("dd/MM/yyyy HH:mm"),
                     recette.NomRecette,
                     recette.Operations.Count
@@ -40,9 +44,55 @@ namespace M3_RRO_JSC
             grdRecette.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grdRecette.AllowUserToAddRows = false;
             grdRecette.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            grdRecette.MultiSelect = false; 
+            grdRecette.MultiSelect = false;
 
         }
+
+        private void ChargerOperationsRecetteSelectionner()
+
+        {
+            grdOperationRecette.Rows.Clear();
+            grdOperationRecette.Columns.Clear();
+
+            grdOperationRecette.Columns.Add("NomOperation", "NomOperation");
+            grdOperationRecette.Columns.Add("Sens", "Sens");
+            grdOperationRecette.Columns.Add("Position", "Position");
+            grdOperationRecette.Columns.Add("TempsAttente", "TempsAttente");
+            grdOperationRecette.Columns.Add("CycleVerin", "CycleVerin");
+            grdOperationRecette.Columns.Add("Quitance", "Quittance");
+
+            if (grdRecette.CurrentRow == null)
+            {
+                return;
+            }
+
+            int index = grdRecette.CurrentRow.Index;
+
+            if (index < 0 || index >= RecetteData.ListeRecettes.Count)
+            {
+                return;
+            }
+
+            Recette recetteSelectionnee = RecetteData.ListeRecettes[index];
+
+            foreach (OperationRecette operation in recetteSelectionnee.Operations)
+            {
+                grdOperationRecette.Rows.Add(
+                    operation.NomOperation,
+                    operation.Sens,
+                    operation.Position,
+                    operation.TempsAttente,
+                    operation.CycleVerin ? "Oui" : "Non",
+                    operation.Quittance ? "Oui" : "Non"
+                       );
+                grdOperationRecette.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                grdOperationRecette.AllowUserToAddRows = false;
+                grdOperationRecette.ReadOnly = true;
+            }
+
+        }
+
+
         private void InitialiserDataGridAvecTable()
         {
             DataTable table = new DataTable();
@@ -91,14 +141,33 @@ namespace M3_RRO_JSC
 
             Recette recetteSelectionnee = RecetteData.ListeRecettes[index];
 
+            if (RecetteManager.RecetteEstBloquee(recetteSelectionnee.IdRecette))
+            {
+                MessageBox.Show("Cette recette ne peut plus être modifié car elle est utlilisé par un lot envoyé en prodcution. ",
+                                "Modification impossible",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning
+                                );
+                return;
+                    
+            }
+
             FrmCreationRecette popup = new FrmCreationRecette(recetteSelectionnee);
 
             if (popup.ShowDialog() == DialogResult.OK)
             {
+                RecetteData.ListeRecettes = RecetteManager.GetAllRecette();
                 ChargerRecettes();
+                MessageBox.Show("Recette modifiée avec succès.");
             }
         }
 
+        /// <summary>
+        /// Supprime la recette sélectionnée dans le tableau des recettes, cette méthode vérifie d'abord qu'une ligne a été selectionnée puis demande a l'utilisateur avant de supprimer la recette.
+        /// Aprés la suppresssion, la liste des recettes est rechargés depuis la base de donnée et le tableau est mis a jour dans l'application.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSupprimerRecette_Click(object sender, EventArgs e)
         {
             if (grdRecette.CurrentRow == null)
@@ -110,32 +179,54 @@ namespace M3_RRO_JSC
 
             int index = grdRecette.CurrentRow.Index;
 
-            if ( index < 0 || index >= RecetteData.ListeRecettes.Count)
+            if (index < 0 || index >= RecetteData.ListeRecettes.Count)
             {
                 MessageBox.Show("Selection invalide");
                 return;
             }
 
-            Recette recetteSlectionne = RecetteData.ListeRecettes[index];
+            Recette recetteSelectionne = RecetteData.ListeRecettes[index];
 
-            DialogResult confirmation = MessageBox.Show(
-                "Voulez-vous vraiment supprimer la recette : " + recetteSlectionne.NomRecette + "?",
+            if (RecetteManager.RecetteEstBloquee(recetteSelectionne.IdRecette))
+            {
+                MessageBox.Show("Cette recette ne peut plus être supprimé car elle est utlilisé par un lot envoyé en prodcution. ",
+                                "Suppression impossible",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning
+                                );
+                return;
+
+            }
+                DialogResult confirmation = MessageBox.Show(
+                "Voulez-vous vraiment supprimer la recette : " + recetteSelectionne.NomRecette + "?",
                 "Confirmation de suppression",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning
                 );
 
-            if(confirmation !=DialogResult.Yes)
+            if (confirmation != DialogResult.Yes)
             {
                 return;
             }
 
-            RecetteData.ListeRecettes.RemoveAt(index);
+            RecetteManager.DeleteRecette(recetteSelectionne.IdRecette);
 
+            RecetteData.ListeRecettes = RecetteManager.GetAllRecette();
             ChargerRecettes();
-
             MessageBox.Show("Recette supprimée avec succès.");
 
+
+        }
+
+
+
+
+
+
+        private void grdRecette_SelectionChanged(object sender, EventArgs e)
+        {
+           
+            ChargerOperationsRecetteSelectionner();
         }
     }
 

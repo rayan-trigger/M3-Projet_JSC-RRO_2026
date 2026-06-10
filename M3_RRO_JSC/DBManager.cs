@@ -106,7 +106,7 @@ namespace M3_RRO_JSC
         /// Retourne une connexion valide et ouverte.
         /// Cette méthode est utilisée en interne uniquement.
         /// </summary>
-        private static MySqlConnection GetConnection()
+        public static MySqlConnection GetConnection()
         {
             EnsureConnection();
             return _connection;

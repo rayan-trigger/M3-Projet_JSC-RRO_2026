@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace M3_RRO_JSC
@@ -8,6 +9,7 @@ namespace M3_RRO_JSC
     public class OperationRecette
 
     {
+        public int IdOperation { get;set; }
         public string NomOperation { get; set; }
         public bool MoteurActif { get; set; }
         public string Sens { get; set; }
@@ -19,6 +21,7 @@ namespace M3_RRO_JSC
 
     public class Recette
     {
+        public int IdRecette { get; set; }
         public string NomRecette { get; set; }
         public DateTime DateCreation { get; set; }
         public List<OperationRecette> Operations { get; set; } = new List<OperationRecette>();

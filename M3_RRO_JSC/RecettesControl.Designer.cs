@@ -35,7 +35,9 @@
             lblListeRecette = new Label();
             grdRecette = new DataGridView();
             cboRecette = new ComboBox();
+            grdOperationRecette = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)grdRecette).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)grdOperationRecette).BeginInit();
             SuspendLayout();
             // 
             // txtRechercheRecettes
@@ -43,7 +45,7 @@
             txtRechercheRecettes.BackColor = SystemColors.InactiveCaption;
             txtRechercheRecettes.BorderStyle = BorderStyle.None;
             txtRechercheRecettes.ForeColor = SystemColors.HighlightText;
-            txtRechercheRecettes.Location = new Point(564, 155);
+            txtRechercheRecettes.Location = new Point(604, 81);
             txtRechercheRecettes.Name = "txtRechercheRecettes";
             txtRechercheRecettes.PlaceholderText = "Rechercher";
             txtRechercheRecettes.Size = new Size(293, 20);
@@ -85,7 +87,7 @@
             // lblListeRecette
             // 
             lblListeRecette.AutoSize = true;
-            lblListeRecette.Location = new Point(20, 169);
+            lblListeRecette.Location = new Point(10, 81);
             lblListeRecette.Name = "lblListeRecette";
             lblListeRecette.Size = new Size(210, 20);
             lblListeRecette.TabIndex = 8;
@@ -94,24 +96,35 @@
             // grdRecette
             // 
             grdRecette.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdRecette.Location = new Point(20, 236);
+            grdRecette.Location = new Point(3, 115);
             grdRecette.Name = "grdRecette";
             grdRecette.RowHeadersWidth = 51;
-            grdRecette.Size = new Size(1037, 265);
+            grdRecette.Size = new Size(1037, 214);
             grdRecette.TabIndex = 11;
+            grdRecette.SelectionChanged += grdRecette_SelectionChanged;
             // 
             // cboRecette
             // 
             cboRecette.FormattingEnabled = true;
-            cboRecette.Location = new Point(20, 202);
+            cboRecette.Location = new Point(240, 81);
             cboRecette.Name = "cboRecette";
             cboRecette.Size = new Size(200, 28);
             cboRecette.TabIndex = 12;
+            // 
+            // grdOperationRecette
+            // 
+            grdOperationRecette.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grdOperationRecette.Location = new Point(0, 373);
+            grdOperationRecette.Name = "grdOperationRecette";
+            grdOperationRecette.RowHeadersWidth = 51;
+            grdOperationRecette.Size = new Size(1037, 244);
+            grdOperationRecette.TabIndex = 13;
             // 
             // RecettesControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(grdOperationRecette);
             Controls.Add(cboRecette);
             Controls.Add(grdRecette);
             Controls.Add(lblListeRecette);
@@ -122,6 +135,7 @@
             Name = "RecettesControl";
             Size = new Size(1210, 675);
             ((System.ComponentModel.ISupportInitialize)grdRecette).EndInit();
+            ((System.ComponentModel.ISupportInitialize)grdOperationRecette).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -134,5 +148,7 @@
         private Label lblListeRecette;
         private DataGridView grdRecette;
         private ComboBox cboRecette;
+        private DataGridView dataGridView1;
+        private DataGridView grdOperationRecette;
     }
 }

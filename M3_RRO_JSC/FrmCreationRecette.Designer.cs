@@ -161,6 +161,7 @@
             ckbMoteurCreaRecette.TabIndex = 33;
             ckbMoteurCreaRecette.Text = "Moteur actif";
             ckbMoteurCreaRecette.UseVisualStyleBackColor = true;
+            ckbMoteurCreaRecette.CheckedChanged += ckbMoteurCreaRecette_CheckedChanged;
             // 
             // cboSensCreaRecette
             // 
@@ -205,6 +206,7 @@
             ckbCycleVerinCreaRecette.TabIndex = 38;
             ckbCycleVerinCreaRecette.Text = "Cycle Verin";
             ckbCycleVerinCreaRecette.UseVisualStyleBackColor = true;
+            ckbCycleVerinCreaRecette.CheckedChanged += ckbCycleVerinCreaRecette_CheckedChanged;
             // 
             // btnValiderCreaRecette
             // 

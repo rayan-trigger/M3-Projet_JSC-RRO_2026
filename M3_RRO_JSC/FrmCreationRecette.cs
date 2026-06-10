@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Google.Protobuf.WellKnownTypes;
+using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +9,8 @@ using System.Security.Authentication.ExtendedProtection;
 using System.Text;
 using System.Windows.Forms;
 using static M3_RRO_JSC.OperationRecette;
+using static System.Resources.ResXFileRef;
+using MySql.Data.MySqlClient;
 
 namespace M3_RRO_JSC
 {
@@ -14,7 +18,6 @@ namespace M3_RRO_JSC
 
     {
         private const string COL_NOM_OPERATION = "Nom opération";
-        private const string COL_MOTEUR_ACTIF = "Moteur actif";
         private const string COL_SENS = "Sens";
         private const string COL_POSITION = "Position";
         private const string COL_TEMPS_ATTENTE = "Temps d'attente";
@@ -29,7 +32,7 @@ namespace M3_RRO_JSC
 
         private int indexOperationSelectionnee = -1;
 
-        private bool chargementEnCours  = false;
+        private bool chargementEnCours = false;
 
         public FrmCreationRecette()
         {
@@ -37,6 +40,8 @@ namespace M3_RRO_JSC
 
             InitialiserComboBox();
             InitialiserTableOperations();
+            ActivationMoteur();
+            ActivationCycleVerin();
 
             this.Text = "Création de recette";
             btnEnregistrerCreaRecette.Text = "Enregistrer la recette";
@@ -58,19 +63,26 @@ namespace M3_RRO_JSC
             ChargerRecetteAModifier();
         }
 
+        /// <summary>
+        /// Initialise les comboBox du formulaire création recette.
+        /// </summary>
         private void InitialiserComboBox()
+
         {
+            cboSensCreaRecette.DataSource = null;
             cboSensCreaRecette.Items.Clear();
             cboSensCreaRecette.Items.Add("Horaire");
-            cboSensCreaRecette.Items.Add("Anti-horaire");
+            cboSensCreaRecette.Items.Add("AntiHoraire");
             cboSensCreaRecette.SelectedIndex = -1;
 
+            cboPositionCreaRecette.DataSource = null;
             cboPositionCreaRecette.Items.Clear();
             cboPositionCreaRecette.Items.Add("3h");
             cboPositionCreaRecette.Items.Add("6h");
             cboPositionCreaRecette.Items.Add("9h");
             cboPositionCreaRecette.Items.Add("12h");
             cboPositionCreaRecette.SelectedIndex = -1;
+
 
             cboTempsCreaRecette.Items.Clear();
             cboTempsCreaRecette.Items.Add("0");
@@ -92,7 +104,6 @@ namespace M3_RRO_JSC
             tableOperations = new DataTable();
 
             tableOperations.Columns.Add(COL_NOM_OPERATION);
-            tableOperations.Columns.Add(COL_MOTEUR_ACTIF);
             tableOperations.Columns.Add(COL_SENS);
             tableOperations.Columns.Add(COL_POSITION);
             tableOperations.Columns.Add(COL_TEMPS_ATTENTE);
@@ -101,21 +112,12 @@ namespace M3_RRO_JSC
 
             grdOperationCreaRecette.DataSource = tableOperations;
 
-<<<<<<< HEAD
             grdOperationCreaRecette.ReadOnly = true;
             grdOperationCreaRecette.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grdOperationCreaRecette.MultiSelect = false;
             grdOperationCreaRecette.AllowUserToAddRows = false;
             grdOperationCreaRecette.AllowUserToDeleteRows = false;
             grdOperationCreaRecette.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-=======
-            grdOperationCreaRecette.ReadOnly= true;
-            grdOperationCreaRecette.SelectionMode= DataGridViewSelectionMode.FullRowSelect;
-            grdOperationCreaRecette.MultiSelect= false;
-            grdOperationCreaRecette.AllowUserToAddRows = false;
-            grdOperationCreaRecette.AllowUserToDeleteRows = false;
-            grdOperationCreaRecette.AutoSizeColumnsMode=DataGridViewAutoSizeColumnsMode.Fill;
->>>>>>> main
 
         }
 
@@ -136,13 +138,19 @@ namespace M3_RRO_JSC
                 position = cboPositionCreaRecette.SelectedItem.ToString();
             }
 
-            string temps = cboTempsCreaRecette.SelectedItem.ToString();
+            string temps = "0";
+
+            if (!ckbCycleVerinCreaRecette.Checked)
+            {
+                temps = cboTempsCreaRecette.SelectedItem.ToString();
+
+            }
+
 
             if (indexOperationSelectionnee == -1)
             {
                 tableOperations.Rows.Add(
                 txtNomOperation.Text.Trim(),
-                ckbMoteurCreaRecette.Checked ? "Oui" : "Non",
                 sens,
                 position,
                 temps,
@@ -156,7 +164,6 @@ namespace M3_RRO_JSC
                 DataRow row = tableOperations.Rows[indexOperationSelectionnee];
 
                 row[COL_NOM_OPERATION] = txtNomOperation.Text.Trim();
-                row[COL_MOTEUR_ACTIF] = ckbMoteurCreaRecette.Checked ? "Oui" : "Non";
                 row[COL_SENS] = sens;
                 row[COL_POSITION] = position;
                 row[COL_TEMPS_ATTENTE] = temps;
@@ -179,13 +186,6 @@ namespace M3_RRO_JSC
                 return false;
             }
 
-            if (!ckbMoteurCreaRecette.Checked && !ckbCycleVerinCreaRecette.Checked)
-            {
-                MessageBox.Show("Veuillez sélectionner au moins une action : moteur actif ou cycle vérin.");
-                ckbMoteurCreaRecette.Focus();
-                return false;
-            }
-
             if (ckbMoteurCreaRecette.Checked)
             {
                 if (cboSensCreaRecette.SelectedIndex == -1)
@@ -203,7 +203,7 @@ namespace M3_RRO_JSC
                 }
             }
 
-            if (cboTempsCreaRecette.SelectedIndex == -1)
+            if (!ckbCycleVerinCreaRecette.Checked && cboTempsCreaRecette.SelectedIndex == -1)
             {
                 MessageBox.Show("Veuillez sélectionner le temps d'attente.");
                 cboTempsCreaRecette.Focus();
@@ -253,12 +253,21 @@ namespace M3_RRO_JSC
             }));
         }
 
+        /// <summary>
+        /// Enregistre la recette selon le mode actuel du formualire. si le formulaire est en mode modification, la recette existante est mise à jour, sinon 
+        /// une nouvelle recette est créée.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEnregistrerCreaRecette_Click(object sender, EventArgs e)
         {
+            //Vérifie que le nom de la recette est saisi et qu'au moins une opération a été ajoutée.
             if (!RecetteValide())
             {
                 return;
             }
+
+            //Si le formulaire a été ouvert pour modifier une recette existante,on met à jour cette recette.
 
             if (modeModification)
             {
@@ -266,6 +275,7 @@ namespace M3_RRO_JSC
             }
             else
             {
+                // Sinon le formulaire est en mode création 
                 CreerNouvelleRecette();
             }
 
@@ -297,6 +307,53 @@ namespace M3_RRO_JSC
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
+        /// <summary>
+        /// Supprime l'opération sélectionnée dans le tableau temporaire des opérations, mais on ne supprime rien de la base de donnée tant que l'utilisateur n'a pas appuyer sur le 
+        /// boutons enregistrer modification car s'il entre 2 il clic sur annuler on aurait supprimer des donnée qu'on ne voulait pas. 
+        /// Pendant la suppression, on bloque le chargement automatique de la sélection pour évité de lire une ligne qui vient d'être supprimé.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSupprimerCreaRecette_Click(object sender, EventArgs e)
+        {
+            // Vérifie qu'une opération est bien sélectionnée dans le tableau.
+            if (indexOperationSelectionnee < 0 || indexOperationSelectionnee >= tableOperations.Rows.Count)
+            {
+                MessageBox.Show("Veuillez sélectionner une opération à supprimer.");
+                return;
+            }
+
+            DialogResult result = MessageBox.Show(
+                " Supprimer l'opération sélectionnée ?",
+                "Confirmation",
+                 MessageBoxButtons.YesNo,
+                 MessageBoxIcon.Question
+               );
+
+            if (result != DialogResult.Yes)
+            {
+                return;
+            }
+            try
+            {
+                // Bloque temporairement le chargement automatique de la sélection. 
+                chargementEnCours = true;
+
+                // Supprime l'opération dans le tableau temporaire.
+                tableOperations.Rows.RemoveAt(indexOperationSelectionnee);
+
+                indexOperationSelectionnee = -1;
+
+                ViderChampsOperation();
+            }
+            finally
+            {
+                // Réactiuve toujours le chargement automatique même si une erreur survient.
+                chargementEnCours = false;
+            }
+        }
+
         /// <summary>
         /// Charge les informations de la recette à modifier et met à jour l'interface utilisateur avec ses données.§
         /// </summary>
@@ -318,7 +375,6 @@ namespace M3_RRO_JSC
             {
                 tableOperations.Rows.Add(
                     operation.NomOperation,
-                    operation.MoteurActif ? "Oui" : "Non",
                     operation.Sens,
                     operation.Position,
                     operation.TempsAttente,
@@ -342,7 +398,6 @@ namespace M3_RRO_JSC
             OperationRecette operation = new OperationRecette();
 
             operation.NomOperation = row[COL_NOM_OPERATION].ToString();
-            operation.MoteurActif = row[COL_MOTEUR_ACTIF].ToString() == "Oui";
             operation.Sens = row[COL_SENS].ToString();
             operation.Position = row[COL_POSITION].ToString();
             operation.TempsAttente = row[COL_TEMPS_ATTENTE].ToString();
@@ -373,10 +428,39 @@ namespace M3_RRO_JSC
                 nouvelleRecette.Operations.Add(operation);
             }
 
+            long idRecette = RecetteManager.CreateRecette(nouvelleRecette.NomRecette);
+
+            if (idRecette == -1)
+            {
+                MessageBox.Show("la recette n'a pas pu être enregistrer dans la base de donnée.");
+                return;
+            }
+
+            int numeroOperation = 1;
+
+            foreach (OperationRecette operation in nouvelleRecette.Operations)
+            {
+                long idOperation = RecetteManager.CreateOperation(operation);
+
+                if (idOperation == -1)
+                {
+                    MessageBox.Show("Une opération n'a pas pu être enregistrée dans la base de données.");
+                    return;
+                }
+
+                RecetteManager.AjouterOperationRecette(idRecette, idOperation, numeroOperation);
+
+                numeroOperation++;
+
+            }
+
+
             RecetteData.ListeRecettes.Add(nouvelleRecette);
 
             MessageBox.Show("Recette enregistrée avec succès.");
         }
+
+
 
         /// <summary>
         /// Met à jour les informations de la recette existante avec les valeurs saisies par l'utilisateur et remplace
@@ -388,78 +472,136 @@ namespace M3_RRO_JSC
         /// s'affiche à la fin de l'opération.</remarks>
         private void ModifierRecetteExistante()
         {
+            // Modification du nom de la recette avec le texte saisi.
             recetteAModifier.NomRecette = txtNomCreaLot.Text.Trim();
 
+            //On vide l'ancienne liste d'opérations de l'objet recette.
             recetteAModifier.Operations.Clear();
 
+            //On recrée la liste des opérations à partir du tableau du formulaire.
             foreach (DataRow row in tableOperations.Rows)
             {
                 OperationRecette operation = CreerOperationDepuisLigne(row);
                 recetteAModifier.Operations.Add(operation);
             }
 
+            //Enregistrement des modifications dans la base de données.
+            RecetteManager.UpDateRecette(recetteAModifier);
+
             MessageBox.Show("Recette modifiée avec succès.");
         }
 
-
-
-
+        /// <summary>
+        /// Charge dans les champs du formulaire les informations de l'opération sélectionnée dans le tableau opération.
+        /// Cette methode permet de modifier une opération existante, ci celle-ci est selctionnée les texteBox, Combox et checkBocx du formulaire se remplissent
+        /// </summary>
         private void ChargerOperationSelectionnee()
-
         {
-<<<<<<< HEAD
-            if (e.RowIndex < 0)
-=======
-            if (e.RowIndex <  0)
->>>>>>> main
+            if (grdOperationCreaRecette.CurrentRow == null)
             {
                 return;
             }
 
-
-<<<<<<< HEAD
-            DataRow row = tableOperations.Rows[indexOperationSelectionnee];
-            txtNomOperation.Text = row["Nom opération"].ToString();
-            ckbMoteurCreaRecette.Checked = row["Moteur actif"].ToString() == "Oui";
-            cboSensCreaRecette.SelectedItem = row["Sens"].ToString();
-            cboPositionCreaRecette.SelectedItem = row["Position"].ToString();
-            cboTempsCreaRecette.SelectedItem = row["Temps d'attente"].ToString();
-            ckbCycleVerinCreaRecette.Checked = row["Cycle vérin"].ToString() == "Oui";
-            ckbQuittanceCreaRecette.Checked = row["Quittance"].ToString() == "Oui";
-=======
-            DataRow
->>>>>>> main
-
-
+            //Récupère l'index de la ligne sélectionnée dans le datagrid.
             int index = grdOperationCreaRecette.CurrentRow.Index;
 
+            // Vérifie que l'index correspond bien à une ligne existante dans le Datatable.
             if (index < 0 || index >= tableOperations.Rows.Count)
             {
                 return;
             }
 
-            DataRow row = tableOperations.Rows[index];
+            indexOperationSelectionnee = index;
 
-            if(row.RowState == DataRowState.Deleted ||row.RowState == DataRowState.Detached)
+            DataRow row = tableOperations.Rows[indexOperationSelectionnee];
 
+            // évite de lire une ligne qui vient d'être supprimée (difficile a faire) .
+            if (row.RowState == DataRowState.Deleted || row.RowState == DataRowState.Detached)
             {
                 return;
             }
-          
 
-            indexOperationSelectionnee = index;
+            txtNomOperation.Text = row[COL_NOM_OPERATION].ToString();
 
+            ckbCycleVerinCreaRecette.Checked = row[COL_CYCLE_VERIN].ToString() == "Oui";
+            ckbQuittanceCreaRecette.Checked = row[COL_QUITTANCE].ToString() == "Oui";
 
-<<<<<<< HEAD
+            string sensTexte = row[COL_SENS].ToString();
+            string positionTexte = row[COL_POSITION].ToString();
+
+            cboSensCreaRecette.SelectedItem = sensTexte;
+            cboPositionCreaRecette.SelectedItem = positionTexte;
+
+            cboTempsCreaRecette.SelectedItem = row[COL_TEMPS_ATTENTE].ToString();
+
+            btnValiderCreaRecette.Text = "Modifier l'opération";
         }
 
 
 
+
+        private void grdOperationCreaRecette_SelectionChanged(object sender, EventArgs e)
+        {
+            if (chargementEnCours)
+            {
+                return;
+            }
+
+            DataGridView dgv = sender as DataGridView ?? grdOperationCreaRecette;
+            if (dgv?.CurrentRow == null)
+            {
+                indexOperationSelectionnee = -1;
+                return;
+            }
+            ChargerOperationSelectionnee();
+        }
+
+
+        /// <summary>
+        /// Active ou désactive les comboBox du moteur selon si la checkBox moteur est cocher ou non.
+        /// Si le moteur n'est pas actif les comboBox sont vidés et desactivés
+        /// </summary>
+        private void ActivationMoteur()
+        {
+            bool moteurActif = ckbMoteurCreaRecette.Checked;
+
+            cboSensCreaRecette.Enabled = moteurActif;
+            cboPositionCreaRecette.Enabled = moteurActif;
+
+            if (!moteurActif)
+            {
+                cboSensCreaRecette.SelectedIndex = -1;
+                cboSensCreaRecette.SelectedIndex = -1;
+            }
+        }
+
+
+        private void ActivationCycleVerin()
+        {
+            if (ckbCycleVerinCreaRecette.Checked)
+            {
+                cboTempsCreaRecette.SelectedItem = "0";
+                cboTempsCreaRecette.Enabled = false;
+            }
+            else
+            {
+                cboTempsCreaRecette.Enabled = true;
+            }
+        }
+
+        private void ckbMoteurCreaRecette_CheckedChanged(object sender, EventArgs e)
+        {
+            ActivationMoteur();
+        }
+
+        private void ckbCycleVerinCreaRecette_CheckedChanged(object sender, EventArgs e)
+        {
+            ActivationCycleVerin();
+        }
     }
-=======
-    }
 
 
 
->>>>>>> main
+
+
 }
