@@ -19,13 +19,13 @@ namespace M3_RRO_JSC
 
 
         // Instance unique de la connexion MySQL pour toute l'application
-        public static MySqlConnection _connection;
+        public static MySqlConnection? _connection;
 
         // Objet de verrouillage pour rendre l'accès thread-safe (évite les accès concurrents)
         private static readonly object _lock = new object();
 
         // Chaîne de connexion mémorisée après l'appel à ConnectToDB
-        public static string _connectionString;
+        public static string _connectionString = string.Empty;
 
         /// <summary>
         /// Initialise la chaîne de connexion et tente une première ouverture.
@@ -82,16 +82,22 @@ namespace M3_RRO_JSC
         {
             lock (_lock) // Empêche plusieurs threads d'ouvrir la connexion en même temps
             {
-                // Si la connexion n'existe pas, on la crée
-                if (_connection == null)
-                    _connection = new MySqlConnection(_connectionString);
+                // Utiliser une variable locale pour éviter les avertissements de nullabilité
+                var conn = _connection;
+
+                // Si la connexion n'existe pas, on la crée et on l'assigne à la variable partagée
+                if (conn == null)
+                {
+                    conn = new MySqlConnection(_connectionString);
+                    _connection = conn;
+                }
 
                 // Si la connexion est fermée ou cassée, on la rouvre
-                if (_connection.State != ConnectionState.Open)
+                if (conn.State != ConnectionState.Open)
                 {
                     try
                     {
-                        _connection.Open();
+                        conn.Open();
                     }
                     catch (Exception ex)
                     {
@@ -109,6 +115,10 @@ namespace M3_RRO_JSC
         public static MySqlConnection GetConnection()
         {
             EnsureConnection();
+
+            if (_connection == null)
+                throw new InvalidOperationException("La connexion MySQL n'a pas été initialisée.");
+
             return _connection;
         }
 
@@ -119,10 +129,11 @@ namespace M3_RRO_JSC
         {
             lock (_lock)
             {
-                if (IsConnected)
+                var conn = _connection;
+                if (conn != null && conn.State == ConnectionState.Open)
                 {
-                    _connection.Close();
-                    _connection.Dispose();
+                    conn.Close();
+                    conn.Dispose();
                     _connection = null;
                 }
             }        }

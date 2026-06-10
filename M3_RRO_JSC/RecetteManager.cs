@@ -1,12 +1,7 @@
-﻿using Microsoft.VisualBasic.Logging;
-using MySql.Data.MySqlClient;
-using Mysqlx.Expr;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using System.Text;
 using System.Windows.Forms;
-using System.Windows.Markup;
 using static M3_RRO_JSC.DBManager;
 
 namespace M3_RRO_JSC
@@ -65,10 +60,8 @@ namespace M3_RRO_JSC
         /// <returns>Retourne true si le sens sélectionné est horaire 
         /// </returns>Retourne false si le sens est AntiHoraire
         public static  bool ConvertirSensMoteur(String sensTexte)
-
         {
             if (System.Enum.TryParse(sensTexte, out SensMoteur sens))
-
             {
                 return sens == SensMoteur.Horaire;
             }
@@ -78,7 +71,6 @@ namespace M3_RRO_JSC
                 return false;
 
             }
-
         }
 
         /// <summary>
@@ -173,7 +165,7 @@ namespace M3_RRO_JSC
                     cmd.Parameters.AddWithValue("@nomRecette", nomRecette);
                     cmd.Parameters.AddWithValue("@dateCreation", DateTime.Now);
 
-                    int nbreRecetteAjoutees = cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
                     idRecette = cmd.LastInsertedId;
                 }
             } 
@@ -210,8 +202,7 @@ namespace M3_RRO_JSC
                     cmd.Parameters.AddWithValue("@quittance", operation.Quittance);
                     cmd.Parameters.AddWithValue("@sensMoteur", ConvertirSensMoteur(operation.Sens));
 
-                    int nbreOperationAjoutees = cmd.ExecuteNonQuery();
-
+                    cmd.ExecuteNonQuery();
                     idOperation = cmd.LastInsertedId;
                 }
             }
@@ -238,14 +229,14 @@ namespace M3_RRO_JSC
                 {
 
                     cmd.CommandText = "INSERT INTO Contenir " +
-                                     "(Id_Operation_est_contenu_dans, Id_Recette, CON_NoOperation) " +
-                                     "VALUES (@idOperation, @idRecette, @numeroOperation);";
+                                      "(Id_Operation_est_contenu_dans, Id_Recette, CON_NoOperation) " +
+                                      "VALUES (@idOperation, @idRecette, @numeroOperation);";
 
                     cmd.Parameters.AddWithValue("@idOperation", idOperation);
                     cmd.Parameters.AddWithValue("@idRecette", idRecette);
                     cmd.Parameters.AddWithValue("@numeroOperation", numeroOperation);
 
-                    int nbreLiensAjoutes = cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
                 }
             }
             catch (MySqlException ex)

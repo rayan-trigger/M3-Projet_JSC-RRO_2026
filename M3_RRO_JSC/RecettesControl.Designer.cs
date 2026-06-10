@@ -148,7 +148,6 @@
         private Label lblListeRecette;
         private DataGridView grdRecette;
         private ComboBox cboRecette;
-        private DataGridView dataGridView1;
         private DataGridView grdOperationRecette;
     }
 }

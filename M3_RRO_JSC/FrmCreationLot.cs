@@ -6,13 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using static M3_RRO_JSC.OperationRecette;
 
 namespace M3_RRO_JSC
 {
     public partial class FrmCreationLot : Form
     {
-        private Lot lotAModifier = null;
+        private Lot? lotAModifier;
 
         private bool modeModification = false;
 
@@ -165,6 +164,9 @@ namespace M3_RRO_JSC
         private void ModifierLotExistant()
         {
             Recette recetteSelectionnee = cboRecetteCreaLot.SelectedItem as Recette;
+
+            if (lotAModifier == null)
+                return;
 
             lotAModifier.NomLot = txtNomCreaLot.Text.Trim();
             lotAModifier.QuantitePieces = int.Parse(txtQuantiteCreaLot.Text);

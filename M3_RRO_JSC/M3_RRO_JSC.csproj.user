@@ -34,6 +34,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Update=".resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Update="AccueilControl.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>

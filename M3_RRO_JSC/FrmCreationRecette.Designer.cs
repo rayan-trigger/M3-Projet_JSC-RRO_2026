@@ -268,7 +268,6 @@
         private TextBox txtNomCreaLot;
         private Label lblNomCreaRecette;
         private Label lblTitreCreaRecette;
-        private Label label1;
         private Label lblNomOperation;
         private Label lblSmoteurCreaRecette;
         private Label lblTempsCreaRecette;

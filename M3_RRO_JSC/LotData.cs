@@ -6,10 +6,10 @@ namespace M3_RRO_JSC
 {
     public class Lot
     {
-        public string NomLot { get; set; }
+        public string NomLot { get; set; } = string.Empty;
         public int QuantitePieces { get; set; }
-        public Recette RecetteAssociee { get; set; }
-        public DateTime DateCreation { get; set; }
+        public Recette? RecetteAssociee { get; set; }
+        public DateTime DateCreation { get; set; } = DateTime.Now;
 
     }
 
@@ -17,7 +17,7 @@ namespace M3_RRO_JSC
     {
         public static List<Lot> ListeLots { get; set; } = new List<Lot>();
 
-        public static Lot LotEnProduction { get; set; }
+        public static Lot? LotEnProduction { get; set; }
 
     }
 }

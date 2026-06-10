@@ -63,6 +63,12 @@ TestResults/
 *.mdf
 *.ldf
  
+# Fichiers générés par MSBuild / Visual Studio (sécurité supplémentaire)
+# Evite d'ajouter des fichiers temporaires/objets de build au dépôt
+obj/**
+bin/**
+*.FileListAbsolute.txt
+
 # Backup files
 *.bak
 *.backup
