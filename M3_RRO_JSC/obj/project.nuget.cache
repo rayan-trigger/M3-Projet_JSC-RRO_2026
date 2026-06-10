@@ -1,16 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "LSNC+MSNaXY=",
+  "dgSpecHash": "R5VyLYS6ZI8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\rondray\\OneDrive - DIVTEC\\Documents\\GitHub\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\M3_RRO_JSC.csproj",
+  "projectFilePath": "C:\\Users\\juju_\\source\\repos\\M3-Projet_JSC-RRO_2026\\M3_RRO_JSC\\M3_RRO_JSC.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\rondray\\.nuget\\packages\\bouncycastle.cryptography\\2.6.2\\bouncycastle.cryptography.2.6.2.nupkg.sha512",
-    "C:\\Users\\rondray\\.nuget\\packages\\google.protobuf\\3.32.0\\google.protobuf.3.32.0.nupkg.sha512",
-    "C:\\Users\\rondray\\.nuget\\packages\\k4os.compression.lz4\\1.3.8\\k4os.compression.lz4.1.3.8.nupkg.sha512",
-    "C:\\Users\\rondray\\.nuget\\packages\\k4os.compression.lz4.streams\\1.3.8\\k4os.compression.lz4.streams.1.3.8.nupkg.sha512",
-    "C:\\Users\\rondray\\.nuget\\packages\\k4os.hash.xxhash\\1.0.8\\k4os.hash.xxhash.1.0.8.nupkg.sha512",
-    "C:\\Users\\rondray\\.nuget\\packages\\mysql.data\\9.7.0\\mysql.data.9.7.0.nupkg.sha512",
-    "C:\\Users\\rondray\\.nuget\\packages\\zstdsharp.port\\0.8.6\\zstdsharp.port.0.8.6.nupkg.sha512"
+    "C:\\Users\\juju_\\.nuget\\packages\\bouncycastle.cryptography\\2.6.2\\bouncycastle.cryptography.2.6.2.nupkg.sha512",
+    "C:\\Users\\juju_\\.nuget\\packages\\google.protobuf\\3.32.0\\google.protobuf.3.32.0.nupkg.sha512",
+    "C:\\Users\\juju_\\.nuget\\packages\\k4os.compression.lz4\\1.3.8\\k4os.compression.lz4.1.3.8.nupkg.sha512",
+    "C:\\Users\\juju_\\.nuget\\packages\\k4os.compression.lz4.streams\\1.3.8\\k4os.compression.lz4.streams.1.3.8.nupkg.sha512",
+    "C:\\Users\\juju_\\.nuget\\packages\\k4os.hash.xxhash\\1.0.8\\k4os.hash.xxhash.1.0.8.nupkg.sha512",
+    "C:\\Users\\juju_\\.nuget\\packages\\mysql.data\\9.7.0\\mysql.data.9.7.0.nupkg.sha512",
+    "C:\\Users\\juju_\\.nuget\\packages\\zstdsharp.port\\0.8.6\\zstdsharp.port.0.8.6.nupkg.sha512"
   ],
   "logs": []
 }

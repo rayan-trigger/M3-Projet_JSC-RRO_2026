@@ -74,8 +74,5 @@ bin/**
 *.backup
 
 # cache
-*.cs
-*.cache
-*.editorconfig
-*.json
-*.props
+.vs/
+.obj/
