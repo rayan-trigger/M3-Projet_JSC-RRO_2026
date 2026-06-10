@@ -72,7 +72,3 @@ bin/**
 # Backup files
 *.bak
 *.backup
-
-# cache
-.vs/
-.obj/
