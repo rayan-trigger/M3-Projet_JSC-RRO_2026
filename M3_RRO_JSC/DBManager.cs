@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace M3_RRO_JSC
 {
@@ -63,13 +64,11 @@ namespace M3_RRO_JSC
                 using (MySqlConnection conn = new MySqlConnection(_connectionString))
                 {
                     conn.Open();
-                    MessageBox.Show("Connexion réussie !");
-                    return conn.State == System.Data.ConnectionState.Open;
+                    return conn.State == System.Data.ConnectionState.Open && true;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Connexion échouée ! {ex.Message}");
                 return false;
             }
         }
@@ -102,7 +101,8 @@ namespace M3_RRO_JSC
                     catch (Exception ex)
                     {
                         // Erreur claire si la base est inaccessible
-                        throw new Exception("Impossible de se connecter à la base MySQL.", ex);
+                        MessageBox.Show("$Base de données inaccessible :\n{ex.Message}",
+                        "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

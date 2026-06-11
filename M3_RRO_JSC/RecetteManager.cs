@@ -264,7 +264,7 @@ namespace M3_RRO_JSC
                 using (MySqlCommand cmd = GetConnection().CreateCommand())
                 {
                     // Requête SQL qui récupère toutes les recettes de la table recette
-                    cmd.CommandText = "SELECT Id_Recette, Rec_Nom, REC_DateHeureCreation FROM Recette;";
+                    cmd.CommandText = "SELECT Id_Recette, Rec_Nom, REC_DateHeureCreation FROM recette;";
 
                     // Permet de lire plusieurs lignes retournées par la requête SELECT
                     using(MySqlDataReader reader = cmd.ExecuteReader())

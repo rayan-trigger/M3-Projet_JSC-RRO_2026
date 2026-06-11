@@ -21,7 +21,14 @@ namespace M3_RRO_JSC
         {
             // Récupérer les valeurs des champs de texte
             // Tester la connexion à la base de données avec les paramètres fournis
-            TestConnexion(txtAdresseIpPara.Text.Trim(), txtNomBasePara.Text.Trim(), txtNomUtiliPara.Text.Trim(), txtMotPassePara.Text.Trim(), txtPortSqlPara.Text.Trim());
+            if (TestConnexion(txtAdresseIpPara.Text.Trim(), txtNomBasePara.Text.Trim(), txtNomUtiliPara.Text.Trim(), txtMotPassePara.Text.Trim(), txtPortSqlPara.Text.Trim()))
+            {
+                MessageBox.Show("Connexion réussie à la base de données !");
+            }
+            else
+            {
+                MessageBox.Show("Échec de la connexion à la base de données. Veuillez vérifier les paramètres.");
+            }
         }
 
         private void btnTesterPara_MouseEnter(object sender, EventArgs e)

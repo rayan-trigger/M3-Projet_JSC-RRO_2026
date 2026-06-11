@@ -10,14 +10,19 @@ namespace M3_RRO_JSC
 {
     public partial class TracabiliteControl : UserControl
     {
+        private TracabilitéManager.TracabiliteManager _manager;
+
         public TracabiliteControl()
         {
             InitializeComponent();
+            // Initialize manager with the controls created by InitializeComponent
+            _manager = new TracabilitéManager.TracabiliteManager(grdTracabilite, txtRechercheTracabilite, cboFiltresTracabilite);
         }
 
         private void TracabiliteControl_Load(object sender, EventArgs e)
         {
-
+            _manager.ConfigurerDataGridView();
+            _manager.ChargerDonnees();
         }
     }
 }

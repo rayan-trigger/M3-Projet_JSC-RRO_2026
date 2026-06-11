@@ -39,10 +39,10 @@
             // 
             grdTracabilite.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             grdTracabilite.GridColor = SystemColors.InactiveBorder;
-            grdTracabilite.Location = new Point(200, 325);
+            grdTracabilite.Location = new Point(200, 177);
             grdTracabilite.Name = "grdTracabilite";
             grdTracabilite.RowHeadersWidth = 51;
-            grdTracabilite.Size = new Size(864, 188);
+            grdTracabilite.Size = new Size(864, 336);
             grdTracabilite.TabIndex = 10;
             // 
             // txtRechercheTracabilite
@@ -50,7 +50,7 @@
             txtRechercheTracabilite.BackColor = SystemColors.InactiveCaption;
             txtRechercheTracabilite.BorderStyle = BorderStyle.None;
             txtRechercheTracabilite.ForeColor = SystemColors.HighlightText;
-            txtRechercheTracabilite.Location = new Point(177, 284);
+            txtRechercheTracabilite.Location = new Point(200, 134);
             txtRechercheTracabilite.Name = "txtRechercheTracabilite";
             txtRechercheTracabilite.PlaceholderText = "Rechercher";
             txtRechercheTracabilite.Size = new Size(864, 20);
@@ -60,7 +60,7 @@
             // 
             lblFiltresTextTracabilite.AutoSize = true;
             lblFiltresTextTracabilite.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblFiltresTextTracabilite.Location = new Point(678, 153);
+            lblFiltresTextTracabilite.Location = new Point(773, 89);
             lblFiltresTextTracabilite.Name = "lblFiltresTextTracabilite";
             lblFiltresTextTracabilite.Size = new Size(55, 23);
             lblFiltresTextTracabilite.TabIndex = 8;
@@ -69,7 +69,7 @@
             // cboFiltresTracabilite
             // 
             cboFiltresTracabilite.FormattingEnabled = true;
-            cboFiltresTracabilite.Location = new Point(766, 148);
+            cboFiltresTracabilite.Location = new Point(844, 88);
             cboFiltresTracabilite.Name = "cboFiltresTracabilite";
             cboFiltresTracabilite.Size = new Size(220, 28);
             cboFiltresTracabilite.TabIndex = 7;
