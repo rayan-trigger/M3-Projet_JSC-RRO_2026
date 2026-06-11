@@ -43,10 +43,10 @@
             // 
             grdGestionLots.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             grdGestionLots.GridColor = SystemColors.InactiveBorder;
-            grdGestionLots.Location = new Point(185, 201);
+            grdGestionLots.Location = new Point(106, 201);
             grdGestionLots.Name = "grdGestionLots";
             grdGestionLots.RowHeadersWidth = 51;
-            grdGestionLots.Size = new Size(864, 282);
+            grdGestionLots.Size = new Size(1015, 282);
             grdGestionLots.TabIndex = 10;
             // 
             // txtRechercheLots
@@ -98,7 +98,7 @@
             btnSupprimerLot.TabIndex = 2;
             btnSupprimerLot.Text = "Supprimer";
             btnSupprimerLot.UseVisualStyleBackColor = true;
-            btnSupprimerLot.Click += btnSupprimerLot_Click;
+            btnSupprimerLot.Click += btnSupprimer_Click;
             // 
             // btnCreerLot
             // 

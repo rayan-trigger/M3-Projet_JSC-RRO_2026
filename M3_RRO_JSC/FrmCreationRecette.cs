@@ -1,5 +1,7 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using Microsoft.VisualBasic;
+using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Pqc.Crypto.Lms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,13 +12,34 @@ using System.Text;
 using System.Windows.Forms;
 using static M3_RRO_JSC.OperationRecette;
 using static System.Resources.ResXFileRef;
-using MySql.Data.MySqlClient;
 
 namespace M3_RRO_JSC
 {
     public partial class FrmCreationRecette : Form
 
     {
+        private const int AucuneSelection = -1;
+        private const int ValeurInactive = 0;
+        private const long IdInvalide = -1;
+        private const int PremierNumeroOperation = 1;
+
+        private const string TexteOui = "Oui";
+        private const string TexteNon = "Non";
+        private const string TexteVide = "";
+        private const string TempsAttenteDefaut = "0";
+
+        private const string SensHoraire = "Horaire";
+        private const string SensAntiHoraire = "AntiHoraire";
+
+        private const string Position3h = "3h";
+        private const string Position6h = "6h";
+        private const string Position9h = "9h";
+        private const string Position12h = "12h";
+
+        private const int TempsAttenteMin = 0;
+        private const int TempsAttenteMax = 10;
+
+
         private const string COL_NOM_OPERATION = "Nom opération";
         private const string COL_SENS = "Sens";
         private const string COL_POSITION = "Position";
@@ -30,7 +53,7 @@ namespace M3_RRO_JSC
 
         private bool modeModification = false;  // Savoir si on est en mode création ou en mode modification
 
-        private int indexOperationSelectionnee = -1;
+        private int indexOperationSelectionnee = AucuneSelection;
 
         private bool chargementEnCours = false;
 
@@ -71,32 +94,27 @@ namespace M3_RRO_JSC
         {
             cboSensCreaRecette.DataSource = null;
             cboSensCreaRecette.Items.Clear();
-            cboSensCreaRecette.Items.Add("Horaire");
-            cboSensCreaRecette.Items.Add("AntiHoraire");
-            cboSensCreaRecette.SelectedIndex = -1;
+            cboSensCreaRecette.Items.Add(SensHoraire);
+            cboSensCreaRecette.Items.Add(SensAntiHoraire);
+            cboSensCreaRecette.SelectedIndex = AucuneSelection;
 
             cboPositionCreaRecette.DataSource = null;
             cboPositionCreaRecette.Items.Clear();
-            cboPositionCreaRecette.Items.Add("3h");
-            cboPositionCreaRecette.Items.Add("6h");
-            cboPositionCreaRecette.Items.Add("9h");
-            cboPositionCreaRecette.Items.Add("12h");
-            cboPositionCreaRecette.SelectedIndex = -1;
+            cboPositionCreaRecette.Items.Add(Position3h);
+            cboPositionCreaRecette.Items.Add(Position6h);
+            cboPositionCreaRecette.Items.Add(Position9h);
+            cboPositionCreaRecette.Items.Add(Position12h);
+            cboPositionCreaRecette.SelectedIndex = AucuneSelection;
 
 
             cboTempsCreaRecette.Items.Clear();
-            cboTempsCreaRecette.Items.Add("0");
-            cboTempsCreaRecette.Items.Add("1");
-            cboTempsCreaRecette.Items.Add("2");
-            cboTempsCreaRecette.Items.Add("3");
-            cboTempsCreaRecette.Items.Add("4");
-            cboTempsCreaRecette.Items.Add("5");
-            cboTempsCreaRecette.Items.Add("6");
-            cboTempsCreaRecette.Items.Add("7");
-            cboTempsCreaRecette.Items.Add("8");
-            cboTempsCreaRecette.Items.Add("9");
-            cboTempsCreaRecette.Items.Add("10");
-            cboTempsCreaRecette.SelectedIndex = -1;
+
+            for (int temps = TempsAttenteMin; temps <= TempsAttenteMax; temps++) ;
+            {
+                cboTempsCreaRecette.Items.Add(TempsAttenteMax.ToString());
+            }
+
+            cboTempsCreaRecette.SelectedIndex = AucuneSelection;
         }
 
         private void InitialiserTableOperations()
@@ -176,41 +194,42 @@ namespace M3_RRO_JSC
         }
 
 
-
+        /// <summary>
+        /// Vérifie que les champs nécessaires à l'ajout ou à la modification d'une opération sont valides.
+        /// </summary>
+        /// <returns> True si les champs sont valides, sinon false </returns>
         private bool OperationValide()
         {
+            bool operationValide = true;
+
             if (string.IsNullOrWhiteSpace(txtNomOperation.Text))
             {
                 MessageBox.Show("Veuillez saisir le nom de l'opération.");
                 txtNomOperation.Focus();
-                return false;
+                operationValide = false;
             }
 
-            if (ckbMoteurCreaRecette.Checked)
+            else if (ckbMoteurCreaRecette.Checked && cboSensCreaRecette.SelectedIndex == AucuneSelection)
             {
-                if (cboSensCreaRecette.SelectedIndex == -1)
-                {
-                    MessageBox.Show("Veuillez sélectionner le sens du moteur.");
-                    cboSensCreaRecette.Focus();
-                    return false;
-                }
-
-                if (cboPositionCreaRecette.SelectedIndex == -1)
-                {
-                    MessageBox.Show("Veuillez sélectionner la position du moteur.");
-                    cboPositionCreaRecette.Focus();
-                    return false;
-                }
+                MessageBox.Show("Veuillez sélectionner le sens du moteur.");
+                cboSensCreaRecette.Focus();
+                operationValide = false;
             }
 
-            if (!ckbCycleVerinCreaRecette.Checked && cboTempsCreaRecette.SelectedIndex == -1)
+            else if (ckbMoteurCreaRecette.Checked && cboPositionCreaRecette.SelectedIndex == AucuneSelection)
+            {
+                MessageBox.Show("Veuillez sélectionner la position du moteur.");
+                cboPositionCreaRecette.Focus();
+                operationValide = false;
+            }
+
+            else if(!ckbCycleVerinCreaRecette.Checked && cboTempsCreaRecette.SelectedIndex == AucuneSelection)
             {
                 MessageBox.Show("Veuillez sélectionner le temps d'attente.");
                 cboTempsCreaRecette.Focus();
-                return false;
+                operationValide = false;
             }
-
-            return true;
+            return operationValide;
         }
 
 
@@ -254,53 +273,60 @@ namespace M3_RRO_JSC
         }
 
         /// <summary>
-        /// Enregistre la recette selon le mode actuel du formualire. si le formulaire est en mode modification, la recette existante est mise à jour, sinon 
-        /// une nouvelle recette est créée.
+        /// Valide la recette puis crée ou modifie la recette selon le mode du formulaire, si l'opération réussit, le formulaire se ferme avec le résultat OK.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnEnregistrerCreaRecette_Click(object sender, EventArgs e)
         {
+            bool operationReussie = false;
+
             //Vérifie que le nom de la recette est saisi et qu'au moins une opération a été ajoutée.
-            if (!RecetteValide())
+            if (RecetteValide())
             {
-                return;
+                if (modeModification)
+                {
+                    operationReussie = ModifierRecetteExistante();
+                }
+                else
+                {
+                    operationReussie = CreerNouvelleRecette();
+                }
             }
 
-            //Si le formulaire a été ouvert pour modifier une recette existante,on met à jour cette recette.
-
-            if (modeModification)
+            if(operationReussie)
             {
-                ModifierRecetteExistante();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
-            else
-            {
-                // Sinon le formulaire est en mode création 
-                CreerNouvelleRecette();
-            }
-
-            this.DialogResult = DialogResult.OK;
-            this.Close();
         }
 
+
+        /// <summary>
+        /// Vérifie que la recette possède un nom et au moins une opération.
+        /// </summary>
+        /// <returns>True si la recette est valide, sinon false.</returns>
         private bool RecetteValide()
         {
+            bool recetteValide = true;
+
             if (string.IsNullOrWhiteSpace(txtNomCreaLot.Text))
             {
                 MessageBox.Show("Veuillez saisir le nom de la recette.");
                 txtNomCreaLot.Focus();
-                return false;
+                recetteValide = false;
             }
 
-            if (tableOperations.Rows.Count == 0)
+            else if (tableOperations.Rows.Count == ValeurInactive)
             {
                 MessageBox.Show("Veuillez ajouter au moins une opération à la recette.");
                 txtNomOperation.Focus();
-                return false;
+                recetteValide = false;
             }
-
-            return true;
+            return recetteValide;
         }
+
+
 
         private void btnAnnulerCreaRecette_Click(object sender, EventArgs e)
         {
@@ -408,15 +434,12 @@ namespace M3_RRO_JSC
         }
 
         /// <summary>
-        /// Crée une nouvelle recette à partir des informations saisies par l'utilisateur et l'ajoute à la liste des
-        /// recettes existantes.
+        /// Crée une nouvelle recette avec ses opérations et l'enregistre dans la base de données.
         /// </summary>
-        /// <remarks>Cette méthode lit les données de l'interface utilisateur et des opérations associées,
-        /// puis enregistre la nouvelle recette. Un message de confirmation s'affiche à la fin de l'opération. Cette
-        /// méthode doit être appelée dans un contexte où l'interface utilisateur et les données nécessaires sont
-        /// valides.</remarks>
-        private void CreerNouvelleRecette()
+        /// <returns>True si la recette est crée sinon false.</returns>
+        private bool CreerNouvelleRecette()
         {
+            bool recetteCree = false;
             Recette nouvelleRecette = new Recette();
 
             nouvelleRecette.NomRecette = txtNomCreaLot.Text.Trim();
@@ -430,65 +453,81 @@ namespace M3_RRO_JSC
 
             long idRecette = RecetteManager.CreateRecette(nouvelleRecette.NomRecette);
 
-            if (idRecette == -1)
+            if (idRecette != IdInvalide)
             {
-                MessageBox.Show("la recette n'a pas pu être enregistrer dans la base de donnée.");
-                return;
-            }
+                int numeroOperation = PremierNumeroOperation;
+                bool operationsEnregistrees = true;
 
-            int numeroOperation = 1;
-
-            foreach (OperationRecette operation in nouvelleRecette.Operations)
-            {
-                long idOperation = RecetteManager.CreateOperation(operation);
-
-                if (idOperation == -1)
+                foreach (OperationRecette operation in nouvelleRecette.Operations)
                 {
-                    MessageBox.Show("Une opération n'a pas pu être enregistrée dans la base de données.");
-                    return;
+                    long idOperation = RecetteManager.CreateOperation(operation);
+
+                    if (idOperation != IdInvalide)
+                    {
+                        RecetteManager.AjouterOperationRecette(idRecette, idOperation, numeroOperation);
+                        numeroOperation++;
+                    }
+                    else
+                    {
+                        operationsEnregistrees = false;
+                    }
                 }
 
-                RecetteManager.AjouterOperationRecette(idRecette, idOperation, numeroOperation);
-
-                numeroOperation++;
-
+                if (operationsEnregistrees)
+                {
+                    MessageBox.Show("Recette enregistré avec succés");
+                    recetteCree = true;
+                }
+                else
+                {
+                    MessageBox.Show("Une opération n'a pas pu être enregistrée dans la base de données.");
+                }
             }
-
-
-            RecetteData.ListeRecettes.Add(nouvelleRecette);
-
-            MessageBox.Show("Recette enregistrée avec succès.");
+            else
+            {
+                MessageBox.Show("la recette n'a pas pu être enregistrer dans la base de donnée.");
+            }
+            return recetteCree;
         }
 
 
 
+
+
+
         /// <summary>
-        /// Met à jour les informations de la recette existante avec les valeurs saisies par l'utilisateur et remplace
-        /// la liste des opérations associées.
+        /// Modifie la recette existante avec les informations saisies dans le formulaire,puis enregistre les changements dans la base de données.
         /// </summary>
-        /// <remarks>Cette méthode doit être appelée lorsque l'utilisateur souhaite enregistrer les
-        /// modifications apportées à une recette existante. Toutes les opérations précédemment associées à la recette
-        /// sont supprimées et remplacées par celles définies dans la table des opérations. Un message de confirmation
-        /// s'affiche à la fin de l'opération.</remarks>
-        private void ModifierRecetteExistante()
+        /// <returns>true si la recette est modifiée, sinon false.</returns>
+        private bool ModifierRecetteExistante()
         {
-            // Modification du nom de la recette avec le texte saisi.
-            recetteAModifier.NomRecette = txtNomCreaLot.Text.Trim();
+            bool recetteModifier = false;
 
-            //On vide l'ancienne liste d'opérations de l'objet recette.
-            recetteAModifier.Operations.Clear();
-
-            //On recrée la liste des opérations à partir du tableau du formulaire.
-            foreach (DataRow row in tableOperations.Rows)
+            if(recetteAModifier != null)
             {
-                OperationRecette operation = CreerOperationDepuisLigne(row);
-                recetteAModifier.Operations.Add(operation);
+                // Modification du nom de la recette avec le texte saisi.
+                recetteAModifier.NomRecette = txtNomCreaLot.Text.Trim();
+
+                //On vide l'ancienne liste d'opérations de l'objet recette.
+                recetteAModifier.Operations.Clear();
+
+                foreach(DataRow row in tableOperations.Rows)
+                {
+                    OperationRecette operation = CreerOperationDepuisLigne(row);
+                    recetteAModifier.Operations.Add(operation);
+                }
+
+                //Enregistrement des modifications dans la base de données.
+                RecetteManager.UpDateRecette(recetteAModifier);
+
+                MessageBox.Show("Recette modifiée avec succès.");
+                recetteModifier = true;
             }
-
-            //Enregistrement des modifications dans la base de données.
-            RecetteManager.UpDateRecette(recetteAModifier);
-
-            MessageBox.Show("Recette modifiée avec succès.");
+            else
+            {
+                MessageBox.Show("Impossible de modifier la recette");
+            }
+            return recetteModifier;
         }
 
         /// <summary>
@@ -570,17 +609,19 @@ namespace M3_RRO_JSC
 
             if (!moteurActif)
             {
-                cboSensCreaRecette.SelectedIndex = -1;
-                cboSensCreaRecette.SelectedIndex = -1;
+                cboSensCreaRecette.SelectedIndex = AucuneSelection;
+                cboSensCreaRecette.SelectedIndex = AucuneSelection;
             }
         }
 
-
+        /// <summary>
+        /// Active ou désactive le temps d'attente selon l'état du cycle vérin, si le cycle verin est actif le temps d'attente est forcé a 0.
+        /// </summary>
         private void ActivationCycleVerin()
         {
             if (ckbCycleVerinCreaRecette.Checked)
             {
-                cboTempsCreaRecette.SelectedItem = "0";
+                cboTempsCreaRecette.SelectedItem = TempsAttenteDefaut;
                 cboTempsCreaRecette.Enabled = false;
             }
             else

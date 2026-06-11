@@ -6,9 +6,11 @@ namespace M3_RRO_JSC
 {
     public class Lot
     {
+        public int IdLot {  get; set; }
         public string NomLot { get; set; } = string.Empty;
         public int QuantitePieces { get; set; }
         public Recette? RecetteAssociee { get; set; }
+        public string Etat { get; set; } = string.Empty;
         public DateTime DateCreation { get; set; } = DateTime.Now;
 
     }
