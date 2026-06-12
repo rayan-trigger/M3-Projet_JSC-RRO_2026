@@ -40,17 +40,21 @@
             lblNomDbText = new Label();
             lblEtatConnectionText = new Label();
             pnlEtatMachine = new Panel();
-            lblEtatMachine = new Label();
-            lblMachineNumero = new Label();
-            lblEtatText = new Label();
-            lblMachineText = new Label();
+            txtMachineMaintReponse = new TextBox();
+            txtMachineEnProdReponse = new TextBox();
+            txtMachinePreteReponse = new TextBox();
+            txtMachineMaint = new TextBox();
+            txtMachineEnProd = new TextBox();
+            txtMachinePrete = new TextBox();
+            txtMachineAcceuil = new TextBox();
             pnlLotProduction = new Panel();
-            grdLotEnProd = new DataGridView();
+            grdEtatLotsAccueil = new DataGridView();
             lblLotProduction = new Label();
+            btnParcMachine = new Button();
             pnlEtatConnectionDb.SuspendLayout();
             pnlEtatMachine.SuspendLayout();
             pnlLotProduction.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)grdLotEnProd).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)grdEtatLotsAccueil).BeginInit();
             SuspendLayout();
             // 
             // pnlEtatConnectionDb
@@ -162,7 +166,7 @@
             // 
             lblEtatConnectionText.AutoSize = true;
             lblEtatConnectionText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEtatConnectionText.Location = new Point(208, 16);
+            lblEtatConnectionText.Location = new Point(208, 28);
             lblEtatConnectionText.Name = "lblEtatConnectionText";
             lblEtatConnectionText.Size = new Size(387, 28);
             lblEtatConnectionText.TabIndex = 1;
@@ -171,82 +175,139 @@
             // pnlEtatMachine
             // 
             pnlEtatMachine.BackColor = SystemColors.ActiveCaption;
-            pnlEtatMachine.Controls.Add(lblEtatMachine);
-            pnlEtatMachine.Controls.Add(lblMachineNumero);
-            pnlEtatMachine.Controls.Add(lblEtatText);
-            pnlEtatMachine.Controls.Add(lblMachineText);
+            pnlEtatMachine.Controls.Add(btnParcMachine);
+            pnlEtatMachine.Controls.Add(txtMachineMaintReponse);
+            pnlEtatMachine.Controls.Add(txtMachineEnProdReponse);
+            pnlEtatMachine.Controls.Add(txtMachinePreteReponse);
+            pnlEtatMachine.Controls.Add(txtMachineMaint);
+            pnlEtatMachine.Controls.Add(txtMachineEnProd);
+            pnlEtatMachine.Controls.Add(txtMachinePrete);
+            pnlEtatMachine.Controls.Add(txtMachineAcceuil);
             pnlEtatMachine.Location = new Point(416, 0);
             pnlEtatMachine.Name = "pnlEtatMachine";
             pnlEtatMachine.Size = new Size(794, 206);
             pnlEtatMachine.TabIndex = 10;
             // 
-            // lblEtatMachine
+            // txtMachineMaintReponse
             // 
-            lblEtatMachine.AutoSize = true;
-            lblEtatMachine.Location = new Point(489, 78);
-            lblEtatMachine.Name = "lblEtatMachine";
-            lblEtatMachine.Size = new Size(35, 20);
-            lblEtatMachine.TabIndex = 3;
-            lblEtatMachine.Text = "etat";
+            txtMachineMaintReponse.BackColor = SystemColors.ActiveCaption;
+            txtMachineMaintReponse.BorderStyle = BorderStyle.None;
+            txtMachineMaintReponse.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtMachineMaintReponse.Location = new Point(467, 146);
+            txtMachineMaintReponse.Name = "txtMachineMaintReponse";
+            txtMachineMaintReponse.Size = new Size(125, 24);
+            txtMachineMaintReponse.TabIndex = 10;
+            txtMachineMaintReponse.Text = "5";
             // 
-            // lblMachineNumero
+            // txtMachineEnProdReponse
             // 
-            lblMachineNumero.AutoSize = true;
-            lblMachineNumero.Location = new Point(478, 27);
-            lblMachineNumero.Name = "lblMachineNumero";
-            lblMachineNumero.Size = new Size(65, 20);
-            lblMachineNumero.TabIndex = 2;
-            lblMachineNumero.Text = "Machine";
+            txtMachineEnProdReponse.BackColor = SystemColors.ActiveCaption;
+            txtMachineEnProdReponse.BorderStyle = BorderStyle.None;
+            txtMachineEnProdReponse.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtMachineEnProdReponse.Location = new Point(467, 113);
+            txtMachineEnProdReponse.Name = "txtMachineEnProdReponse";
+            txtMachineEnProdReponse.Size = new Size(125, 24);
+            txtMachineEnProdReponse.TabIndex = 9;
+            txtMachineEnProdReponse.Text = "2";
             // 
-            // lblEtatText
+            // txtMachinePreteReponse
             // 
-            lblEtatText.AutoSize = true;
-            lblEtatText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEtatText.Location = new Point(406, 71);
-            lblEtatText.Name = "lblEtatText";
-            lblEtatText.Size = new Size(63, 28);
-            lblEtatText.TabIndex = 1;
-            lblEtatText.Text = "Etat : ";
+            txtMachinePreteReponse.BackColor = SystemColors.ActiveCaption;
+            txtMachinePreteReponse.BorderStyle = BorderStyle.None;
+            txtMachinePreteReponse.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtMachinePreteReponse.ForeColor = SystemColors.InactiveCaptionText;
+            txtMachinePreteReponse.Location = new Point(467, 80);
+            txtMachinePreteReponse.Name = "txtMachinePreteReponse";
+            txtMachinePreteReponse.Size = new Size(125, 24);
+            txtMachinePreteReponse.TabIndex = 8;
+            txtMachinePreteReponse.Text = "10";
             // 
-            // lblMachineText
+            // txtMachineMaint
             // 
-            lblMachineText.AutoSize = true;
-            lblMachineText.BackColor = SystemColors.ActiveCaption;
-            lblMachineText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblMachineText.Location = new Point(364, 19);
-            lblMachineText.Name = "lblMachineText";
-            lblMachineText.Size = new Size(100, 28);
-            lblMachineText.TabIndex = 0;
-            lblMachineText.Text = "Machine :";
+            txtMachineMaint.BackColor = SystemColors.ActiveCaption;
+            txtMachineMaint.BorderStyle = BorderStyle.None;
+            txtMachineMaint.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtMachineMaint.Location = new Point(208, 146);
+            txtMachineMaint.Name = "txtMachineMaint";
+            txtMachineMaint.Size = new Size(253, 27);
+            txtMachineMaint.TabIndex = 7;
+            txtMachineMaint.Text = " Machine en Maintenance :";
+            // 
+            // txtMachineEnProd
+            // 
+            txtMachineEnProd.BackColor = SystemColors.ActiveCaption;
+            txtMachineEnProd.BorderStyle = BorderStyle.None;
+            txtMachineEnProd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtMachineEnProd.Location = new Point(208, 113);
+            txtMachineEnProd.Name = "txtMachineEnProd";
+            txtMachineEnProd.Size = new Size(253, 27);
+            txtMachineEnProd.TabIndex = 6;
+            txtMachineEnProd.Text = "    Machine en Production :";
+            // 
+            // txtMachinePrete
+            // 
+            txtMachinePrete.BackColor = SystemColors.ActiveCaption;
+            txtMachinePrete.BorderStyle = BorderStyle.None;
+            txtMachinePrete.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtMachinePrete.Location = new Point(208, 80);
+            txtMachinePrete.Name = "txtMachinePrete";
+            txtMachinePrete.Size = new Size(253, 27);
+            txtMachinePrete.TabIndex = 5;
+            txtMachinePrete.Text = "Machine Prête a Produire  :";
+            // 
+            // txtMachineAcceuil
+            // 
+            txtMachineAcceuil.BackColor = SystemColors.ActiveCaption;
+            txtMachineAcceuil.BorderStyle = BorderStyle.None;
+            txtMachineAcceuil.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtMachineAcceuil.Location = new Point(208, 19);
+            txtMachineAcceuil.Name = "txtMachineAcceuil";
+            txtMachineAcceuil.Size = new Size(382, 36);
+            txtMachineAcceuil.TabIndex = 4;
+            txtMachineAcceuil.Text = "Etat général du parc machine ";
             // 
             // pnlLotProduction
             // 
             pnlLotProduction.BackColor = SystemColors.ActiveCaption;
-            pnlLotProduction.Controls.Add(grdLotEnProd);
+            pnlLotProduction.Controls.Add(grdEtatLotsAccueil);
             pnlLotProduction.Controls.Add(lblLotProduction);
             pnlLotProduction.Location = new Point(0, 0);
             pnlLotProduction.Name = "pnlLotProduction";
             pnlLotProduction.Size = new Size(410, 675);
             pnlLotProduction.TabIndex = 8;
             // 
-            // grdLotEnProd
+            // grdEtatLotsAccueil
             // 
-            grdLotEnProd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdLotEnProd.Location = new Point(53, 71);
-            grdLotEnProd.Name = "grdLotEnProd";
-            grdLotEnProd.RowHeadersWidth = 51;
-            grdLotEnProd.Size = new Size(301, 397);
-            grdLotEnProd.TabIndex = 1;
+            grdEtatLotsAccueil.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grdEtatLotsAccueil.Location = new Point(23, 58);
+            grdEtatLotsAccueil.Name = "grdEtatLotsAccueil";
+            grdEtatLotsAccueil.RowHeadersWidth = 51;
+            grdEtatLotsAccueil.Size = new Size(360, 397);
+            grdEtatLotsAccueil.TabIndex = 1;
             // 
             // lblLotProduction
             // 
             lblLotProduction.AutoSize = true;
             lblLotProduction.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLotProduction.Location = new Point(105, 20);
+            lblLotProduction.Location = new Point(134, 27);
             lblLotProduction.Name = "lblLotProduction";
-            lblLotProduction.Size = new Size(185, 28);
+            lblLotProduction.Size = new Size(128, 28);
             lblLotProduction.TabIndex = 0;
-            lblLotProduction.Text = "Lots en production";
+            lblLotProduction.Text = "Etat des Lots";
+            // 
+            // btnParcMachine
+            // 
+            btnParcMachine.BackColor = Color.YellowGreen;
+            btnParcMachine.BackgroundImageLayout = ImageLayout.Center;
+            btnParcMachine.CausesValidation = false;
+            btnParcMachine.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnParcMachine.Location = new Point(42, 80);
+            btnParcMachine.Name = "btnParcMachine";
+            btnParcMachine.Size = new Size(124, 70);
+            btnParcMachine.TabIndex = 11;
+            btnParcMachine.Text = "Mise à Jour  Parc Machine";
+            btnParcMachine.UseVisualStyleBackColor = false;
+            btnParcMachine.Click += btnParcMachine_Click;
             // 
             // AccueilControl
             // 
@@ -264,7 +325,7 @@
             pnlEtatMachine.PerformLayout();
             pnlLotProduction.ResumeLayout(false);
             pnlLotProduction.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)grdLotEnProd).EndInit();
+            ((System.ComponentModel.ISupportInitialize)grdEtatLotsAccueil).EndInit();
             ResumeLayout(false);
         }
 
@@ -276,11 +337,10 @@
         private Label lblEtatConnectionText;
         private Panel pnlEtatMachine;
         private Label lblEtatMachine;
-        private Label lblMachineNumero;
         private Label lblEtatText;
         private Label lblMachineText;
         private Panel pnlLotProduction;
-        private DataGridView grdLotEnProd;
+        private DataGridView grdEtatLotsAccueil;
         private Label lblLotProduction;
         public Label lblNomDb;
         public Label lblUtilisateur;
@@ -289,5 +349,13 @@
         public Label lblIPDB;
         public Label lblPort;
         private Label lblPortText;
+        private TextBox txtMachineAcceuil;
+        private TextBox txtMachineMaint;
+        private TextBox txtMachineEnProd;
+        private TextBox txtMachinePrete;
+        private TextBox txtMachineMaintReponse;
+        private TextBox txtMachineEnProdReponse;
+        private TextBox txtMachinePreteReponse;
+        private Button btnParcMachine;
     }
 }

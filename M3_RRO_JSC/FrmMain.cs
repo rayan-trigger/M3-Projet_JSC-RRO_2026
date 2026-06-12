@@ -10,10 +10,18 @@ namespace M3_RRO_JSC
         {
             InitializeComponent();
 
+            this.FormClosing += FrmMain_FormClosing;
+
             // Page affichée au démarrage
             AfficherPage(new AccueilControl(), "Accueil");
         }
 
+
+        /// <summary>
+        /// Affiche une nouvelle page dans le panneau principal de l'application, et met à jour le titre du bandeau.
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="titre"></param>
         public void AfficherPage(UserControl page, string titre)
         {
             // Change le texte du bandeau
@@ -31,6 +39,27 @@ namespace M3_RRO_JSC
 
             pnlMain.Controls.Add(page);
             page.BringToFront();
+        }
+
+
+        /// <summary>
+        /// Demande une confirmation avant de fermer l'application.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Attention, vous allez fermer l'application. Voulez-vous continuer ?",
+                "Confirmation de fermeture",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (result == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

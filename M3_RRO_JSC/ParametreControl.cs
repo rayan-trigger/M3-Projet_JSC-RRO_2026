@@ -15,6 +15,12 @@ namespace M3_RRO_JSC
         public ParametreControl()
         {
             InitializeComponent();
+
+            txtNomBasePara.Text = "m3_db";
+            txtNomUtiliPara.Text = "root";
+            txtPortSqlPara.Text = "3306";
+            txtAdresseIpPara.Text = "127.0.0.1";
+
         }
 
         private void btnTesterPara_Click(object sender, EventArgs e)

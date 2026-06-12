@@ -13,6 +13,53 @@ namespace M3_RRO_JSC
         {
             InitializeComponent();
             SetStatus(IsConnected);
+
+            InitialiserGrilleLotsAccueil();
+            ChargerLotsAccueil();
+        }
+
+
+
+        /// <summary>
+        /// Initialise les colonnes du tableau des lots affiché sur la page d'accueil.
+        /// </summary>
+        private void InitialiserGrilleLotsAccueil()
+        {
+            grdEtatLotsAccueil.Columns.Clear();
+
+            grdEtatLotsAccueil.Columns.Add("DateCreation", "Date de création");
+            grdEtatLotsAccueil.Columns.Add("NomLot", "Nom du lot");
+            grdEtatLotsAccueil.Columns.Add("Etat", "État");
+
+            grdEtatLotsAccueil.ReadOnly = true;
+            grdEtatLotsAccueil.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grdEtatLotsAccueil.MultiSelect = false;
+            grdEtatLotsAccueil.AllowUserToAddRows = false;
+            grdEtatLotsAccueil.AllowUserToDeleteRows = false;
+            grdEtatLotsAccueil.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        /// <summary>
+        /// Charge les lots depuis la base de données et affiche les informations principales
+        /// dans le tableau de la page d'accueil.
+        /// </summary>
+        private void ChargerLotsAccueil()
+        {
+            if (DBManager.ParametresConnexionValides())
+            {
+                LotData.ListeLots = LotManager.GetAllLots();
+
+                grdEtatLotsAccueil.Rows.Clear();
+
+                foreach (Lot lot in LotData.ListeLots)
+                {
+                    grdEtatLotsAccueil.Rows.Add(
+                        lot.DateCreation,
+                        lot.NomLot,
+                        lot.Etat
+                    );
+                }
+            }
         }
 
         public void SetStatus(bool isConnected)
@@ -48,49 +95,22 @@ namespace M3_RRO_JSC
         private void UpdateConnectionInfo()
         {
             if (IsConnected)
-            SetInfoDB(_connectionString);
+                SetInfoDB(_connectionString);
         }
-    
 
-
-        public void ChargerLotEnProduction()
+        private void lblEtatText_Click(object sender, EventArgs e)
         {
 
-            grdLotEnProd.Rows.Clear();
-            grdLotEnProd.Columns.Clear();
-
-            grdLotEnProd.Columns.Add("NomLot", " Nom du lot");
-            grdLotEnProd.Columns.Add("Quantite", "Quantité");
-            grdLotEnProd.Columns.Add("Recette", "Recette");
-            grdLotEnProd.Columns.Add("DateCreation", "Date de création");
-
-            if (LotData.LotEnProduction != null)
-            {
-                Lot lot = LotData.LotEnProduction;
-
-                grdLotEnProd.Rows.Add(
-                    lot.NomLot,
-                    lot.QuantitePieces,
-                    lot.RecetteAssociee != null ? lot.RecetteAssociee.NomRecette : "",
-                    lot.DateCreation.ToString("dd/MM/yyyy HH:mm")
-                    );
-            }
-
-
-            grdLotEnProd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            grdLotEnProd.AllowUserToAddRows = false;
-            grdLotEnProd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            grdLotEnProd.MultiSelect = false;
         }
 
+        private void lblMachineNumero_Click(object sender, EventArgs e)
+        {
 
+        }
 
+        private void btnParcMachine_Click(object sender, EventArgs e)
+        {
 
-
-
-                
-                
-            
-
+        }
     }
 }
