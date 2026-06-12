@@ -101,7 +101,7 @@ namespace M3_RRO_JSC
                     catch (Exception ex)
                     {
                         // Erreur claire si la base est inaccessible
-                        MessageBox.Show("$Base de données inaccessible :\n{ex.Message}",
+                        MessageBox.Show($"Base de données inaccessible :\n{ex.Message}",
                         "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }

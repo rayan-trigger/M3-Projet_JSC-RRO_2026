@@ -21,7 +21,6 @@ namespace M3_RRO_JSC
 
         private void TracabiliteControl_Load(object sender, EventArgs e)
         {
-            _manager.ConfigurerDataGridView();
             _manager.ChargerDonnees();
         }
     }
