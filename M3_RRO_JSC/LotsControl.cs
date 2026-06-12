@@ -13,7 +13,7 @@ namespace M3_RRO_JSC
     {
 
         private const int ValeurInactive = 0;
-        
+
         public LotsControl()
         {
             InitializeComponent();
@@ -44,20 +44,6 @@ namespace M3_RRO_JSC
         }
 
 
-        /// <summary>
-        /// Ouvre le formulaire de création d'un lot, si le lot est créé correctement, la liste des lots est rechargée depuis la base de données.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnCreer_Click(object sender, EventArgs e)
-        {
-            FrmCreationLot popup = new FrmCreationLot();
-
-            if (popup.ShowDialog() == DialogResult.OK)
-            {
-                ChargerLots();
-            }
-        }
 
         /// <summary>
         /// Récupère tous les lots enregistrés dans la base de données et met à jour le DataGridView d'affichage des lots.
@@ -84,12 +70,31 @@ namespace M3_RRO_JSC
         }
 
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        /// <summary>
+        /// Ouvre le formulaire de création d'un lot, si le lot est créé correctement, la liste des lots est rechargée depuis la base de données.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCreer_Click(object sender, EventArgs e)
+        {
+            FrmCreationLot popup = new FrmCreationLot();
+
+            if (popup.ShowDialog() == DialogResult.OK)
+            {
+                ChargerLots();
+            }
+        }
+
+
         /// <summary>
         /// Ouvre le formulaire de modification du lot sélectionné si celui-ci est encore modifiable,après modification, 
         /// la liste des lots est rechargée depuis la base de données.
         /// </summary>
-        /// <param name="sender">Objet qui déclenche l'événement.</param>
-        /// <param name="e">Arguments de l'événement.</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnModifierLot_Click(object sender, EventArgs e)
         {
             if (grdGestionLots.CurrentRow != null)
@@ -138,8 +143,8 @@ namespace M3_RRO_JSC
         /// <summary>
         /// Supprime le lot sélectionné si celui-ci est encore en attente,puis recharge la liste des lots depuis la base de données.
         /// </summary>
-        /// <param name="sender">Objet qui déclenche l'événement.</param>
-        /// <param name="e">Arguments de l'événement.</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
             bool suppressionDemandee = false;
@@ -180,43 +185,8 @@ namespace M3_RRO_JSC
                 ChargerLots();
             }
         }
+    }
+}
        
             
 
-        private void btnEnvoyerProductionLot_Click(object sender, EventArgs e)
-        {
-            if (grdGestionLots.CurrentRow == null )
-            {
-                MessageBox.Show("Veuillez sélectionner un lot à envoyer en production.");
-                return;
-                 
-            }
-
-            int index = grdGestionLots.CurrentRow.Index;
-
-            if (index <  0 || index >= LotData.ListeLots.Count)
-            {
-                MessageBox.Show("Sélection invalide.");
-            }
-
-            Lot lotSelectionne = LotData.ListeLots [index];
-
-            DialogResult confirmation = MessageBox.Show(
-                "Voulez-vous envoyer le lot ' " + lotSelectionne.NomLot + " ' en production ?",
-                "Confirmation",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-                ); 
-
-            if (confirmation  != DialogResult.Yes )
-            {
-                return;
-            }
-             
-            LotData.LotEnProduction = lotSelectionne;
-
-            MessageBox.Show("L e lot '" + lotSelectionne.NomLot + "' a été envoyé en production.");
-        
-        }
-    }
-}

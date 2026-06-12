@@ -496,5 +496,43 @@ namespace M3_RRO_JSC
 
             }
         }
+
+
+        /// <summary>
+        /// Vérifie si une recette est utilisée par au moins un lot, une recette utilisée par un lot ne peut pas être supprimée.
+        /// </summary>
+        /// <param name="idRecette">Identifiant de la recette à vérifier.</param>
+        /// <returns>True si la recette est utilisée par un lot, sinon false.</returns>
+        public static bool RecetteEstUtiliseeParLot(int idRecette)
+        {
+            bool recetteUtilisee = true;
+
+            try
+            {
+                using (MySqlCommand cmd = GetConnection().CreateCommand())
+                {
+                    cmd.CommandText = "SELECT COUNT(*) " +
+                                      "FROM lot " +
+                                      "WHERE Id_Recette = @idRecette;";
+
+                    cmd.Parameters.AddWithValue("@idRecette", idRecette);
+
+                    int nombreLots = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    recetteUtilisee = nombreLots > ValeurInactive;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erreur vérification utilisation recette : " + ex.Message);
+
+                // Par sécurité, si la vérification échoue, on bloque la suppression.
+                recetteUtilisee = true;
+            }
+
+            return recetteUtilisee;
+        }
+
+
     }
 }

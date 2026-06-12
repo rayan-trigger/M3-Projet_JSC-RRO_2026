@@ -113,8 +113,8 @@ namespace M3_RRO_JSC
         /// <summary>
         /// Ouvre le formulaire de modification pour la recette sélectionnée si celle-ci n'est pas bloquée par un lot. 
         /// </summary>
-        /// <param name="sender">Objet qui déclenche l'événement.</param>
-        /// <param name="e">Arguments de l'événement.</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnModifierRecette_Click(object sender, EventArgs e)
         {
             if (grdRecette.CurrentRow != null)
@@ -160,10 +160,10 @@ namespace M3_RRO_JSC
 
 
         /// <summary>
-        /// Supprime la recette sélectionnée si elle n'est pas bloquée par un lot,la liste des recettes est ensuite rechargée depuis la base de données.
+        /// Supprime la recette sélectionnée si elle n'est utilisée par aucun lot, la liste des recettes est ensuite rechargée depuis la base de données.
         /// </summary>
-        /// <param name="sender">Objet qui déclenche l'événement.</param>
-        /// <param name="e">Arguments de l'événement.</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSupprimerRecette_Click(object sender, EventArgs e)
         {
             if (grdRecette.CurrentRow != null)
@@ -176,10 +176,10 @@ namespace M3_RRO_JSC
 
                     if (DBManager.ParametresConnexionValides())
                     {
-                        if (RecetteManager.RecetteEstBloquee(recetteSelectionnee.IdRecette))
+                        if (RecetteManager.RecetteEstUtiliseeParLot(recetteSelectionnee.IdRecette))
                         {
                             MessageBox.Show(
-                                "Cette recette ne peut plus être supprimée car elle est utilisée par un lot envoyé en production.",
+                                "Cette recette ne peut pas être supprimée car elle est utilisée par un lot.",
                                 "Suppression impossible",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Warning
@@ -197,7 +197,9 @@ namespace M3_RRO_JSC
                             if (confirmation == DialogResult.Yes)
                             {
                                 RecetteManager.DeleteRecette(recetteSelectionnee.IdRecette);
+
                                 ChargerRecettes();
+
                                 MessageBox.Show("Recette supprimée avec succès.");
                             }
                         }
@@ -229,6 +231,7 @@ namespace M3_RRO_JSC
                 ChargerRecettes();
             }
         }
+
 
         /// <summary>
         /// Recharge le tableau des opérations lorsqu'une recette est sélectionnée dans la grille.
