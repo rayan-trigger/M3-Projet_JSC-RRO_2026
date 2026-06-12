@@ -34,8 +34,8 @@
             btnCreerRecette = new Button();
             lblListeRecette = new Label();
             grdRecette = new DataGridView();
-            cboRecette = new ComboBox();
             grdOperationRecette = new DataGridView();
+            txtOperationRecette = new TextBox();
             ((System.ComponentModel.ISupportInitialize)grdRecette).BeginInit();
             ((System.ComponentModel.ISupportInitialize)grdOperationRecette).BeginInit();
             SuspendLayout();
@@ -45,7 +45,7 @@
             txtRechercheRecettes.BackColor = SystemColors.InactiveCaption;
             txtRechercheRecettes.BorderStyle = BorderStyle.None;
             txtRechercheRecettes.ForeColor = SystemColors.HighlightText;
-            txtRechercheRecettes.Location = new Point(604, 81);
+            txtRechercheRecettes.Location = new Point(777, 99);
             txtRechercheRecettes.Name = "txtRechercheRecettes";
             txtRechercheRecettes.PlaceholderText = "Rechercher";
             txtRechercheRecettes.Size = new Size(293, 20);
@@ -87,45 +87,50 @@
             // lblListeRecette
             // 
             lblListeRecette.AutoSize = true;
-            lblListeRecette.Location = new Point(10, 81);
+            lblListeRecette.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblListeRecette.Location = new Point(514, 81);
             lblListeRecette.Name = "lblListeRecette";
-            lblListeRecette.Size = new Size(210, 20);
+            lblListeRecette.Size = new Size(114, 38);
             lblListeRecette.TabIndex = 8;
-            lblListeRecette.Text = "Selectionner la recette afiicher";
+            lblListeRecette.Text = "Recette";
             // 
             // grdRecette
             // 
             grdRecette.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdRecette.Location = new Point(3, 115);
+            grdRecette.Location = new Point(33, 125);
             grdRecette.Name = "grdRecette";
             grdRecette.RowHeadersWidth = 51;
             grdRecette.Size = new Size(1037, 214);
             grdRecette.TabIndex = 11;
             grdRecette.SelectionChanged += grdRecette_SelectionChanged;
             // 
-            // cboRecette
-            // 
-            cboRecette.FormattingEnabled = true;
-            cboRecette.Location = new Point(240, 81);
-            cboRecette.Name = "cboRecette";
-            cboRecette.Size = new Size(200, 28);
-            cboRecette.TabIndex = 12;
-            // 
             // grdOperationRecette
             // 
             grdOperationRecette.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdOperationRecette.Location = new Point(0, 373);
+            grdOperationRecette.Location = new Point(33, 413);
             grdOperationRecette.Name = "grdOperationRecette";
             grdOperationRecette.RowHeadersWidth = 51;
             grdOperationRecette.Size = new Size(1037, 244);
             grdOperationRecette.TabIndex = 13;
             // 
+            // txtOperationRecette
+            // 
+            txtOperationRecette.BackColor = SystemColors.Control;
+            txtOperationRecette.BorderStyle = BorderStyle.None;
+            txtOperationRecette.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtOperationRecette.Location = new Point(271, 364);
+            txtOperationRecette.Name = "txtOperationRecette";
+            txtOperationRecette.Size = new Size(606, 36);
+            txtOperationRecette.TabIndex = 14;
+            txtOperationRecette.Text = "Opération contenu dans la rectte sélectionneé";
+            txtOperationRecette.TextAlign = HorizontalAlignment.Right;
+            // 
             // RecettesControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(txtOperationRecette);
             Controls.Add(grdOperationRecette);
-            Controls.Add(cboRecette);
             Controls.Add(grdRecette);
             Controls.Add(lblListeRecette);
             Controls.Add(txtRechercheRecettes);
@@ -147,7 +152,7 @@
         private Button btnCreerRecette;
         private Label lblListeRecette;
         private DataGridView grdRecette;
-        private ComboBox cboRecette;
         private DataGridView grdOperationRecette;
+        private TextBox txtOperationRecette;
     }
 }

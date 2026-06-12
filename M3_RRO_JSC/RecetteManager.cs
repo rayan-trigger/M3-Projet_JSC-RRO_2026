@@ -534,5 +534,121 @@ namespace M3_RRO_JSC
         }
 
 
+        /// <summary>
+        /// Récupère toutes les opérations enregistrées dans la base de données.
+        /// </summary>
+        /// <returns>Liste des opérations enregistrées.</returns>
+        public static List<OperationRecette> GetAllOperations()
+        {
+            List<OperationRecette> operations = new List<OperationRecette>();
+
+            try
+            {
+                using (MySqlCommand cmd = GetConnection().CreateCommand())
+                {
+                    cmd.CommandText = "SELECT Id_Operation, OPE_Nom, OPE_PositionMoteur, " +
+                                      "OPE_TempsAttente, OPE_CycleVerin, OPE_Quittance, OPE_SensMoteur " +
+                                      "FROM operation " +
+                                      "ORDER BY OPE_Nom;";
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            OperationRecette operation = new OperationRecette();
+
+                            operation.IdOperation = reader.GetInt32("Id_Operation");
+                            operation.NomOperation = reader.GetString("OPE_Nom");
+                            operation.Position = ConvertirPositionMoteurEnTexte(reader.GetInt32("OPE_PositionMoteur"));
+                            operation.TempsAttente = reader.GetInt32("OPE_TempsAttente").ToString();
+                            operation.CycleVerin = reader.GetBoolean("OPE_CycleVerin");
+                            operation.Quittance = reader.GetBoolean("OPE_Quittance");
+
+                            if (reader.GetInt32("OPE_PositionMoteur") == ValeurInactive)
+                            {
+                                operation.Sens = TexteVide;
+                            }
+                            else
+                            {
+                                operation.Sens = ConvertirSensMoteurEnTexte(reader.GetBoolean("OPE_SensMoteur"));
+                            }
+
+                            operations.Add(operation);
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erreur chargement opérations : " + ex.Message);
+            }
+
+            return operations;
+        }
+
+
+        /// <summary>
+        /// Vérifie si une opération est associée à au moins une recette.
+        /// </summary>
+        /// <param name="idOperation">Identifiant de l'opération à vérifier.</param>
+        /// <returns>True si l'opération est associée à une recette, sinon false.</returns>
+        public static bool OperationEstAssocieeARecette(int idOperation)
+        {
+            bool operationAssociee = true;
+
+            try
+            {
+                using (MySqlCommand cmd = GetConnection().CreateCommand())
+                {
+                    cmd.CommandText = "SELECT COUNT(*) " +
+                                      "FROM contenir " +
+                                      "WHERE Id_Operation_est_contenu_dans = @idOperation;";
+
+                    cmd.Parameters.AddWithValue("@idOperation", idOperation);
+
+                    int nombreAssociations = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    operationAssociee = nombreAssociations > ValeurInactive;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erreur vérification utilisation opération : " + ex.Message);
+                operationAssociee = true;
+            }
+
+            return operationAssociee;
+        }
+
+
+        /// <summary>
+        /// Supprime une opération de la base de données si elle n'est associée à aucune recette.
+        /// </summary>
+        /// <param name="idOperation">Identifiant de l'opération à supprimer.</param>
+        public static void DeleteOperation(int idOperation)
+        {
+            try
+            {
+                if (!OperationEstAssocieeARecette(idOperation))
+                {
+                    using (MySqlCommand cmd = GetConnection().CreateCommand())
+                    {
+                        cmd.CommandText = "DELETE FROM operation WHERE Id_Operation = @idOperation;";
+
+                        cmd.Parameters.AddWithValue("@idOperation", idOperation);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Impossible de supprimer cette opération car elle est associée à une recette.");
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erreur suppression opération : " + ex.Message);
+            }
+        }
     }
 }

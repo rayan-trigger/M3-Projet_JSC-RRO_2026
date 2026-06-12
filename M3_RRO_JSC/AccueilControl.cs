@@ -98,8 +98,19 @@ namespace M3_RRO_JSC
                 SetInfoDB(_connectionString);
         }
 
+        private void lblEtatText_Click(object sender, EventArgs e)
+        {
 
+        }
 
-        
+        private void lblMachineNumero_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnParcMachine_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

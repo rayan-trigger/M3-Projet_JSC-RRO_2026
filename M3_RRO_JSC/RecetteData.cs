@@ -11,7 +11,6 @@ namespace M3_RRO_JSC
     {
         public int IdOperation { get;set; }
         public string NomOperation { get; set; }
-        public bool MoteurActif { get; set; }
         public string Sens { get; set; }
         public string Position { get; set; }
         public string TempsAttente { get; set; }

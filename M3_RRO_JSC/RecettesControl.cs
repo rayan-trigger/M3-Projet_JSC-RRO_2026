@@ -240,8 +240,13 @@ namespace M3_RRO_JSC
         /// <param name="e"></param>
         private void grdRecette_SelectionChanged(object sender, EventArgs e)
         {
-           
+
             ChargerOperationsRecetteSelectionner();
+        }
+
+        private void cboRecette_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

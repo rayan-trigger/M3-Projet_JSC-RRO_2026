@@ -65,6 +65,7 @@ namespace M3_RRO_JSC
             InitialiserTableOperations();
             ActivationMoteur();
             ActivationCycleVerin();
+            ChargerToutesOperations();
 
             this.Text = "Création de recette";
             btnEnregistrerCreaRecette.Text = "Enregistrer la recette";
@@ -84,6 +85,7 @@ namespace M3_RRO_JSC
             btnEnregistrerCreaRecette.Text = "Enregistrer la modification";
 
             ChargerRecetteAModifier();
+            ChargerToutesOperations();
         }
 
         /// <summary>
@@ -109,10 +111,11 @@ namespace M3_RRO_JSC
 
             cboTempsCreaRecette.Items.Clear();
 
-            for (int temps = TempsAttenteMin; temps <= TempsAttenteMax; temps++) ;
+            for (int temps = TempsAttenteMin; temps <= TempsAttenteMax; temps++)
             {
-                cboTempsCreaRecette.Items.Add(TempsAttenteMax.ToString());
+                cboTempsCreaRecette.Items.Add(temps.ToString());
             }
+           
 
             cboTempsCreaRecette.SelectedIndex = AucuneSelection;
         }
@@ -173,7 +176,7 @@ namespace M3_RRO_JSC
                 operationValide = false;
             }
 
-            else if(!ckbCycleVerinCreaRecette.Checked && cboTempsCreaRecette.SelectedIndex == AucuneSelection)
+            else if (!ckbCycleVerinCreaRecette.Checked && cboTempsCreaRecette.SelectedIndex == AucuneSelection)
             {
                 MessageBox.Show("Veuillez sélectionner le temps d'attente.");
                 cboTempsCreaRecette.Focus();
@@ -226,7 +229,7 @@ namespace M3_RRO_JSC
             }));
         }
 
-        
+
 
         /// <summary>
         /// Vérifie que la recette possède un nom et au moins une opération.
@@ -371,7 +374,7 @@ namespace M3_RRO_JSC
         {
             bool recetteModifier = false;
 
-            if(recetteAModifier != null)
+            if (recetteAModifier != null)
             {
                 // Modification du nom de la recette avec le texte saisi.
                 recetteAModifier.NomRecette = txtNomCreaLot.Text.Trim();
@@ -379,7 +382,7 @@ namespace M3_RRO_JSC
                 //On vide l'ancienne liste d'opérations de l'objet recette.
                 recetteAModifier.Operations.Clear();
 
-                foreach(DataRow row in tableOperations.Rows)
+                foreach (DataRow row in tableOperations.Rows)
                 {
                     OperationRecette operation = CreerOperationDepuisLigne(row);
                     recetteAModifier.Operations.Add(operation);
@@ -508,6 +511,46 @@ namespace M3_RRO_JSC
             }
         }
 
+        /// <summary>
+        /// Recharge toutes les opérations enregistrées dans la base de données et les affiche dans la grille des opérations disponibles.
+        /// </summary>
+        private void ChargerToutesOperations()
+        {
+            grdToutesOperationsCreaRecette.Rows.Clear();
+            grdToutesOperationsCreaRecette.Columns.Clear();
+
+            grdToutesOperationsCreaRecette.Columns.Add("IdOperation", "ID");
+            grdToutesOperationsCreaRecette.Columns.Add("NomOperation", "Nom opération");
+            grdToutesOperationsCreaRecette.Columns.Add("Sens", "Sens");
+            grdToutesOperationsCreaRecette.Columns.Add("Position", "Position");
+            grdToutesOperationsCreaRecette.Columns.Add("TempsAttente", "Temps attente");
+            grdToutesOperationsCreaRecette.Columns.Add("CycleVerin", "Cycle vérin");
+            grdToutesOperationsCreaRecette.Columns.Add("Quittance", "Quittance");
+
+            List<OperationRecette> operations = RecetteManager.GetAllOperations();
+
+            foreach (OperationRecette operation in operations)
+            {
+                grdToutesOperationsCreaRecette.Rows.Add(
+                    operation.IdOperation,
+                    operation.NomOperation,
+                    operation.Sens,
+                    operation.Position,
+                    operation.TempsAttente,
+                    operation.CycleVerin ? TexteOui : TexteNon,
+                    operation.Quittance ? TexteOui : TexteNon
+                );
+            }
+
+            grdToutesOperationsCreaRecette.Columns["IdOperation"].Visible = false;
+
+            grdToutesOperationsCreaRecette.ReadOnly = true;
+            grdToutesOperationsCreaRecette.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grdToutesOperationsCreaRecette.MultiSelect = false;
+            grdToutesOperationsCreaRecette.AllowUserToAddRows = false;
+            grdToutesOperationsCreaRecette.AllowUserToDeleteRows = false;
+            grdToutesOperationsCreaRecette.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
 
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -649,6 +692,10 @@ namespace M3_RRO_JSC
             ActivationMoteur();
         }
 
+
+
+
+
         /// <summary>
         /// CheckBox du cycle vérin dans le formulaire.
         /// </summary>
@@ -658,10 +705,38 @@ namespace M3_RRO_JSC
         {
             ActivationCycleVerin();
         }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSupprimerOperation_Click(object sender, EventArgs e)
+        {
+            if(grdToutesOperationsCreaRecette.CurrentRow != null)
+            {
+                int idOperation = Convert.ToInt32(grdToutesOperationsCreaRecette.CurrentRow.Cells["IdOperation"].Value);
+
+                DialogResult confirmation = MessageBox.Show(
+                    "Voulez-vous vraiment supprimer cette opération ?",
+                    "Confirmation de suppression",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                if (confirmation == DialogResult.Yes)
+                {
+                    RecetteManager.DeleteOperation(idOperation);
+                    ChargerToutesOperations();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner une opération à supprimer.");
+            }
+        }
     }
-
-
-
-
 
 }
