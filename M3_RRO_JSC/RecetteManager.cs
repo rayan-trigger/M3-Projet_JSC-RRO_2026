@@ -8,159 +8,173 @@ namespace M3_RRO_JSC
 {
     internal class RecetteManager
     {
+        private const long IdInvalide = -1;
+        private const int ValeurInactive = 0;
+        private const int PremierNumeroOperation = 1;
+
+        private const string Position12h = "12h";
+        private const string Position3h = "3h";
+        private const string Position6h = "6h";
+        private const string Position9h = "9h";
+        private const string TexteVide = "";
 
 
-        // 
         /// <summary>
-        /// Cette méthode convertit le texte choisi par l’utilisateur en valeur numérique pour la base de données.
-        /// Convertit le texte de la position moteur sélectionnée dans l'application en valeur numérique correspondante a l'enum PosMoteur.
+        /// Convertit le sens moteur saisi sous forme de texte en valeur booléenne.
+        /// Le sens horaire correspond à true, les autres valeurs correspondent à false.
         /// </summary>
-        /// <param name="positionTexte"> Texte récupéré depuis le ComboBox ouu depuis le tableau.
-        /// </param>
-        /// <returns>La valeur numérique correspondante à la position moteur 
-        /// </returns> 0 si aucune posiiton n'est selectionné ou si la conversion échoue.
-        public static int ConvertirPositionMoteur(String positionTexte)
+        /// <param name="sensTexte"> Sens moteur sous forme de texte </param>
+        /// <returns> True si le sens est horaire, sinon false</returns>
+        public static  bool ConvertirSensMoteur(string sensTexte)
         {
-            if (string.IsNullOrWhiteSpace(positionTexte))
+            bool sensMoteur = false;
+
+            if (!string.IsNullOrWhiteSpace(sensTexte))
             {
-                return 0;
+                if(System.Enum.TryParse(sensTexte, out SensMoteur sens))
+                {
+                    sensMoteur = sens == SensMoteur.Horaire;
+                }
             }
-
-            switch(positionTexte)
-            {
-                case "12h":
-                    return (int)PosMoteur.Midi;
-
-                case "3h":
-                    return (int)PosMoteur.TroisHeures;
-
-                case "6h":
-                    return (int)PosMoteur.SixHeures;
-
-                case "9h":
-                    return (int)PosMoteur.NeufHeures;
-
-                default:
-                    if(System.Enum.TryParse(positionTexte, out PosMoteur position))
-                    {
-                        return (int)position;
-                    }
-
-                    return 0;
-            }
+            return sensMoteur;
         }
 
 
         /// <summary>
-        /// Cette méhthode recoit le texte sélectionné dans le combo box, en valeur booléenne utilisable pour la base de donnée
-        /// Si la conversion fonctionne, on retourne la valeur numérique du Sens moteur  pour l’enregistrer dans la base.
+        /// Convertit le sens moteur enregistré en base de données en texte affichable.
+        /// La valeur true correspond au sens horaire, la valeur false au sens anti-horaire.
         /// </summary>
-        /// <param name="sensTexte"></param>
-        /// Texte sélectonné dans le comboBox.
-        /// <returns>Retourne true si le sens sélectionné est horaire 
-        /// </returns>Retourne false si le sens est AntiHoraire
-        public static  bool ConvertirSensMoteur(String sensTexte)
+        /// <param name="sensValeur">Valeur booléenne du sens moteur enregistré en base </param>
+        /// <returns>Le sens moteur sous forme de texte </returns>
+        public static string ConvertirSensMoteurEnTexte(bool sensValeur)
         {
-            if (System.Enum.TryParse(sensTexte, out SensMoteur sens))
+            string sensTexte = SensMoteur.AntiHoraire. ToString();
+
+            if (sensValeur)
             {
-                return sens == SensMoteur.Horaire;
+                sensTexte = SensMoteur.Horaire.ToString();
             }
 
-            else
-            {
-                return false;
-
-            }
+            return sensTexte;
+            
         }
 
+
         /// <summary>
-        /// Convertit le temps d'attente sélectionné dans le comboBox en nombre entier, converstion necessaire car la base attend un INT
+        /// Convertit le temps d'attente saisi sous forme de texte en nombre entier.
+        /// Si le texte est vide ou invalide, une valeur inactive est retournée.
         /// </summary>
-        /// <param name="tempsTexte"> Texte récupére depuis le comboBox du temps d'attente</param>
-        /// <returns> Le temps d'attente sous forme d'entier si la conversion fonction 
-        /// </returns> 0 si si le texte est vide ou si la conversion échoue.
+        /// <param name="tempsTexte">Temps d'attente sous forme de texte.</param>
+        /// <returns></returns>
         public static int ConvertirTempsAttente(string tempsTexte)
         {
-            if(string.IsNullOrWhiteSpace(tempsTexte))
-            {
-                return 0;
-            }
+            int tempsAttente = ValeurInactive;
 
-            else if  (int.TryParse(tempsTexte, out int temps))
-                    {
-                        return temps;
-                    }
-            else
+            if(!string.IsNullOrWhiteSpace(tempsTexte))
             {
-                return 0;
+                if (int.TryParse(tempsTexte, out int temps))
+                {
+                    tempsAttente = temps;
+                }
+               
             }
+            return tempsAttente;
+        }
+
+        /// <summary>
+        /// Convertit la position moteur saisie sous forme de texte en valeur numérique.
+        /// Cette valeur numérique correspond à l'énumération PosMoteur utilisée dans la base de données.
+        /// </summary>
+        /// <param name="positionTexte">Position moteur sous forme numérique.</param>
+        /// <returns>La position du moteur sous forme numérique </returns>
+        public static int ConvertirPositionMoteur(string positionTexte)
+        {
+            int positionValeur = ValeurInactive;
+
+            if (!string.IsNullOrWhiteSpace(positionTexte))
+            {
+
+                switch (positionTexte)
+                {
+                    case Position12h:
+                        positionValeur = (int)PosMoteur.Midi;
+                        break;
+
+                    case Position3h:
+                        positionValeur = (int)PosMoteur.TroisHeures;
+                        break;
+
+                    case Position6h:
+                        positionValeur = (int)PosMoteur.SixHeures;
+                        break;
+
+                    case Position9h:
+                        positionValeur = (int)PosMoteur.NeufHeures;
+                        break;
+
+                    default:
+                        if (System.Enum.TryParse(positionTexte, out PosMoteur position))
+                        {
+                            positionValeur = (int)position;
+                        }
+
+                        break;
+                }
+            }
+            return positionValeur;
         }
 
 
         /// <summary>
-        /// Cette methode convertit la valeur numérique de la base en texte lisible pour l’affichage.
-        /// Convertit la valeur numérique de la position moteur enregistré dans la base de donnée en texte lisible pour l'utilisateur.
+        /// Convertit la position moteur enregistrée en base de données en texte affichable.
         /// </summary>
-        /// <param name="positionValeur"> Valeur numérique récupérée depuis la base de donnée.</param>
-        /// <returns> Le texte correspondant à la position moteur 
-        /// </returns> Une chaîne vide si la valeur ne correspond à aucune position connue.
+        /// <param name="positionValeur"> Valeur numérique de la positon moteur enregistré en base </param>
+        /// <returns>La position moteur sous forme de texte.</returns>
         public static string ConvertirPositionMoteurEnTexte( int positionValeur)
         {
+            string positionTexte = TexteVide;
+
             switch ((PosMoteur)positionValeur)
             { 
 
                 case PosMoteur.Midi:
-                return "12h";
+                positionTexte = Position12h;
+                    break;
 
                 case PosMoteur.TroisHeures:
-                return "3h";
+                positionTexte = Position3h;
+                    break;
 
                 case PosMoteur.SixHeures:
-                return "6h";
+                positionTexte = Position6h;
+                    break;
 
                 case PosMoteur.NeufHeures:
-                return "9h";
-
-                default:
-                return "";
-
+                positionTexte = Position9h;
+                    break;
             }
+            return positionTexte;
 
         }
-           
-        /// <summary>
-        /// Convertit le sens moteur enregistré en base 
-        /// </summary>
-        /// <returns></returns>
-        public static string ConvertirSensMoteurEnTexte(bool sensValeur)
-        {
-            if (sensValeur)
-            {
-                return SensMoteur.Horaire.ToString();
-            }
 
-            else
-            {
-                return SensMoteur.AntiHoraire.ToString();
-            }
-        }
-       
+
+
+
 
         /// <summary>
         /// Crée une nouvelle recette dans la table "Recette" de la base de données
         /// </summary>
         /// <param name="nomRecette"> Nom de la recette a enregistrer </param>
-        /// <returns> L'identifiant de la recette crée 
-        /// </returns> -1 si l'ajout échoue
+        /// <returns> L'identifiant de la recette crée </returns>
         public static long CreateRecette(string nomRecette)
         {
-            long idRecette = -1;
+            long idRecette = IdInvalide;
 
             try
             {
                 using (MySqlCommand cmd = GetConnection().CreateCommand())
                 {
-                    cmd.CommandText = " INSERT INTO Recette (REC_Nom, REC_DateHeureCreation) VALUES (@nomRecette, @dateCreation);";
+                    cmd.CommandText = " INSERT INTO recette (REC_Nom, REC_DateHeureCreation) VALUES (@nomRecette, @dateCreation);";
 
                     cmd.Parameters.AddWithValue("@nomRecette", nomRecette);
                     cmd.Parameters.AddWithValue("@dateCreation", DateTime.Now);
@@ -177,15 +191,16 @@ namespace M3_RRO_JSC
 
             return idRecette;
         }
+
+
         /// <summary>
         /// Crée une nouvelle ligne opération dans la table opération  de la base de donnée
         /// </summary>
         /// <param name="operation"> Contient les informations de l'opération a enregistrer </param>
-        /// <returns> L'identifiant de l'opération crée
-        /// </returns> -1 si l'ajourt échoue 
+        /// <returns> L'identifiant de l'opération crée ou Invalide si l'ajout échoue. </returns>
         public static long CreateOperation(OperationRecette operation)
         {
-            long idOperation = -1;
+            long idOperation = IdInvalide;
 
             try
             {
@@ -228,7 +243,7 @@ namespace M3_RRO_JSC
                 using (MySqlCommand cmd = GetConnection().CreateCommand())
                 {
 
-                    cmd.CommandText = "INSERT INTO Contenir " +
+                    cmd.CommandText = "INSERT INTO contenir " +
                                       "(Id_Operation_est_contenu_dans, Id_Recette, CON_NoOperation) " +
                                       "VALUES (@idOperation, @idRecette, @numeroOperation);";
 
@@ -247,11 +262,12 @@ namespace M3_RRO_JSC
            
         }
 
+
+
         /// <summary>
         /// Récupère toutes les recettes enregistrées dans la table "Recette".
         /// </summary>
-        /// <returns> Une liste de recette contenant leurs identifiant, leur noms et leurs dates.
-        /// </returns> Si une erruer survient, retourne une lsite vide.
+        /// <returns> Une liste de recette contenant leurs identifiant, leur noms et leurs dates,si une erreur survient, retourne une liste vide.</returns> 
         public static List<Recette>GetAllRecette()
 
         {
@@ -264,7 +280,7 @@ namespace M3_RRO_JSC
                 using (MySqlCommand cmd = GetConnection().CreateCommand())
                 {
                     // Requête SQL qui récupère toutes les recettes de la table recette
-                    cmd.CommandText = "SELECT Id_Recette, Rec_Nom, REC_DateHeureCreation FROM Recette;";
+                    cmd.CommandText = "SELECT Id_Recette, Rec_Nom, REC_DateHeureCreation FROM recette;";
 
                     // Permet de lire plusieurs lignes retournées par la requête SELECT
                     using(MySqlDataReader reader = cmd.ExecuteReader())
@@ -302,12 +318,12 @@ namespace M3_RRO_JSC
             return recettes;
         }
 
+
         /// <summary>
         /// Récupère toutes les opérations associées à une recette données, les opérations sont retrouvées grâce à la table "Contenir".
         /// </summary>
         /// <param name="idRecette"> Identifiant de la recette dont on veur récupèrer les opérations </param>
-        /// <returns> La liste des opérations liées à la recette.
-        /// </returns> Une liste vide si aucune opération n'est trouvée ou si une erreur survient.
+        /// <returns> La liste des opérations liées à la recette,une  liste vide si aucune opération n'est trouvée ou si une erreur survient.</returns>
         public static List<OperationRecette> GetOperationsByRecetteId ( int idRecette)
         {
             List<OperationRecette> operations = new List<OperationRecette>();
@@ -319,7 +335,7 @@ namespace M3_RRO_JSC
                 {
                     cmd.CommandText = "SELECT o.Id_Operation, o.OPE_Nom, o.OPE_PositionMoteur, o.OPE_TempsAttente, o.OPE_CycleVerin, o.OPE_Quittance, o.OPE_SensMoteur " +
                                       "FROM operation o " +
-                                      "INNER JOIN Contenir c ON o.Id_Operation = c.Id_Operation_est_contenu_dans " +
+                                      "INNER JOIN contenir c ON o.Id_Operation = c.Id_Operation_est_contenu_dans " +
                                       "WHERE c.Id_Recette = @idRecette " +
                                       "ORDER BY c.CON_NoOperation;";
 
@@ -353,6 +369,8 @@ namespace M3_RRO_JSC
 
             return operations;
         }
+
+
         /// <summary>
         /// Supprime une recette de la base de donnée avec ses liens dans la table "Contenir", mais ne supprime pas les opréations.
         /// </summary>
@@ -363,14 +381,14 @@ namespace M3_RRO_JSC
             {
                 using (MySqlCommand cmd = GetConnection().CreateCommand())
                 {
-                    cmd.CommandText = "DELETE FROM Contenir WHERE Id_Recette = @idRecette;";
+                    cmd.CommandText = "DELETE FROM contenir WHERE Id_Recette = @idRecette;";
                     cmd.Parameters.AddWithValue("@idRecette", idRecette);
                     cmd.ExecuteNonQuery(); 
                 }
 
                 using (MySqlCommand cmd = GetConnection().CreateCommand())
                 {
-                    cmd.CommandText = "DELETE FROM Recette WHERE Id_Recette = @idRecette;";
+                    cmd.CommandText = "DELETE FROM recette WHERE Id_Recette = @idRecette;";
                     cmd.Parameters.AddWithValue("@idRecette", idRecette);
                     cmd.ExecuteNonQuery();
                 }
@@ -385,8 +403,7 @@ namespace M3_RRO_JSC
         /// déjà envoyé en production, terminé ou en erreur.
         /// </summary>
         /// <param name="idRecette"> Identifaint de la recette à vérifier.</param>
-        /// <returns> true si la recette est bloquée.
-        /// </returns> false si la recette peut encore être modifier ou supprimée
+        /// <returns> true si la recette est bloquée,false si la recette peut encore être modifier ou supprimée.</returns> 
         public static bool RecetteEstBloquee(int idRecette)
         {
             bool recetteBloquee = false;
@@ -397,7 +414,7 @@ namespace M3_RRO_JSC
                 {
                     cmd.CommandText = "SELECT COUNT(*) " +
                                        "FROM lot l " +
-                                       "INNER JOIN Etat e ON l.Id_Etat = e.Id_Etat " +
+                                       "INNER JOIN etat e ON l.Id_Etat = e.Id_Etat " +
                                        "WHERE l.Id_Recette = @idRecette " +
                                        "AND e.ETA_Libelle <> @etatAutorise;";
                     cmd.Parameters.AddWithValue("@idRecette", idRecette);
@@ -435,7 +452,7 @@ namespace M3_RRO_JSC
                 //Modification du nom de la recette dans la table Recette.
                 using (MySqlCommand cmd = GetConnection().CreateCommand())
                 {
-                    cmd.CommandText = "UPDATE Recette SET REC_Nom = @nomRecette WHERE Id_Recette = @idRecette;";
+                    cmd.CommandText = "UPDATE recette SET REC_Nom = @nomRecette WHERE Id_Recette = @idRecette;";
 
 
                     cmd.Parameters.AddWithValue("@nomRecette", recette.NomRecette);
@@ -447,7 +464,7 @@ namespace M3_RRO_JSC
                 //Suppression des anciens liens entre la recette et ses opérations.
                 using (MySqlCommand cmd = GetConnection().CreateCommand())
                 {
-                    cmd.CommandText = "DELETE FROM Contenir WHERE Id_Recette = @idRecette;";
+                    cmd.CommandText = "DELETE FROM contenir WHERE Id_Recette = @idRecette;";
 
 
                     cmd.Parameters.AddWithValue("@idRecette", recette.IdRecette);
@@ -456,7 +473,7 @@ namespace M3_RRO_JSC
                 }
 
                 //Variable qui permet de garder l'ordre des opérations dans la recette.
-                int numeroOperation = 1;
+                int numeroOperation = PremierNumeroOperation;
 
                 //Parcours de toutes les opérations de la recette modifiée.
                 foreach (OperationRecette operation in recette.Operations)
@@ -464,7 +481,7 @@ namespace M3_RRO_JSC
                     // Ajout de l'opération dans la table operation.
                     long idOperation = CreateOperation(operation);
 
-                    if (idOperation != -1 )
+                    if (idOperation != IdInvalide )
                     {
                         //Ajout du lien dans la table Contenir.
                         AjouterOperationRecette(recette.IdRecette, idOperation, numeroOperation);
@@ -480,25 +497,42 @@ namespace M3_RRO_JSC
             }
         }
 
-              
 
-
-
-        public void UpdateRecette()
+        /// <summary>
+        /// Vérifie si une recette est utilisée par au moins un lot, une recette utilisée par un lot ne peut pas être supprimée.
+        /// </summary>
+        /// <param name="idRecette">Identifiant de la recette à vérifier.</param>
+        /// <returns>True si la recette est utilisée par un lot, sinon false.</returns>
+        public static bool RecetteEstUtiliseeParLot(int idRecette)
         {
-            // Logique pour mettre à jour un lot
+            bool recetteUtilisee = true;
+
+            try
+            {
+                using (MySqlCommand cmd = GetConnection().CreateCommand())
+                {
+                    cmd.CommandText = "SELECT COUNT(*) " +
+                                      "FROM lot " +
+                                      "WHERE Id_Recette = @idRecette;";
+
+                    cmd.Parameters.AddWithValue("@idRecette", idRecette);
+
+                    int nombreLots = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    recetteUtilisee = nombreLots > ValeurInactive;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erreur vérification utilisation recette : " + ex.Message);
+
+                // Par sécurité, si la vérification échoue, on bloque la suppression.
+                recetteUtilisee = true;
+            }
+
+            return recetteUtilisee;
         }
 
-        public void DeleteRecette()
-        {
-            // Logique pour supprimer un lot
-        }
 
-        public void GetRecetteById(int id)
-        {
-            // Logique pour récupérer un lot par son ID
-        }
-
-        
     }
 }

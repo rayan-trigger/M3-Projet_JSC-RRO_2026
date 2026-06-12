@@ -45,12 +45,12 @@
             lblEtatText = new Label();
             lblMachineText = new Label();
             pnlLotProduction = new Panel();
-            grdLotEnProd = new DataGridView();
+            grdEtatLotsAccueil = new DataGridView();
             lblLotProduction = new Label();
             pnlEtatConnectionDb.SuspendLayout();
             pnlEtatMachine.SuspendLayout();
             pnlLotProduction.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)grdLotEnProd).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)grdEtatLotsAccueil).BeginInit();
             SuspendLayout();
             // 
             // pnlEtatConnectionDb
@@ -222,31 +222,31 @@
             // pnlLotProduction
             // 
             pnlLotProduction.BackColor = SystemColors.ActiveCaption;
-            pnlLotProduction.Controls.Add(grdLotEnProd);
+            pnlLotProduction.Controls.Add(grdEtatLotsAccueil);
             pnlLotProduction.Controls.Add(lblLotProduction);
             pnlLotProduction.Location = new Point(0, 0);
             pnlLotProduction.Name = "pnlLotProduction";
             pnlLotProduction.Size = new Size(410, 675);
             pnlLotProduction.TabIndex = 8;
             // 
-            // grdLotEnProd
+            // grdEtatLotsAccueil
             // 
-            grdLotEnProd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdLotEnProd.Location = new Point(53, 71);
-            grdLotEnProd.Name = "grdLotEnProd";
-            grdLotEnProd.RowHeadersWidth = 51;
-            grdLotEnProd.Size = new Size(301, 397);
-            grdLotEnProd.TabIndex = 1;
+            grdEtatLotsAccueil.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grdEtatLotsAccueil.Location = new Point(53, 71);
+            grdEtatLotsAccueil.Name = "grdEtatLotsAccueil";
+            grdEtatLotsAccueil.RowHeadersWidth = 51;
+            grdEtatLotsAccueil.Size = new Size(301, 397);
+            grdEtatLotsAccueil.TabIndex = 1;
             // 
             // lblLotProduction
             // 
             lblLotProduction.AutoSize = true;
             lblLotProduction.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLotProduction.Location = new Point(105, 20);
+            lblLotProduction.Location = new Point(134, 27);
             lblLotProduction.Name = "lblLotProduction";
-            lblLotProduction.Size = new Size(185, 28);
+            lblLotProduction.Size = new Size(128, 28);
             lblLotProduction.TabIndex = 0;
-            lblLotProduction.Text = "Lots en production";
+            lblLotProduction.Text = "Etat des Lots";
             // 
             // AccueilControl
             // 
@@ -264,7 +264,7 @@
             pnlEtatMachine.PerformLayout();
             pnlLotProduction.ResumeLayout(false);
             pnlLotProduction.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)grdLotEnProd).EndInit();
+            ((System.ComponentModel.ISupportInitialize)grdEtatLotsAccueil).EndInit();
             ResumeLayout(false);
         }
 
@@ -280,7 +280,7 @@
         private Label lblEtatText;
         private Label lblMachineText;
         private Panel pnlLotProduction;
-        private DataGridView grdLotEnProd;
+        private DataGridView grdEtatLotsAccueil;
         private Label lblLotProduction;
         public Label lblNomDb;
         public Label lblUtilisateur;

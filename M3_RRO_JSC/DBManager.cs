@@ -187,5 +187,31 @@ namespace M3_RRO_JSC
 
             return cmd.ExecuteScalar();
         }
+
+
+
+        /// <summary>
+        /// Vérifie si les paramètres nécessaires à la connexion sont renseignés.
+        /// </summary>
+        /// <returns>True si les paramètres de connexion sont valides, sinon false.</returns>
+        public static bool ParametresConnexionValides()
+        {
+            bool parametresValides = true;
+
+            if (string.IsNullOrWhiteSpace(_connectionString))
+            {
+                parametresValides = false;
+            }
+            else if (!_connectionString.Contains("server=") && !_connectionString.Contains("Server="))
+            {
+                parametresValides = false;
+            }
+            else if (_connectionString.Contains("server=;") || _connectionString.Contains("Server=;"))
+            {
+                parametresValides = false;
+            }
+
+            return parametresValides;
+        }
     }
 }

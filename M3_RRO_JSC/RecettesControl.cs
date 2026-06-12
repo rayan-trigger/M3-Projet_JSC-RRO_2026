@@ -12,107 +12,216 @@ namespace M3_RRO_JSC
 {
     public partial class RecettesControl : UserControl
     {
+        private const string TexteOui = "Oui";
+        private const string TexteNon = "Non";
+
+        private const int AucuneSelection = -1;
+        private const int ValeurInactive = 0;
+        private const long IdInvalide = -1;
+
+
         public RecettesControl()
         {
             InitializeComponent();
 
-            RecetteData.ListeRecettes = RecetteManager.GetAllRecette();
 
             ChargerRecettes();
-
-
         }
+
+
+        /// <summary>
+        /// Recharge les recettes depuis la base de données si les paramètres de connexion sont valides,puis met à jour le tableau d'affichage des recettes.
+        /// </summary>
         private void ChargerRecettes()
         {
-            grdRecette.Rows.Clear();
-            grdRecette.Columns.Clear();
-
-            grdRecette.Columns.Add("IdRecette", "ID");
-            grdRecette.Columns.Add("DateCraetion", "Date de création");
-            grdRecette.Columns.Add("NomRecette", "Nom de la recette");
-
-            foreach (Recette recette in RecetteData.ListeRecettes)
+            if (DBManager.ParametresConnexionValides())
             {
-                grdRecette.Rows.Add(
-                    recette.IdRecette,
-                    recette.DateCreation.ToString("dd/MM/yyyy HH:mm"),
-                    recette.NomRecette,
-                    recette.Operations.Count
-                );
-            }
+                RecetteData.ListeRecettes = RecetteManager.GetAllRecette();
 
-            grdRecette.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            grdRecette.AllowUserToAddRows = false;
-            grdRecette.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            grdRecette.MultiSelect = false;
+                grdRecette.Rows.Clear();
+                grdRecette.Columns.Clear();
+
+                grdRecette.Columns.Add("IdRecette", "ID");
+                grdRecette.Columns.Add("DateCreation", "Date de création");
+                grdRecette.Columns.Add("NomRecette", "Nom de la recette");
+                grdRecette.Columns.Add("NombreOperations", "Nombre d'opérations");
+
+                foreach (Recette recette in RecetteData.ListeRecettes)
+                {
+                    grdRecette.Rows.Add(
+                        recette.IdRecette,
+                        recette.DateCreation.ToString("dd/MM/yyyy HH:mm"),
+                        recette.NomRecette,
+                        recette.Operations.Count
+                    );
+                }
+
+                grdRecette.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                grdRecette.AllowUserToAddRows = false;
+                grdRecette.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                grdRecette.MultiSelect = false;
+            }
 
         }
 
-        private void ChargerOperationsRecetteSelectionner()
 
+        /// <summary>
+        /// Affiche dans le tableau les opérations de la recette sélectionnée.
+        /// </summary>
+        private void ChargerOperationsRecetteSelectionner()
         {
             grdOperationRecette.Rows.Clear();
             grdOperationRecette.Columns.Clear();
 
-            grdOperationRecette.Columns.Add("NomOperation", "NomOperation");
+            grdOperationRecette.Columns.Add("NomOperation", "Nom opération");
             grdOperationRecette.Columns.Add("Sens", "Sens");
             grdOperationRecette.Columns.Add("Position", "Position");
-            grdOperationRecette.Columns.Add("TempsAttente", "TempsAttente");
-            grdOperationRecette.Columns.Add("CycleVerin", "CycleVerin");
-            grdOperationRecette.Columns.Add("Quitance", "Quittance");
+            grdOperationRecette.Columns.Add("TempsAttente", "Temps d'attente");
+            grdOperationRecette.Columns.Add("CycleVerin", "Cycle vérin");
+            grdOperationRecette.Columns.Add("Quittance", "Quittance");
 
-            if (grdRecette.CurrentRow == null)
+            grdOperationRecette.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            grdOperationRecette.AllowUserToAddRows = false;
+            grdOperationRecette.ReadOnly = true;
+            grdOperationRecette.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grdOperationRecette.MultiSelect = false;
+
+            if (grdRecette.CurrentRow != null)
             {
-                return;
+                int index = grdRecette.CurrentRow.Index;
+
+                if (index >= ValeurInactive && index < RecetteData.ListeRecettes.Count)
+                {
+                    Recette recetteSelectionnee = RecetteData.ListeRecettes[index];
+
+                    foreach (OperationRecette operation in recetteSelectionnee.Operations)
+                    {
+                        grdOperationRecette.Rows.Add(
+                            operation.NomOperation,
+                            operation.Sens,
+                            operation.Position,
+                            operation.TempsAttente,
+                            operation.CycleVerin ? TexteOui : TexteNon,
+                            operation.Quittance ? TexteOui : TexteNon
+                        );
+                    }
+                }
             }
-
-            int index = grdRecette.CurrentRow.Index;
-
-            if (index < 0 || index >= RecetteData.ListeRecettes.Count)
-            {
-                return;
-            }
-
-            Recette recetteSelectionnee = RecetteData.ListeRecettes[index];
-
-            foreach (OperationRecette operation in recetteSelectionnee.Operations)
-            {
-                grdOperationRecette.Rows.Add(
-                    operation.NomOperation,
-                    operation.Sens,
-                    operation.Position,
-                    operation.TempsAttente,
-                    operation.CycleVerin ? "Oui" : "Non",
-                    operation.Quittance ? "Oui" : "Non"
-                       );
-                grdOperationRecette.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                grdOperationRecette.AllowUserToAddRows = false;
-                grdOperationRecette.ReadOnly = true;
-            }
-
         }
 
 
-        private void InitialiserDataGridAvecTable()
+        /// <summary>
+        /// Ouvre le formulaire de modification pour la recette sélectionnée si celle-ci n'est pas bloquée par un lot. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnModifierRecette_Click(object sender, EventArgs e)
         {
-            DataTable table = new DataTable();
+            if (grdRecette.CurrentRow != null)
+            {
+                int index = grdRecette.CurrentRow.Index;
 
-            table.Columns.Add("Date et heure de création");
-            table.Columns.Add("Nom du Pas");
-            table.Columns.Add("Position Indexeur");
-            table.Columns.Add("Sens Indexeur");
-            table.Columns.Add("Nombre de Tour");
-            table.Columns.Add("Temps d'arrêt");
-            table.Columns.Add("Cycle Verin");
-            table.Columns.Add("Quittance");
+                if (index >= ValeurInactive && index < RecetteData.ListeRecettes.Count)
+                {
+                    Recette recetteSelectionnee = RecetteData.ListeRecettes[index];
 
-            table.Rows.Add(DateTime.Now.ToString("dd/MM/yyyy HH:mm"), "Pas 1", "100", "Avant", "2", "5", "Cycle 1", "OK");
-            table.Rows.Add(DateTime.Now.ToString("dd/MM/yyyy HH:mm"), "Pas 2", "200", "Arrière", "1", "3", "Cycle 2", "OK");
-            table.Rows.Add(DateTime.Now.ToString("dd/MM/yyyy HH:mm"), "Pas 3", "300", "Avant", "4", "2", "Cycle 3", "NOK");
+                    if (DBManager.ParametresConnexionValides())
+                    {
+                        if (RecetteManager.RecetteEstBloquee(recetteSelectionnee.IdRecette))
+                        {
+                            MessageBox.Show(
+                                "Cette recette ne peut plus être modifiée car elle est utilisée par un lot envoyé en production.",
+                                "Modification impossible",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning
+                            );
+                        }
+                        else
+                        {
+                            FrmCreationRecette popup = new FrmCreationRecette(recetteSelectionnee);
 
-            grdRecette.DataSource = table;
+                            if (popup.ShowDialog() == DialogResult.OK)
+                            {
+                                ChargerRecettes();
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Sélection invalide.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner une recette à modifier.");
+            }
         }
 
+
+        /// <summary>
+        /// Supprime la recette sélectionnée si elle n'est utilisée par aucun lot, la liste des recettes est ensuite rechargée depuis la base de données.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSupprimerRecette_Click(object sender, EventArgs e)
+        {
+            if (grdRecette.CurrentRow != null)
+            {
+                int index = grdRecette.CurrentRow.Index;
+
+                if (index >= ValeurInactive && index < RecetteData.ListeRecettes.Count)
+                {
+                    Recette recetteSelectionnee = RecetteData.ListeRecettes[index];
+
+                    if (DBManager.ParametresConnexionValides())
+                    {
+                        if (RecetteManager.RecetteEstUtiliseeParLot(recetteSelectionnee.IdRecette))
+                        {
+                            MessageBox.Show(
+                                "Cette recette ne peut pas être supprimée car elle est utilisée par un lot.",
+                                "Suppression impossible",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning
+                            );
+                        }
+                        else
+                        {
+                            DialogResult confirmation = MessageBox.Show(
+                                "Voulez-vous vraiment supprimer la recette : " + recetteSelectionnee.NomRecette + " ?",
+                                "Confirmation de suppression",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Warning
+                            );
+
+                            if (confirmation == DialogResult.Yes)
+                            {
+                                RecetteManager.DeleteRecette(recetteSelectionnee.IdRecette);
+
+                                ChargerRecettes();
+
+                                MessageBox.Show("Recette supprimée avec succès.");
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Sélection invalide.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner une recette à supprimer.");
+            }
+        }
+
+
+        /// <summary>
+        /// Ouvre le formulaire de création d'une recette.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCreerRecette_Click(object sender, EventArgs e)
         {
             FrmCreationRecette popup = new FrmCreationRecette();
@@ -123,106 +232,12 @@ namespace M3_RRO_JSC
             }
         }
 
-        private void btnModifierRecette_Click(object sender, EventArgs e)
-        {
-            if (grdRecette.CurrentRow == null)
-            {
-                MessageBox.Show("Veuillez sélectionner une recette à modifier.");
-                return;
-            }
-
-            int index = grdRecette.CurrentRow.Index;
-
-            if (index < 0 || index >= RecetteData.ListeRecettes.Count)
-            {
-                MessageBox.Show("Sélection invalide.");
-                return;
-            }
-
-            Recette recetteSelectionnee = RecetteData.ListeRecettes[index];
-
-            if (RecetteManager.RecetteEstBloquee(recetteSelectionnee.IdRecette))
-            {
-                MessageBox.Show("Cette recette ne peut plus être modifié car elle est utlilisé par un lot envoyé en prodcution. ",
-                                "Modification impossible",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning
-                                );
-                return;
-                    
-            }
-
-            FrmCreationRecette popup = new FrmCreationRecette(recetteSelectionnee);
-
-            if (popup.ShowDialog() == DialogResult.OK)
-            {
-                RecetteData.ListeRecettes = RecetteManager.GetAllRecette();
-                ChargerRecettes();
-                MessageBox.Show("Recette modifiée avec succès.");
-            }
-        }
 
         /// <summary>
-        /// Supprime la recette sélectionnée dans le tableau des recettes, cette méthode vérifie d'abord qu'une ligne a été selectionnée puis demande a l'utilisateur avant de supprimer la recette.
-        /// Aprés la suppresssion, la liste des recettes est rechargés depuis la base de donnée et le tableau est mis a jour dans l'application.
+        /// Recharge le tableau des opérations lorsqu'une recette est sélectionnée dans la grille.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnSupprimerRecette_Click(object sender, EventArgs e)
-        {
-            if (grdRecette.CurrentRow == null)
-            {
-                MessageBox.Show("Veuillez sélectionner une recette à supprimer");
-                return;
-            }
-
-
-            int index = grdRecette.CurrentRow.Index;
-
-            if (index < 0 || index >= RecetteData.ListeRecettes.Count)
-            {
-                MessageBox.Show("Selection invalide");
-                return;
-            }
-
-            Recette recetteSelectionne = RecetteData.ListeRecettes[index];
-
-            if (RecetteManager.RecetteEstBloquee(recetteSelectionne.IdRecette))
-            {
-                MessageBox.Show("Cette recette ne peut plus être supprimé car elle est utlilisé par un lot envoyé en prodcution. ",
-                                "Suppression impossible",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning
-                                );
-                return;
-
-            }
-                DialogResult confirmation = MessageBox.Show(
-                "Voulez-vous vraiment supprimer la recette : " + recetteSelectionne.NomRecette + "?",
-                "Confirmation de suppression",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-                );
-
-            if (confirmation != DialogResult.Yes)
-            {
-                return;
-            }
-
-            RecetteManager.DeleteRecette(recetteSelectionne.IdRecette);
-
-            RecetteData.ListeRecettes = RecetteManager.GetAllRecette();
-            ChargerRecettes();
-            MessageBox.Show("Recette supprimée avec succès.");
-
-
-        }
-
-
-
-
-
-
         private void grdRecette_SelectionChanged(object sender, EventArgs e)
         {
            
