@@ -21,6 +21,9 @@ namespace M3_RRO_JSC
         private const long IdInvalide = -1;
 
 
+        /// <summary>
+        /// Initialise le formulaire en mode création d'une nouvelle recette, prépare les ComboBox, le tableau temporaire des opérations et l'état initial des champs.
+        /// </summary>
         public FrmCreationLot()
         {
             InitializeComponent();
@@ -29,6 +32,10 @@ namespace M3_RRO_JSC
 
         }
 
+        /// <summary>
+        /// /// Initialise le formulaire en mode modification d'une recette existante, charge les informations de la recette sélectionnée ainsi que ses opérations
+        /// </summary>
+        /// <param name="lot"></param>
         public FrmCreationLot(Lot lot)
         {
             InitializeComponent();
