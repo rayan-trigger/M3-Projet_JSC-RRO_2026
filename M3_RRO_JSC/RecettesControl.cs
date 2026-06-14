@@ -244,6 +244,12 @@ namespace M3_RRO_JSC
             ChargerOperationsRecetteSelectionner();
         }
 
+
+        /// <summary>
+        /// Événement déclenché lorsque la recette sélectionnée dans la ComboBox change, cette méthode est actuellement vide car aucun traitement spécifique n'est nécessaire.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cboRecette_SelectedIndexChanged(object sender, EventArgs e)
         {
 

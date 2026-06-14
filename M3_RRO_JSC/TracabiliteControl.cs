@@ -23,5 +23,10 @@ namespace M3_RRO_JSC
         {
             _manager.ChargerDonnees();
         }
+
+        private void cboFiltresTracabilite_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

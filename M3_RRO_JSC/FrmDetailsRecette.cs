@@ -17,22 +17,33 @@ namespace M3_RRO_JSC
         private const string COL_TEMPS_ATTENTE = "Temps d'attente";
         private const string COL_CYCLE_VERIN = "Cycle vérin";
         private const string COL_QUITTANCE = "Quittance";
-
-
+        
         private Recette recette;
 
+
+        /// <summary>
+        /// Initialise le formulaire de détails d'une recette, et charge les opérations associées à cette recette.
+        /// </summary>
+        /// <param name="recetteSelectionnee"></param>
         public FrmDetailsRecette(Recette recetteSelectionnee)
         {
             InitializeComponent();
 
+            // // Stocke la recette sélectionnée afin de pouvoir afficher ses informations.
             recette = recetteSelectionnee;
 
-            this.Text = " Détail de la recette : " + recette.NomRecette;
+            // Modifie le titre de la fenêtre avec le nom de la recette affichée.
+            this.Text = "Détail de la recette : " + recette.NomRecette;
 
+            // Charge les opérations de la recette dans le tableau.
             ChargerOperationRecette();
 
         }
 
+
+        /// <summary>
+        /// Charge les opérations de la recette slectionnée dans le tableau de détails.
+        /// </summary>
         private void ChargerOperationRecette()
         {
 

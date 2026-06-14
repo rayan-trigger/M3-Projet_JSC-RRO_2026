@@ -40,18 +40,17 @@ namespace M3_RRO_JSC
         }
 
         /// <summary>
-        /// Charge les lots depuis la base de données et affiche les informations principales
-        /// dans le tableau de la page d'accueil.
+        /// Charge les dix derniers lots créés depuis la base de données et les affiche dans le tableau de la page d'accueil.
         /// </summary>
         private void ChargerLotsAccueil()
         {
             if (DBManager.ParametresConnexionValides())
             {
-                LotData.ListeLots = LotManager.GetAllLots();
+                List<Lot> derniersLots = LotManager.GetDixDerniersLots();
 
                 grdEtatLotsAccueil.Rows.Clear();
 
-                foreach (Lot lot in LotData.ListeLots)
+                foreach (Lot lot in derniersLots)
                 {
                     grdEtatLotsAccueil.Rows.Add(
                         lot.DateCreation,
@@ -98,19 +97,7 @@ namespace M3_RRO_JSC
                 SetInfoDB(_connectionString);
         }
 
-        private void lblEtatText_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblMachineNumero_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnParcMachine_Click(object sender, EventArgs e)
-        {
-
-        }
+        
+        
     }
 }

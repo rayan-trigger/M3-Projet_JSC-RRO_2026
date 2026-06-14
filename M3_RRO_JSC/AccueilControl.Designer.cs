@@ -307,7 +307,7 @@
             btnParcMachine.TabIndex = 11;
             btnParcMachine.Text = "Mise à Jour  Parc Machine";
             btnParcMachine.UseVisualStyleBackColor = false;
-            btnParcMachine.Click += btnParcMachine_Click;
+
             // 
             // AccueilControl
             // 

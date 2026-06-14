@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             grdGestionLots = new DataGridView();
-            txtRechercheLots = new TextBox();
             lblFiltresTextLot = new Label();
             cboFiltresLots = new ComboBox();
             btnSupprimerLot = new Button();
@@ -42,28 +41,17 @@
             // 
             grdGestionLots.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             grdGestionLots.GridColor = SystemColors.InactiveBorder;
-            grdGestionLots.Location = new Point(101, 236);
+            grdGestionLots.Location = new Point(92, 189);
             grdGestionLots.Name = "grdGestionLots";
             grdGestionLots.RowHeadersWidth = 51;
-            grdGestionLots.Size = new Size(1015, 301);
+            grdGestionLots.Size = new Size(1015, 352);
             grdGestionLots.TabIndex = 10;
-            // 
-            // txtRechercheLots
-            // 
-            txtRechercheLots.BackColor = SystemColors.InactiveCaption;
-            txtRechercheLots.BorderStyle = BorderStyle.None;
-            txtRechercheLots.ForeColor = SystemColors.HighlightText;
-            txtRechercheLots.Location = new Point(185, 189);
-            txtRechercheLots.Name = "txtRechercheLots";
-            txtRechercheLots.PlaceholderText = "Rechercher";
-            txtRechercheLots.Size = new Size(864, 20);
-            txtRechercheLots.TabIndex = 9;
             // 
             // lblFiltresTextLot
             // 
             lblFiltresTextLot.AutoSize = true;
             lblFiltresTextLot.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblFiltresTextLot.Location = new Point(758, 135);
+            lblFiltresTextLot.Location = new Point(822, 150);
             lblFiltresTextLot.Name = "lblFiltresTextLot";
             lblFiltresTextLot.Size = new Size(55, 23);
             lblFiltresTextLot.TabIndex = 8;
@@ -72,10 +60,11 @@
             // cboFiltresLots
             // 
             cboFiltresLots.FormattingEnabled = true;
-            cboFiltresLots.Location = new Point(829, 130);
+            cboFiltresLots.Location = new Point(887, 145);
             cboFiltresLots.Name = "cboFiltresLots";
             cboFiltresLots.Size = new Size(220, 28);
             cboFiltresLots.TabIndex = 7;
+            cboFiltresLots.SelectedIndexChanged += cboFiltresLots_SelectedIndexChanged;
             // 
             // btnSupprimerLot
             // 
@@ -116,7 +105,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(btnModifierLot);
             Controls.Add(grdGestionLots);
-            Controls.Add(txtRechercheLots);
             Controls.Add(btnCreerLot);
             Controls.Add(lblFiltresTextLot);
             Controls.Add(cboFiltresLots);
@@ -130,7 +118,6 @@
 
         #endregion
         private DataGridView grdGestionLots;
-        private TextBox txtRechercheLots;
         private Label lblFiltresTextLot;
         private ComboBox cboFiltresLots;
         private Button btnSupprimerLot;

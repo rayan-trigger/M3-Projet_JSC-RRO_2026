@@ -257,8 +257,8 @@ namespace M3_RRO_JSC
 
 
         /// <summary>
-        /// Charge les informations de la recette à modifier et met à jour les champs du formulaire.
-        /// Les opérations de la recette sont aussi ajoutées dans le tableau temporaire des opérations.
+        /// Charge les informations de la recette à modifier et met à jour les champs du formulaire, les opérations de la recette sont 
+        /// aussi ajoutées dans le tableau temporaire des opérations.
         /// </summary>
         private void ChargerRecetteAModifier()
         {

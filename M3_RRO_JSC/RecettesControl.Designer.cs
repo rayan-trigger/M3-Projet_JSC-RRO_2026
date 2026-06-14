@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            txtRechercheRecettes = new TextBox();
             btnSupprimerRecette = new Button();
             btnModifierRecette = new Button();
             btnCreerRecette = new Button();
@@ -39,17 +38,6 @@
             ((System.ComponentModel.ISupportInitialize)grdRecette).BeginInit();
             ((System.ComponentModel.ISupportInitialize)grdOperationRecette).BeginInit();
             SuspendLayout();
-            // 
-            // txtRechercheRecettes
-            // 
-            txtRechercheRecettes.BackColor = SystemColors.InactiveCaption;
-            txtRechercheRecettes.BorderStyle = BorderStyle.None;
-            txtRechercheRecettes.ForeColor = SystemColors.HighlightText;
-            txtRechercheRecettes.Location = new Point(777, 99);
-            txtRechercheRecettes.Name = "txtRechercheRecettes";
-            txtRechercheRecettes.PlaceholderText = "Rechercher";
-            txtRechercheRecettes.Size = new Size(293, 20);
-            txtRechercheRecettes.TabIndex = 5;
             // 
             // btnSupprimerRecette
             // 
@@ -133,7 +121,6 @@
             Controls.Add(grdOperationRecette);
             Controls.Add(grdRecette);
             Controls.Add(lblListeRecette);
-            Controls.Add(txtRechercheRecettes);
             Controls.Add(btnCreerRecette);
             Controls.Add(btnModifierRecette);
             Controls.Add(btnSupprimerRecette);
@@ -146,7 +133,6 @@
         }
 
         #endregion
-        private TextBox txtRechercheRecettes;
         private Button btnSupprimerRecette;
         private Button btnModifierRecette;
         private Button btnCreerRecette;

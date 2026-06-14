@@ -73,6 +73,7 @@
             cboFiltresTracabilite.Name = "cboFiltresTracabilite";
             cboFiltresTracabilite.Size = new Size(220, 28);
             cboFiltresTracabilite.TabIndex = 7;
+            cboFiltresTracabilite.SelectedIndexChanged += cboFiltresTracabilite_SelectedIndexChanged;
             // 
             // TracabiliteControl
             // 

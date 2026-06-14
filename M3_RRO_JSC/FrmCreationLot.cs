@@ -80,8 +80,6 @@ namespace M3_RRO_JSC
         }
 
 
-
-
         /// <summary>
         ///  Charge dans la ComboBox la liste des recettes disponibles depuis la base de données.
         /// </summary>
@@ -340,9 +338,6 @@ namespace M3_RRO_JSC
             btnCreeCreaLot.Cursor = Cursors.Default;
 
         }
-
-
-
     }
     
 
