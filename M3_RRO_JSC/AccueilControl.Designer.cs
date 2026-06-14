@@ -40,6 +40,7 @@
             lblNomDbText = new Label();
             lblEtatConnectionText = new Label();
             pnlEtatMachine = new Panel();
+            btnParcMachine = new Button();
             txtMachineMaintReponse = new TextBox();
             txtMachineEnProdReponse = new TextBox();
             txtMachinePreteReponse = new TextBox();
@@ -50,7 +51,6 @@
             pnlLotProduction = new Panel();
             grdEtatLotsAccueil = new DataGridView();
             lblLotProduction = new Label();
-            btnParcMachine = new Button();
             pnlEtatConnectionDb.SuspendLayout();
             pnlEtatMachine.SuspendLayout();
             pnlLotProduction.SuspendLayout();
@@ -78,7 +78,7 @@
             // lblPort
             // 
             lblPort.AutoSize = true;
-            lblPort.Location = new Point(501, 237);
+            lblPort.Location = new Point(493, 264);
             lblPort.Name = "lblPort";
             lblPort.Size = new Size(35, 20);
             lblPort.TabIndex = 10;
@@ -88,7 +88,7 @@
             // 
             lblPortText.AutoSize = true;
             lblPortText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblPortText.Location = new Point(418, 229);
+            lblPortText.Location = new Point(410, 256);
             lblPortText.Name = "lblPortText";
             lblPortText.Size = new Size(61, 28);
             lblPortText.TabIndex = 9;
@@ -97,7 +97,7 @@
             // lblIPDB
             // 
             lblIPDB.AutoSize = true;
-            lblIPDB.Location = new Point(501, 209);
+            lblIPDB.Location = new Point(493, 236);
             lblIPDB.Name = "lblIPDB";
             lblIPDB.Size = new Size(21, 20);
             lblIPDB.TabIndex = 8;
@@ -107,7 +107,7 @@
             // 
             lblUtilisateurText.AutoSize = true;
             lblUtilisateurText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblUtilisateurText.Location = new Point(364, 173);
+            lblUtilisateurText.Location = new Point(356, 200);
             lblUtilisateurText.Name = "lblUtilisateurText";
             lblUtilisateurText.Size = new Size(115, 28);
             lblUtilisateurText.TabIndex = 3;
@@ -116,7 +116,7 @@
             // lblUtilisateur
             // 
             lblUtilisateur.AutoSize = true;
-            lblUtilisateur.Location = new Point(501, 181);
+            lblUtilisateur.Location = new Point(493, 208);
             lblUtilisateur.Name = "lblUtilisateur";
             lblUtilisateur.Size = new Size(76, 20);
             lblUtilisateur.TabIndex = 6;
@@ -125,7 +125,7 @@
             // lblNomDb
             // 
             lblNomDb.AutoSize = true;
-            lblNomDb.Location = new Point(501, 153);
+            lblNomDb.Location = new Point(493, 180);
             lblNomDb.Name = "lblNomDb";
             lblNomDb.Size = new Size(42, 20);
             lblNomDb.TabIndex = 5;
@@ -136,7 +136,7 @@
             lblEtatConnection.AutoSize = true;
             lblEtatConnection.BackColor = Color.Chartreuse;
             lblEtatConnection.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEtatConnection.Location = new Point(364, 75);
+            lblEtatConnection.Location = new Point(356, 102);
             lblEtatConnection.Name = "lblEtatConnection";
             lblEtatConnection.Size = new Size(104, 28);
             lblEtatConnection.TabIndex = 4;
@@ -146,7 +146,7 @@
             // 
             lblIPDBText.AutoSize = true;
             lblIPDBText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblIPDBText.Location = new Point(386, 201);
+            lblIPDBText.Location = new Point(378, 228);
             lblIPDBText.Name = "lblIPDBText";
             lblIPDBText.Size = new Size(93, 28);
             lblIPDBText.TabIndex = 3;
@@ -156,7 +156,7 @@
             // 
             lblNomDbText.AutoSize = true;
             lblNomDbText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNomDbText.Location = new Point(208, 145);
+            lblNomDbText.Location = new Point(200, 172);
             lblNomDbText.Name = "lblNomDbText";
             lblNomDbText.Size = new Size(271, 28);
             lblNomDbText.TabIndex = 2;
@@ -165,10 +165,10 @@
             // lblEtatConnectionText
             // 
             lblEtatConnectionText.AutoSize = true;
-            lblEtatConnectionText.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEtatConnectionText.Location = new Point(208, 28);
+            lblEtatConnectionText.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
+            lblEtatConnectionText.Location = new Point(160, 47);
             lblEtatConnectionText.Name = "lblEtatConnectionText";
-            lblEtatConnectionText.Size = new Size(387, 28);
+            lblEtatConnectionText.Size = new Size(513, 37);
             lblEtatConnectionText.TabIndex = 1;
             lblEtatConnectionText.Text = "Etat de la connexion à la base de donnée";
             // 
@@ -187,6 +187,19 @@
             pnlEtatMachine.Name = "pnlEtatMachine";
             pnlEtatMachine.Size = new Size(794, 206);
             pnlEtatMachine.TabIndex = 10;
+            // 
+            // btnParcMachine
+            // 
+            btnParcMachine.BackColor = Color.YellowGreen;
+            btnParcMachine.BackgroundImageLayout = ImageLayout.Center;
+            btnParcMachine.CausesValidation = false;
+            btnParcMachine.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnParcMachine.Location = new Point(42, 80);
+            btnParcMachine.Name = "btnParcMachine";
+            btnParcMachine.Size = new Size(124, 70);
+            btnParcMachine.TabIndex = 11;
+            btnParcMachine.Text = "Mise à Jour  Parc Machine";
+            btnParcMachine.UseVisualStyleBackColor = false;
             // 
             // txtMachineMaintReponse
             // 
@@ -279,35 +292,21 @@
             // grdEtatLotsAccueil
             // 
             grdEtatLotsAccueil.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdEtatLotsAccueil.Location = new Point(23, 58);
+            grdEtatLotsAccueil.Location = new Point(19, 113);
             grdEtatLotsAccueil.Name = "grdEtatLotsAccueil";
             grdEtatLotsAccueil.RowHeadersWidth = 51;
-            grdEtatLotsAccueil.Size = new Size(360, 397);
+            grdEtatLotsAccueil.Size = new Size(378, 397);
             grdEtatLotsAccueil.TabIndex = 1;
             // 
             // lblLotProduction
             // 
             lblLotProduction.AutoSize = true;
-            lblLotProduction.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLotProduction.Location = new Point(134, 27);
+            lblLotProduction.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
+            lblLotProduction.Location = new Point(40, 72);
             lblLotProduction.Name = "lblLotProduction";
-            lblLotProduction.Size = new Size(128, 28);
+            lblLotProduction.Size = new Size(354, 35);
             lblLotProduction.TabIndex = 0;
-            lblLotProduction.Text = "Etat des Lots";
-            // 
-            // btnParcMachine
-            // 
-            btnParcMachine.BackColor = Color.YellowGreen;
-            btnParcMachine.BackgroundImageLayout = ImageLayout.Center;
-            btnParcMachine.CausesValidation = false;
-            btnParcMachine.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnParcMachine.Location = new Point(42, 80);
-            btnParcMachine.Name = "btnParcMachine";
-            btnParcMachine.Size = new Size(124, 70);
-            btnParcMachine.TabIndex = 11;
-            btnParcMachine.Text = "Mise à Jour  Parc Machine";
-            btnParcMachine.UseVisualStyleBackColor = false;
-
+            lblLotProduction.Text = "Etat des 10 derniers Lots crées";
             // 
             // AccueilControl
             // 
