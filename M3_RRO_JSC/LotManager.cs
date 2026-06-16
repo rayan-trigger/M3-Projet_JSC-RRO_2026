@@ -34,7 +34,7 @@ namespace M3_RRO_JSC
                 {
 
                     cmd.CommandText = "SELECT l.Id_Lot, l.LOT_Nom, l.LOT_Quantite, l.LOT_DateHeureCreation," +
-                                       "r.REC_Nom, e.ETA_Libelle " +
+                                       "r.Id_Recette, r.REC_Nom, e.ETA_Libelle " +
                                        "FROM lot l " +
                                        "INNER JOIN recette r ON l.Id_Recette = r.Id_Recette " +
                                        "INNER JOIN etat e ON l.Id_Etat = e.Id_Etat " +
@@ -53,6 +53,7 @@ namespace M3_RRO_JSC
                             lot.Etat = reader.GetString("ETA_Libelle");
 
                             lot.RecetteAssociee = new Recette();
+                            lot.RecetteAssociee.IdRecette = reader.GetInt32("Id_Recette");
                             lot.RecetteAssociee.NomRecette = reader.GetString("REC_Nom");
 
                             lots.Add(lot);
@@ -238,7 +239,7 @@ namespace M3_RRO_JSC
                 using (MySqlCommand cmd = GetConnection().CreateCommand())
                 {
                     cmd.CommandText = "SELECT l.Id_Lot, l.LOT_Nom, l.LOT_Quantite, l.LOT_DateHeureCreation, " +
-                                      "r.REC_Nom, e.ETA_Libelle " +
+                                      "r.Id_Recette, r.REC_Nom, e.ETA_Libelle " +
                                       "FROM lot l " +
                                       "INNER JOIN recette r ON l.Id_Recette = r.Id_Recette " +
                                       "INNER JOIN etat e ON l.Id_Etat = e.Id_Etat " +
@@ -258,6 +259,7 @@ namespace M3_RRO_JSC
                             lot.Etat = reader.GetString("ETA_Libelle");
 
                             lot.RecetteAssociee = new Recette();
+                            lot.RecetteAssociee.IdRecette = reader.GetInt32("Id_Recette");
                             lot.RecetteAssociee.NomRecette = reader.GetString("REC_Nom");
 
                             lots.Add(lot);

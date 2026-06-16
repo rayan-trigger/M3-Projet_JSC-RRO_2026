@@ -71,7 +71,7 @@ namespace M3_RRO_JSC
 
             else if (!int.TryParse(txtQuantiteCreaLot.Text, out int quantite) || quantite <= ValeurInactive)
             {
-                MessageBox.Show ("La quantité de pièces doit être un nombre supérieur à 0.");
+                MessageBox.Show("La quantité de pièces doit être un nombre supérieur à 0.");
                 txtQuantiteCreaLot.Focus();
                 champsValides = false;
             }
@@ -122,7 +122,7 @@ namespace M3_RRO_JSC
                     cboRecetteCreaLot.SelectedValue = lotAModifier.RecetteAssociee.IdRecette;
                 }
             }
-       }
+        }
 
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace M3_RRO_JSC
 
             Recette recetteSelectionnee = cboRecetteCreaLot.SelectedItem as Recette;
 
-            if (lotAModifier != null && recetteSelectionnee !=null)
+            if (lotAModifier != null && recetteSelectionnee != null)
             {
                 lotAModifier.NomLot = txtNomCreaLot.Text.Trim();
                 lotAModifier.QuantitePieces = int.Parse(txtQuantiteCreaLot.Text);
@@ -346,7 +346,7 @@ namespace M3_RRO_JSC
 
         }
     }
-    
+
 
 }
 
