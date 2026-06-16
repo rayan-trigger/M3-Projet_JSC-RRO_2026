@@ -276,6 +276,7 @@
             btnIntroduireOpeCreaRecette.TabIndex = 44;
             btnIntroduireOpeCreaRecette.Text = "Introduire opération dans recette ";
             btnIntroduireOpeCreaRecette.UseVisualStyleBackColor = true;
+            btnIntroduireOpeCreaRecette.Click += btnIntroduireOpeCreaRecette_Click;
             // 
             // btnSupprimerOperationCreaRecette
             // 

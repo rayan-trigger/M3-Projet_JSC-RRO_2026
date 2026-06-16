@@ -115,7 +115,7 @@ namespace M3_RRO_JSC
             {
                 cboTempsCreaRecette.Items.Add(temps.ToString());
             }
-           
+
 
             cboTempsCreaRecette.SelectedIndex = AucuneSelection;
         }
@@ -715,7 +715,7 @@ namespace M3_RRO_JSC
         /// <param name="e"></param>
         private void btnSupprimerOperation_Click(object sender, EventArgs e)
         {
-            if(grdToutesOperationsCreaRecette.CurrentRow != null)
+            if (grdToutesOperationsCreaRecette.CurrentRow != null)
             {
                 int idOperation = Convert.ToInt32(grdToutesOperationsCreaRecette.CurrentRow.Cells["IdOperation"].Value);
 
@@ -735,6 +735,48 @@ namespace M3_RRO_JSC
             else
             {
                 MessageBox.Show("Veuillez sélectionner une opération à supprimer.");
+            }
+        }
+
+        private void btnIntroduireOpeCreaRecette_Click(object sender, EventArgs e)
+        {
+            if (grdToutesOperationsCreaRecette.CurrentRow != null)
+            {
+                DataGridViewRow sourceRow = grdToutesOperationsCreaRecette.CurrentRow;
+
+                string nom = sourceRow.Cells["NomOperation"].Value?.ToString() ?? string.Empty;
+                string sens = sourceRow.Cells["Sens"].Value?.ToString() ?? string.Empty;
+                string position = sourceRow.Cells["Position"].Value?.ToString() ?? string.Empty;
+                string temps = sourceRow.Cells["TempsAttente"].Value?.ToString() ?? TempsAttenteDefaut;
+                string cycle = sourceRow.Cells["CycleVerin"].Value?.ToString() ?? TexteNon;
+                string quittance = sourceRow.Cells["Quittance"].Value?.ToString() ?? TexteNon;
+
+                if (string.IsNullOrWhiteSpace(nom))
+                {
+                    MessageBox.Show("Opération invalide.");
+                    return;
+                }
+
+                // Empêcher l'ajout d'un doublon exact
+                foreach (DataRow existing in tableOperations.Rows)
+                {
+                    if (existing[COL_NOM_OPERATION].ToString() == nom
+                        && existing[COL_SENS].ToString() == sens
+                        && existing[COL_POSITION].ToString() == position
+                        && existing[COL_TEMPS_ATTENTE].ToString() == temps
+                        && existing[COL_CYCLE_VERIN].ToString() == cycle
+                        && existing[COL_QUITTANCE].ToString() == quittance)
+                    {
+                        MessageBox.Show("Cette opération est déjà présente dans la recette.");
+                        return;
+                    }
+                }
+
+                tableOperations.Rows.Add(nom, sens, position, temps, cycle, quittance);
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner une opération à introduire.");
             }
         }
     }
