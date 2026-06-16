@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Fichier: FrmDetailsRecette.cs
+// Description: Formulaire affichant les détails d'une recette et la liste de
+// ses opérations associées en lecture seule.
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

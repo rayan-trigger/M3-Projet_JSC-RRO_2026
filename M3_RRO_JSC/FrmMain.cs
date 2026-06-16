@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Fichier: FrmMain.cs
+// Description: Formulaire principal de l'application. Gère la navigation entre
+// les pages (UserControl) et la confirmation de fermeture.
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 

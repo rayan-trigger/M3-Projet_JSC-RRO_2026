@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Fichier: RecetteData.cs
+// Description: Définit les modèles de données OperationRecette et Recette,
+// ainsi qu'un cache statique pour la liste des recettes.
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;

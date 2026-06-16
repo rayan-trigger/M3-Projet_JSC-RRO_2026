@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Fichier: FrmCreationLot.cs
+// Description: Formulaire pour créer ou modifier un lot. Contient la logique de
+// validation des champs, chargement des recettes disponibles et gestion du mode
+// création/modification d'un lot.
+using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;

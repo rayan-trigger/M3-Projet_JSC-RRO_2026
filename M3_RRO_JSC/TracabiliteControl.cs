@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Fichier: TracabiliteControl.cs
+// Description: Contrôle utilisateur pour la page de traçabilité. Initialise
+// et utilise TracabiliteManager pour charger et filtrer les événements.
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

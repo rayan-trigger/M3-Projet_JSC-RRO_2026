@@ -1,4 +1,8 @@
-﻿using MySqlX.XDevAPI.Relational;
+﻿// Fichier: RecettesControl.cs
+// Description: Contrôle utilisateur pour la gestion des recettes. Permet de
+// lister, créer, modifier et supprimer des recettes, ainsi que d'afficher
+// leurs opérations associées.
+using MySqlX.XDevAPI.Relational;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

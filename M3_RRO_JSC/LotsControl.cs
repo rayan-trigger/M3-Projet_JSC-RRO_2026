@@ -1,4 +1,7 @@
-﻿using Org.BouncyCastle.Cmp;
+﻿// Fichier: LotsControl.cs
+// Description: Contrôle utilisateur pour gérer l'affichage, la création,
+// modification et suppression des lots. Inclut des filtres par état.
+using Org.BouncyCastle.Cmp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

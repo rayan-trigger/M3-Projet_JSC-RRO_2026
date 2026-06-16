@@ -1,3 +1,6 @@
+// Fichier: ParametreControl.cs
+// Description: Contrôle utilisateur pour gérer les paramètres de connexion à
+// la base de données (test de connexion, ouverture/fermeture de la connexion).
 using MySql.Data.MySqlClient;
 using static M3_RRO_JSC.DBManager;
 using System;

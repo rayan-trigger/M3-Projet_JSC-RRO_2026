@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Fichier: LotManager.cs
+// Description: Fournit les opérations CRUD liées aux lots (récupération,
+// création, mise à jour, suppression) et quelques requêtes utilitaires.
+using System;
 using System.Collections.Generic;
 using System.Text;
 using MySql.Data.MySqlClient;
@@ -23,7 +26,7 @@ namespace M3_RRO_JSC
         /// <summary>
         /// Récupère tous les lots enregistrés dans la base de données avec leur recette associée et leur état.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Liste de lots récupérés (vide en cas d'erreur).</returns>
         public static List<Lot> GetAllLots()
         {
             List<Lot> lots = new List<Lot>();

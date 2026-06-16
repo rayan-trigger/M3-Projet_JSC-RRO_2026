@@ -1,4 +1,8 @@
-﻿using Google.Protobuf.WellKnownTypes;
+﻿// Fichier: FrmCreationRecette.cs
+// Description: Formulaire pour créer ou modifier une recette. Gère l'interface utilisateur
+// et la logique locale pour ajouter, modifier et supprimer des opérations avant
+// l'enregistrement en base de données.
+using Google.Protobuf.WellKnownTypes;
 using Microsoft.VisualBasic;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Pqc.Crypto.Lms;

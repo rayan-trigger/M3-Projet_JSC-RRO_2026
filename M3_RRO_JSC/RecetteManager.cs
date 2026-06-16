@@ -1,4 +1,8 @@
-﻿using MySql.Data.MySqlClient;
+﻿// Fichier: RecetteManager.cs
+// Description: Fournit les opérations CRUD et utilitaires liées aux recettes
+// et opérations (création, lecture, modification, suppression, conversions
+// de valeurs pour la base de données).
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -162,10 +166,11 @@ namespace M3_RRO_JSC
 
 
         /// <summary>
-        /// Crée une nouvelle recette dans la table "Recette" de la base de données
+        /// <summary>
+        /// Crée une nouvelle recette dans la table "recette" de la base de données.
         /// </summary>
-        /// <param name="nomRecette"> Nom de la recette a enregistrer </param>
-        /// <returns> L'identifiant de la recette crée </returns>
+        /// <param name="nomRecette">Nom de la recette à enregistrer.</param>
+        /// <returns>Identifiant de la recette créée, ou -1 en cas d'échec.</returns>
         public static long CreateRecette(string nomRecette)
         {
             long idRecette = IdInvalide;
@@ -194,10 +199,11 @@ namespace M3_RRO_JSC
 
 
         /// <summary>
-        /// Crée une nouvelle ligne opération dans la table opération  de la base de donnée
+        /// Crée une nouvelle ligne opération dans la table `operation` de la base de
+        /// données. Convertit les valeurs lisibles en types attendus par la base.
         /// </summary>
-        /// <param name="operation"> Contient les informations de l'opération a enregistrer </param>
-        /// <returns> L'identifiant de l'opération crée ou Invalide si l'ajout échoue. </returns>
+        /// <param name="operation">Objet OperationRecette contenant les données à insérer.</param>
+        /// <returns>Identifiant de l'opération créée, ou -1 en cas d'erreur.</returns>
         public static long CreateOperation(OperationRecette operation)
         {
             long idOperation = IdInvalide;
@@ -231,11 +237,12 @@ namespace M3_RRO_JSC
        
 
         /// <summary>
-        /// Crée un lien entre une recette et une opération dans la table " Contenir ".Cette table permet de savoir quelles opérations appartient a une recette
+        /// Crée un lien entre une recette et une opération dans la table `contenir`.
+        /// Cette table conserve l'ordre des opérations au sein d'une recette via CON_NoOperation.
         /// </summary>
-        /// <param name="idRecette"> Identifiant de la recette </param>
-        /// <param name="idOperation">  Identifiant de l'opération </param>
-        /// <param name="numeroOperation"> Numéro de l'opération dans la recette, une recette peut contenir plusieurs opération </param>
+        /// <param name="idRecette">Identifiant de la recette.</param>
+        /// <param name="idOperation">Identifiant de l'opération.</param>
+        /// <param name="numeroOperation">Position de l'opération dans la recette (1-based).</param>
         public static void AjouterOperationRecette( long idRecette, long idOperation, int numeroOperation)
         {
             try
@@ -265,9 +272,10 @@ namespace M3_RRO_JSC
 
 
         /// <summary>
-        /// Récupère toutes les recettes enregistrées dans la table "Recette".
+        /// Récupère toutes les recettes enregistrées dans la table `recette`.
+        /// Chaque recette récupérée verra sa liste d'opérations chargée ensuite via GetOperationsByRecetteId.
         /// </summary>
-        /// <returns> Une liste de recette contenant leurs identifiant, leur noms et leurs dates,si une erreur survient, retourne une liste vide.</returns> 
+        /// <returns>Liste de recettes (vide en cas d'erreur).</returns>
         public static List<Recette>GetAllRecette()
 
         {

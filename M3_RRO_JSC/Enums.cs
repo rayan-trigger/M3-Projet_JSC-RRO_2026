@@ -1,4 +1,7 @@
-﻿using Google.Protobuf.WellKnownTypes;
+﻿// Fichier: Enums.cs
+// Description: Définit des énumérations utilisées pour représenter les valeurs
+// structurées telles que la position et le sens du moteur dans l'application.
+using Google.Protobuf.WellKnownTypes;
 using System;
 using System.Collections.Generic;
 using System.Text;

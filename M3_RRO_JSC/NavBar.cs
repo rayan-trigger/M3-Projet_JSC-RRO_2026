@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Fichier: NavBar.cs
+// Description: Barre de navigation (UserControl) permettant de basculer entre
+// les différentes pages de l'application (Accueil, Recettes, Lots, Traçabilité, Paramètres).
+using System;
 using System.Windows.Forms;
 
 namespace M3_RRO_JSC

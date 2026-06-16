@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Fichier: TracabilitéManager.cs
+// Description: Manager responsable du chargement, du filtrage et de la
+// recherche des événements de traçabilité. Fournit une API réutilisable par
+// le contrôle TracabiliteControl.
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;

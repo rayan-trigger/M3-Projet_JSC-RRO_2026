@@ -1,4 +1,7 @@
-﻿using MySql.Data.MySqlClient;
+﻿// Fichier: DBManager.cs
+// Description: Fournit des fonctions utilitaires pour la gestion de la
+// connexion MySQL et l'exécution de requêtes (SELECT/INSERT/UPDATE/DELETE).
+using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
@@ -96,11 +99,13 @@ namespace M3_RRO_JSC
                 {
                     try
                     {
+                        // Tentative d'ouverture : peut lever une exception si les paramètres sont incorrects
                         conn.Open();
                     }
                     catch (Exception ex)
                     {
                         // Erreur claire si la base est inaccessible
+                        // Ne ré-échoue pas ici, on affiche un message et laisse la gestion d'erreur au caller si nécessaire
                         MessageBox.Show($"Base de données inaccessible :\n{ex.Message}",
                         "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }

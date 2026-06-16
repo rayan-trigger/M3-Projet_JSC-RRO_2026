@@ -1,4 +1,7 @@
-﻿using MySql.Data.MySqlClient;
+﻿// Fichier: AccueilControl.cs
+// Description: Contrôle utilisateur affiché sur la page d'accueil. Montre les
+// informations de connexion à la base de données et la liste des derniers lots.
+using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Asn1.Cmp;
 using System;
 ﻿using System;

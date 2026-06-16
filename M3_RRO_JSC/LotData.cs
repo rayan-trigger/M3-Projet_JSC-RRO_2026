@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Fichier: LotData.cs
+// Description: Définit le modèle de données pour un Lot et une collection
+// statique servant de cache local pour la liste des lots.
+using System;
 using System.Collections.Generic;
 using static M3_RRO_JSC.OperationRecette;
 
